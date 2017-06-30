@@ -1,0 +1,26 @@
+{
+block:1,
+event:add,
+object:{hostIp:'192.168.0.1',
+        cpu:1000123,diskSpace:2000311,memory:3000121,
+        cpuused:1000123,diskSpacused:2000311,memoryused:3000121},
+handler:{hostIp:'192.168.0.1'},
+timestamp:72387123123
+}
+{
+block:2,
+event:update,
+object:{hostIp:'192.168.0.1',
+        cpu:1000123,diskSpace:2000311,memory:3000121,
+        cpuused:1000123,diskSpacused:2000311,memoryused:3000121
+       },
+handler:{hostIp:'192.168.0.1'},
+timestamp:72387123124
+}
+{
+block:3,
+event:remove,
+object:{hostIp:'192.168.0.1'},
+handler:{hostIp:'192.168.0.2'},
+timestamp:72387123125
+}

@@ -1,0 +1,6 @@
+[
+{hostIp:'192.0.0.1', cpu:189812312,diskSpace:189812312,memory:189812312,cpuused:189812312,diskSpaceused:189812312,memoryused:18981231},
+{hostIp:'192.0.0.2', cpu:189812312,diskSpace:189812312,memory:189812312,cpuused:189812312,diskSpaceused:189812312,memoryused:18981231},
+{hostIp:'192.0.0.3', cpu:189812312,diskSpace:189812312,memory:189812312,cpuused:189812312,diskSpaceused:189812312,memoryused:18981231}
+
+]
