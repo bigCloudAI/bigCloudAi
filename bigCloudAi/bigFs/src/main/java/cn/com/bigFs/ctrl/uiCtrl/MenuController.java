@@ -1,7 +1,10 @@
 package cn.com.bigFs.ctrl.uiCtrl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import cn.com.bigFs.service.ChainService;
 
 /**
  * 项目各个界面的请求地址
@@ -12,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/bigFs")
 public class MenuController {
 
+	@Autowired
+	ChainService chainSer;
 	/**
 	 * 文件系统首页
 	 */
@@ -25,6 +30,7 @@ public class MenuController {
 	 */
 	@RequestMapping("/initChain")
 	public String initChain() {
+		chainSer.initChain();
 		return "index";
 	}
 	

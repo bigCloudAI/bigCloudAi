@@ -5,8 +5,16 @@ import java.util.List;
 public class FsNode {
 
 	
+  FsNode parentId;
+  int fsNodeId;
   int type;//0 目录  1 文件
+  String name;//:'jjsjhahd.txt',
+	
+   /* file:[{0990901,192.5.4.1,192.5.4.2，192.5.4.4},{0990902,192.5.4.1,192.5.4.5,192.5.4.4}
+	.....{09909100,192.5.4.1,192.5.4.5,192.5.4.4}]*/
   List<FsNode> childFsNode;//子文件，目录时  有值
+  
+  List<MinFile> minFile;//该文件对应的小文件
   
   //文件，
   /*文件名
