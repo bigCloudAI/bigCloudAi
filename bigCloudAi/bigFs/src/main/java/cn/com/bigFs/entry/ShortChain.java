@@ -2,6 +2,9 @@ package cn.com.bigFs.entry;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ShortChain {
 
 	//短链，避免账本太长，加载慢使用

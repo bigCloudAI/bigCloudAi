@@ -1,9 +1,14 @@
 package cn.com.bigFs.ctrl.uiCtrl;
 
+import java.net.UnknownHostException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import cn.com.bigFs.domain.Result;
 import cn.com.bigFs.service.ChainService;
 
 /**
@@ -27,19 +32,21 @@ public class MenuController {
 	
 	/**
 	 * 初始化一个链账本
+	 * @throws UnknownHostException 
 	 */
 	@RequestMapping("/initChain")
-	public String initChain() {
+	public Result<String> initChain() throws Exception {
 		chainSer.initChain();
-		return "index";
+		return new Result<String>().success("success");
 	}
 	
 	/**
 	 * 将自己的信息加入到账本，（下载链账本，添加自己到链账本）
 	 */
-	@RequestMapping("/joinChain")
-	public String joinChain() {
-		return "index";
+	@RequestMapping(value = "joinChain/{ip}",method = RequestMethod.GET)
+	public Result<String> joinChain(@PathVariable String ip) {
+		chainSer.joinChain(ip);
+		return new Result<String>().success("success");
 	}
 	
 	/**
