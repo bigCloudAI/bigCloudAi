@@ -1,21 +1,48 @@
 package cn.com.bigFs.ctrl.apiCtrl;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-@Controller
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import cn.com.bigFs.domain.Result;
+import cn.com.bigFs.entry.Block;
+import cn.com.bigFs.entry.FsNode;
+import cn.com.bigFs.entry.Host;
+import cn.com.bigFs.repo.BlockRepo;
+import cn.com.bigFs.repo.FsNodeRepo;
+import cn.com.bigFs.repo.HostRepo;
+
+@RestController
 @RequestMapping("/bigFsChain")
 public class ChainNetController {
 	
 	/**
 	 * 
 	 */
-	@RequestMapping("/block/syn")
-	public String blockSyn() {//将自己的账本共享给其他节点
-		return "index";
+	@Autowired
+	BlockRepo blockRepo;
+	@Autowired
+	HostRepo hostRepo;
+	@Autowired
+	FsNodeRepo fsNodeRepo;
+	@RequestMapping(value = "/syn",method = RequestMethod.GET)
+	public Result<Object> blockSyn() throws Exception{//将自己的账本共享给其他节点
+		List<Block> blocks =  blockRepo.findAll();
+		List<Host> hosts = hostRepo.findAll();
+		List<FsNode> fsNodes = fsNodeRepo.findAll();
+		Map<String,List> chain = new HashMap<String,List>();
+		chain.put("blocks", blocks);
+		chain.put("hosts", hosts);
+		chain.put("fsNodes", fsNodes);
+		return  new Result<Object>().success(chain);
 	}
 	
-	@RequestMapping("/chain/newBlock")
+	@RequestMapping(value = "/chain/newBlock",method = RequestMethod.GET)
 	public String newBlock() {//接收到新区块  带时间搓  （返回成功/失败）
 		return "index";
 	}

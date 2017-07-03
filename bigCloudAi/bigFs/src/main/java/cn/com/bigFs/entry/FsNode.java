@@ -15,8 +15,8 @@ import net.minidev.json.annotate.JsonIgnore;
 @Entity
 public class FsNode {
 
-	@Id
-	@GeneratedValue	
+  @Id
+  @GeneratedValue	
   int fsNodeId;
 	
   int type;//0 目录  1 文件

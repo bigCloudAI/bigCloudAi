@@ -34,30 +34,10 @@ public class FsController {
 		return new Result<String>().success(fsService.fsNodeMkdir(where,dirName));
 	}
 	
-	
 	@RequestMapping(value = "/put/{where}/{fileName}",method = RequestMethod.POST)
 	public Result<String> put(@PathVariable String where,@PathVariable String fileName, MultipartFile partFile) throws Exception {
-		/*FsNode newFsNode = new FsNode();
-		newFsNode.setName(fileName);
-		newFsNode.setType(1);
-		newFsNode.setParentNodeId(fsService.findFsNode(where).getFsNodeId());
-		fsNodeRepo.save(newFsNode);
-		
-		
-		System.out.println(fileName);  
-	    String originalFilename = partFile.getOriginalFilename();  
-	    System.out.println(originalFilename); 
-	    System.out.println("接受到文件："+partFile+"");
-	    
-	    //切块存储  ，记录文件
-	    try {  
-	        String str = new String(partFile.getBytes(), "UTF-8");  
-	        System.out.println(str);
-	    } catch (UnsupportedEncodingException e) {  
-	        e.printStackTrace();  
-	    } catch (IOException e) {  
-	        e.printStackTrace();  
-	    } */
 		return new Result<String>().success(fsService.fsNodePut(where, fileName, partFile));
 	} 
+	
+	
 }

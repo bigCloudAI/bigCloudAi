@@ -30,6 +30,7 @@ public class Block {
 	@JsonIgnore
 	@Transient
 	Host object;
+	
 	@JsonIgnore
 	@Transient
 	Map<String,String> handler;
