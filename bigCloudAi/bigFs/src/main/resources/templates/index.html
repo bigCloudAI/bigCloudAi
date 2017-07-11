@@ -2,9 +2,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script type="text/javascript" src="/plugins/vue/vue.js"></script>
+<script type="text/javascript" src="/plugins/jquery/jquery-2.0.3.min.js"></script>
+
 <title>文件系统界面</title>
 </head>
 <body>
-文件系统界面
+		文件系统界面
+		
+	<div id="app">
+	  {{ message }} {{ message }}
+		<tc-grid></tc-grid>
+	</div>
 </body>
+<script type="text/javascript" src="/plugins/vue/vueComp/grid/tcGrid.js"></script>
+<script type="text/javascript">
+	var app = new Vue({
+	  el: '#app',
+	  data: {
+	    message: 'Hello Vue!'
+	  }
+	})
+</script>
 </html>

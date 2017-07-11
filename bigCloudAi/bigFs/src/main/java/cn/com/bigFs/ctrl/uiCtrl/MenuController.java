@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import cn.com.bigFs.domain.Result;
 import cn.com.bigFs.service.ChainService;
@@ -25,10 +26,16 @@ public class MenuController {
 	/**
 	 * 文件系统首页
 	 */
-	@RequestMapping(value ="/index",method = RequestMethod.GET)
+	/*@RequestMapping(value ="/index",method = RequestMethod.GET)
 	public String index() {
 		return "index";
-	}
+	}*/
+	@RequestMapping(value ="/index",method = RequestMethod.GET)
+	 public ModelAndView login(){
+	        ModelAndView mv = new ModelAndView("index");
+	        return mv;
+	    }
+	
 	
 	/**
 	 * 初始化一个链账本
