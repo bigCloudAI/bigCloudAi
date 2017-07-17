@@ -62,6 +62,8 @@ public class FsService {
 		newFsNode.setParentNodeId(this.findFsNode(where,fileName).getFsNodeId());
 		fsNodeRepo.save(newFsNode);
 		System.out.println(partFile);
+       //文件分三份，根据账本信息分析存取至3个主机1i,并将信息写入总账本1i；
+		
 		return "success";
 	}
 	
