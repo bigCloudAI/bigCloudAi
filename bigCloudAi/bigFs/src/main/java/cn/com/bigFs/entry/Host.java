@@ -18,13 +18,19 @@ public class Host {
 	@Id
 	@GeneratedValue
 	int hostId;
+	
 	String ip;
+	
 	int cpu;
+	
 	long diskSpace;
+	
 	long memory;
 	
 	double cpuused;
+	
 	long diskSpaceused;
+	
 	long memoryused;
 	
 	@JsonIgnore

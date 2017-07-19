@@ -20,7 +20,9 @@ public class FsNode {
   int fsNodeId;
 	
   int type;//0 目录  1 文件
+  
   String name;//:'jjsjhahd.txt',
+  
   int parentNodeId;
    /* file:[{0990901,192.5.4.1,192.5.4.2，192.5.4.4},{0990902,192.5.4.1,192.5.4.5,192.5.4.4}
 	.....{09909100,192.5.4.1,192.5.4.5,192.5.4.4}]*/

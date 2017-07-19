@@ -25,6 +25,7 @@ public class Block {
 	String event;//add update remove
 	
 	String objIp;
+	
 	String handlerIp;
 	
 	@JsonIgnore
