@@ -1,4 +1,4 @@
-package cn.com.bigFs.graphlab.rdd;
+package cn.com.aiApp.graphlab.rdd;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -12,7 +12,7 @@ public class FileRDD extends RDD {
 
 	public static void main(String[] args) {
 		RDDinf rdd = new FileRDD();
-		rdd.setPath("G:\\ComWorkSpace2\\bigcloudaiGit\\data\\kddcup.data.corrected");
+		rdd.setPath("E:\\git\\bigCloudAI\\bigCloudAi\\bigCloudAi\\bigCloudAi\\data\\kddcup.data_10_percent_corrected");
 		rdd.showContinue();
 		rdd.showContinue();
 		rdd.showContinue();

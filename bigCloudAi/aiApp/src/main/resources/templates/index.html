@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<script type="text/javascript" src="/plugins/jquery/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="/plugins/vue/vue.js"></script>
+<script type="text/javascript" src="/plugins/echart/echarts.min.js"></script>
+
+<title>智能应用首页</title>
+</head>
+<body>
+		<h2>欢迎使用智能应用（aiApp）</h2>
+    <div id="app">
+	  <scatter-large></scatter-large>
+	</div>
+</body>
+<script type="text/javascript" src="/plugins/vueEchartComp/scatterLarge/scatterLarge.js"></script>
+<script type="text/javascript">
+	var app = new Vue({
+	  el: '#app',
+	  data: {
+	    message: 'Hello Vue!'
+	  }
+	})
+</script>
+</html>

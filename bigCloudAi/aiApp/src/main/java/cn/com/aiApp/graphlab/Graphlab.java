@@ -1,8 +1,8 @@
-package cn.com.bigFs.graphlab;
+package cn.com.aiApp.graphlab;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import cn.com.bigFs.graphlab.rdd.RDD;
+import cn.com.aiApp.graphlab.rdd.RDD;
 
 public class Graphlab {
 

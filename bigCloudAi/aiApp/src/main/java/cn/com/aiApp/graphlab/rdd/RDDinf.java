@@ -1,4 +1,4 @@
-package cn.com.bigFs.graphlab.rdd;
+package cn.com.aiApp.graphlab.rdd;
 
 public interface RDDinf {
 

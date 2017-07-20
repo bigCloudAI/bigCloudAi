@@ -1,4 +1,4 @@
-package cn.com.bigFs;
+package cn.com.aiApp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

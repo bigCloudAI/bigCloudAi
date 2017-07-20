@@ -25,6 +25,7 @@ public class ChainService {
 	        
 	@Autowired
 	BlockRepo blockRepo;
+	
 	@Autowired
 	HostRepo hostRepo;
 	@Autowired
