@@ -14,7 +14,9 @@ function initComp(compId){
 	return {
         data:function(){
         	return {
+        		count:1,
         		    myChart:null,
+        		    domId:"",
 	        		option:{
 	        		    title: {
 	        		        text: '大规模散点图'
@@ -71,11 +73,9 @@ function initComp(compId){
 	        		                    x = (Math.random() * 10).toFixed(3) - 0;
 	        		                    d.push([
 	        		                        x,
-	        		                        //Math.random() * 10
 	        		                        (Math.sin(x) - x * (len % 2 ? 0.1 : -0.1) * Math.random()).toFixed(3) - 0
 	        		                    ]);
 	        		                }
-	        		                //console.log(d)
 	        		                return d;
 	        		            })()
 	        		        },
@@ -92,11 +92,9 @@ function initComp(compId){
 	        		                    x = (Math.random() * 10).toFixed(3) - 0;
 	        		                    d.push([
 	        		                        x,
-	        		                        //Math.random() * 10
 	        		                        (Math.cos(x) - x * (len % 2 ? 0.1 : -0.1) * Math.random()).toFixed(3) - 0
 	        		                    ]);
 	        		                }
-	        		                //console.log(d)
 	        		                return d;
 	        		            })()
 	        		        }
@@ -108,7 +106,11 @@ function initComp(compId){
 		mounted : function() {
 			var _that = this;
 			this.$nextTick(function() {
-				_that.initEchart();_that.showEchar();
+				_that.domId =new Date().getTime(); 
+				$("#main").attr('id',_that.domId);
+				_that.initEchart();
+				_that.title("123123");
+				_that.showEchar();
 			})
 		},
 		methods:{
@@ -118,13 +120,17 @@ function initComp(compId){
 				},
 			 initEchart:function(){
 				 var _that = this;
-				 _that.myChart = echarts.init(document.getElementById('main'));
+				 _that.myChart = echarts.init(document.getElementById(_that.domId));
 			 },
 			 showEchar:function(){
 				 var _that = this;
 				 _that.myChart.setOption(_that.option);
-			 }	
-		}
-			
+			 },
+			 title:function(title){
+				 var _that = this;
+				 _that.option.title.text=title;
+				 _that.showEchar();
+     		    }
+			 }
 	};
 }
