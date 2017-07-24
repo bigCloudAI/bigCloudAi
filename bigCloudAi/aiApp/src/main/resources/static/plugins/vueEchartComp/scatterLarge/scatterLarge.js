@@ -35,7 +35,7 @@ function initComp(compId){
 	        		        zlevel: 1
 	        		    },
 	        		    legend: {
-	        		        data:['sin','cos']
+	        		        data:[/*'sin'*//*,'cos'*/]
 	        		    },
 	        		    toolbox: {
 	        		        show : true,
@@ -60,44 +60,6 @@ function initComp(compId){
 	        		        }
 	        		    ],
 	        		    series : [
-	        		        {
-	        		            name:'sin',
-	        		            type:'scatter',
-	        		            large: true,
-	        		            symbolSize: 3,
-	        		            data: (function () {
-	        		                var d = [];
-	        		                var len = 10000;
-	        		                var x = 0;
-	        		                while (len--) {
-	        		                    x = (Math.random() * 10).toFixed(3) - 0;
-	        		                    d.push([
-	        		                        x,
-	        		                        (Math.sin(x) - x * (len % 2 ? 0.1 : -0.1) * Math.random()).toFixed(3) - 0
-	        		                    ]);
-	        		                }
-	        		                return d;
-	        		            })()
-	        		        },
-	        		        {
-	        		            name:'cos',
-	        		            type:'scatter',
-	        		            large: true,
-	        		            symbolSize: 2,
-	        		            data: (function () {
-	        		                var d = [];
-	        		                var len = 20000;
-	        		                var x = 0;
-	        		                while (len--) {
-	        		                    x = (Math.random() * 10).toFixed(3) - 0;
-	        		                    d.push([
-	        		                        x,
-	        		                        (Math.cos(x) - x * (len % 2 ? 0.1 : -0.1) * Math.random()).toFixed(3) - 0
-	        		                    ]);
-	        		                }
-	        		                return d;
-	        		            })()
-	        		        }
 	        		    ]
 	        		}
         		}
@@ -109,8 +71,20 @@ function initComp(compId){
 				_that.domId =new Date().getTime(); 
 				$("#main").attr('id',_that.domId);
 				_that.initEchart();
-				_that.title("123123");
-				_that.showEchar();
+				_that.title("test");
+				_that.data("sins",(function () {
+	                var d = [];
+	                var len = 100;
+	                var x = 0;
+	                while (len--) {
+	                    x = (Math.random() * 10).toFixed(3) - 0;
+	                    d.push([
+	                        x,
+	                        x*2 - 1000
+	                    ]);
+	                }
+	                return d;
+	            })());
 			})
 		},
 		methods:{
@@ -130,7 +104,21 @@ function initComp(compId){
 				 var _that = this;
 				 _that.option.title.text=title;
 				 _that.showEchar();
-     		    }
+     		    },
+     		 data:function(legend,seriesData){
+     			 var _that = this;
+     			 _that.option.legend.data.push(legend);
+     			 alert( _that.option.legend.data);
+     			 var series = 
+     			{ name:legend,
+		            type:'scatter',
+		            large: true,
+		            symbolSize: 3,
+		            data: seriesData
+		        };
+     			 _that.option.series.push(series);
+     			 _that.showEchar();
+     		   }
 			 }
 	};
 }
