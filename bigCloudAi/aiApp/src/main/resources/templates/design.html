@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)http://www.layoutit.com/build -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="title" content="aiApp数据模型设计">
+<meta name="description" content="aiApp数据模型设计">
+<meta name="keywords" content="">
+<meta name="language" content="en">
+
+<script src="./design/ca-pub-6033984710828720.js"></script>
+<script async="" src="./design/analytics.js"></script>
+
+<!-- <script type="text/javascript">var NREUMQ=NREUMQ||[];NREUMQ.push(["mark","firstbyte",new Date().getTime()]);</script>
+ --><title>aiApp数据模型设计</title>
+
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">			    
+<meta property="og:title" content="aiApp数据模型设计">
+<meta property="og:description" content="aiApp数据模型设计">
+<!-- Fav and touch icons -->
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-config"
+	content="http://cdn.layoutit.com/img/icons/browserconfig.xml">
+	
+<meta name="theme-color" content="#ffffff">
+<meta property="og:title"
+	content="Bootstrap Interface Builder | LayoutIt!">
+<meta property="og:image"
+	content="http://www.layoutit.com/img/share-logo.png">
+
+<meta property="og:url" content="http://www.layoutit.com/build">
+
+<link href="./design/app.min-ca32f0280e.css" rel="stylesheet">
+
+<script type="text/javascript" src="./design/app.min-f9ed910cda.js"></script>
+
+
+</head>
+
+<body class="edit builder" style="min-height: 860px;">
+	<div class="navbar navbar-inverse navbar-fixed-top navbar-layoutit">
+	    <div class="navbar-header">
+	      <button data-target="navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+	        <span class="glyphicon-bar"></span>
+	        <span class="glyphicon-bar"></span>
+	        <span class="glyphicon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href=""><img src="./design/favicon.png"> AiAppDesign<span class="label label-default">测试</span></a>
+	    </div>
+	    <div class="collapse navbar-collapse"> 
+	      <ul class="nav pull-right">
+	        <li>
+	        </li>
+	      </ul>
+	      <ul class="nav" id="menu-layoutit">
+	        <li>
+	          <div class="btn-group" data-toggle="buttons-radio">
+	            <button id="edit" class="active btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit "></i> 编辑</button>
+	            <button class="btn btn-xs btn-primary" id="sourcepreview"><i class="glyphicon-eye-open glyphicon"></i> 预览</button>
+	          </div>
+	          <div class="btn-group">							
+	            <button class="btn btn-xs btn-primary" id="button-download-modal" href="/build_v3/downloadAjax" data-target="#layoutitModal" data-toggle="modal"><i class="glyphicon-chevron-down glyphicon"></i> 界面源码</button>
+	            <button class="btn btn-xs btn-primary" href="#clear" id="clear"><i class="glyphicon-trash glyphicon"></i> 清除</button>
+	          </div>
+	        </li>
+	      </ul>
+	    </div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="sidebar-nav">
+				<ul class="nav nav-list accordion-group">
+					<li class="nav-header">
+						<i class="glyphicon-plus glyphicon"></i> 栅格布局
+						<div class="pull-right popover-info">
+							<i class="glyphicon glyphicon-question-sign "></i>
+							<div class="popover fade right">
+								<div class="arrow"></div>
+								<h3 class="popover-title">说明</h3>
+								<div class="popover-content">
+									栅格布局
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="rows" id="estRows">
+						
+						<div class="lyrow ui-draggable">
+							<a 	class="remove label label-danger"><i
+								class="glyphicon-remove glyphicon"></i> 删除</a>
+						    <span class="drag label label-default  ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span>
+							<div class="preview">
+								<input type="text" value="12" placeholder="Enter your own"
+									class="form-control">
+							</div>
+							<div class="view">
+								<div class="row">
+									<div class="col-md-12 column"></div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="lyrow ui-draggable">
+							<a 	class="remove label label-danger"><i
+								class="glyphicon-remove glyphicon"></i> 删除</a>
+						    <span class="drag label label-default  ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span>
+							<div class="preview">
+								<input type="text" value="6 6" placeholder="Enter your own"
+									class="form-control">
+							</div>
+							<div class="view">
+								<div class="row">
+									<div class="col-md-6 column"></div>
+									<div class="col-md-6 column"></div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="lyrow ui-draggable">
+							<a 	class="remove label label-danger"><i
+								class="glyphicon-remove glyphicon"></i> 删除</a>
+						    <span class="drag label label-default  ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span>
+							<div class="preview">
+								<input type="text" value="8 4" placeholder="Enter your own"
+									class="form-control">
+							</div>
+							<div class="view">
+								<div class="row">
+									<div class="col-md-8 column"></div>
+									<div class="col-md-4 column"></div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="lyrow ui-draggable">
+							<a 	class="remove label label-danger"><i
+								class="glyphicon-remove glyphicon"></i> 删除</a>
+						    <span class="drag label label-default  ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span>
+							<div class="preview">
+								<input type="text" value="4 4 4" placeholder="Enter your own"
+									class="form-control">
+							</div>
+							<div class="view">
+								<div class="row">
+									<div class="col-md-4 column"></div>
+									<div class="col-md-4 column"></div>
+									<div class="col-md-4 column"></div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="lyrow ui-draggable">
+							<a 	class="remove label label-danger"><i
+								class="glyphicon-remove glyphicon"></i> 删除</a>
+						    <span class="drag label label-default  ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span>
+							<div class="preview">
+								<input type="text" value="" placeholder="Enter your own"
+									class="form-control">
+							</div>
+							<div class="view">
+								<div class="row"></div>
+							</div>
+						</div>
+					</li>
+				</ul>
+
+				<ul class="nav nav-list accordion-group">
+					<li class="nav-header"><i class="glyphicon glyphicon-plus"></i>
+						基础样式组件
+						<div class="pull-right popover-info">
+							<i class="glyphicon glyphicon-question-sign "></i>
+							<div class="popover fade right">
+								<div class="arrow"></div>
+								<h3 class="popover-title">说明</h3>
+								<div class="popover-content">
+									基础样式组件
+								</div>
+							</div>
+						</div></li>
+					<li class="boxes" id="elmBase">
+						<div class="box box-element ui-draggable">
+							<a 	class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> 
+							<span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span>
+								
+								 <span class="configuration"> <span
+								class="btn-group btn-group-xs"> <a
+									class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+									>Align <span
+										class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li class="active"><a
+											 rel="">Default</a></li>
+										<li class=""><a 
+											rel="text-left">Left</a></li>
+										<li class=""><a 
+											rel="text-center">Center</a></li>
+										<li class=""><a 
+											rel="text-right">Right</a></li>
+									</ul>
+							</span> <span class="btn-group btn-group-xs"> <a
+									class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+									>Emphasis <span
+										class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li class="active"><a
+											 rel="">Default</a></li>
+										<li class=""><a 
+											rel="text-muted">Muted</a></li>
+										<li class=""><a 
+											rel="text-primary">Primary</a></li>
+										<li class=""><a 
+											rel="text-success">Success</a></li>
+										<li class=""><a 
+											rel="text-info">Info</a></li>
+										<li class=""><a 
+											rel="text-warning">Warning</a></li>
+										<li class=""><a 
+											rel="text-danger">Danger</a></li>
+									</ul>
+							</span>
+							</span>
+							<div class="preview">标题</div>
+							<div class="view">
+								<h3 contenteditable="true">H3. 我是一个标题，helloWorld.</h3>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> <span
+								class="btn-group btn-group-xs"> <a
+									class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+									>Align <span
+										class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li class="active"><a
+											 rel="">Default</a></li>
+										<li class=""><a 
+											rel="text-left">Left</a></li>
+										<li class=""><a 
+											rel="text-center">Center</a></li>
+										<li class=""><a 
+											rel="text-right">Right</a></li>
+									</ul>
+							</span> <span class="btn-group btn-group-xs"> <a
+									class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+									>Emphasis <span
+										class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li class="active"><a
+											 rel="">Default</a></li>
+										<li class=""><a 
+											rel="text-muted">Muted</a></li>
+										<li class=""><a 
+											rel="text-primary">Primary</a></li>
+										<li class=""><a 
+											rel="text-success">Success</a></li>
+										<li class=""><a 
+											rel="text-info">Info</a></li>
+										<li class=""><a 
+											rel="text-warning">Warning</a></li>
+										<li class=""><a 
+											rel="text-danger">Danger</a></li>
+									</ul>
+							</span> <a class="btn btn-xs btn-default"
+								 rel="lead">Lead</a>
+							</span>
+							<div class="preview">段落</div>
+							<div class="view">
+								<p contenteditable="true">
+								
+								   我们的<small>成长</small>要摆脱低俗事物的纷扰，用<strong>传统文化</strong>来滋养。有句话叫柔日读史，刚日读经。是说意志懈怠时读史以明志：谋臣策士，
+								   家国三寸簧舌里；金戈铁马，江山万里血泪中。<em>读史书，能养浩然正气</em>。也是指骄躁狂暴时读经以养性：老庄之道，清净无为是非空；菩提之心，灵台空明尘埃无。读经书，能塑静俭德性。我国浩瀚的书海之中，蕴含着无尽的宝藏，它们是我们成长真正的养分。
+								</p>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span>
+							<div class="preview">地址</div>
+							<div class="view">
+								<address contenteditable="true">
+									<strong>Twitter, Inc.</strong><br> 795 Folsom Ave, Suite
+									600<br> San Francisco, CA 94107<br> <abbr
+										title="Phone">P:</abbr> (123) 456-7890
+								</address>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> <a class="btn btn-xs btn-default"
+								 rel="pull-right">Pull
+									right</a>
+							</span>
+							<div class="preview">块引用</div>
+							<div class="view">
+								<blockquote contenteditable="true">
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+										Integer posuere erat a ante.</p>
+									<small>Someone famous <cite title="Source Title">Source
+											Title</cite></small>
+								</blockquote>
+							</div>
+						</div>
+						
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> <a class="btn btn-xs btn-default"
+								 rel="list-unstyled">Unstyled</a>
+								<a class="btn btn-xs btn-default"
+								 rel="list-inline">Inline</a>
+							</span>
+							<div class="preview">无序列表</div>
+							<div class="view">
+								<ul contenteditable="true">
+									<li>接口的默认方法</li>
+									<li>Lambda 表达式</li>
+									<li>函数式接口</li>
+									<li>方法与构造函数引用</li>
+									<li>Nulla volutpat aliquam velit</li>
+									<li>访问局部变量</li>
+									<li>Aenean sit amet erat nunc</li>
+									<li>Eget porttitor lorem</li>
+								</ul>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> <a class="btn btn-xs btn-default"
+								 rel="list-unstyled">Unstyled</a>
+								<a class="btn btn-xs btn-default"
+								 rel="list-inline">Inline</a>
+							</span>
+							<div class="preview">有序列表</div>
+							<div class="view">
+								<ol contenteditable="true">
+									<li>接口的默认方法</li>
+									<li>Lambda 表达式</li>
+									<li>函数式接口</li>
+									<li>方法与构造函数引用</li>
+									<li>Nulla volutpat aliquam velit</li>
+									<li>访问局部变量</li>
+									<li>Aenean sit amet erat nunc</li>
+									<li>Eget porttitor lorem</li>
+								</ol>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> <a class="btn btn-xs btn-default"
+								 rel="dl-horizontal">Horizontal</a>
+							</span>
+							<div class="preview">叙述列表</div>
+							<div class="view">
+								<dl contenteditable="true">
+									<dt>Description lists</dt>
+									<dd>A description list is perfect for defining terms.</dd>
+									<dt>Euismod</dt>
+									<dd>Vestibulum id ligula porta felis euismod semper eget
+										lacinia odio sem nec elit.</dd>
+									<dd>Donec id elit non mi porta gravida at eget metus.</dd>
+									<dt>Malesuada porta</dt>
+									<dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+									<dt>Felis euismod semper eget lacinia</dt>
+									<dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris
+										condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> <span
+								class="btn-group btn-group-xs"> <a
+									class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+									>Style <span
+										class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li class="active"><a
+											 rel="">Default</a></li>
+										<li class=""><a 
+											rel="table-striped">Striped</a></li>
+										<li class=""><a 
+											rel="table-bordered">Bordered</a></li>
+									</ul>
+							</span> <a class="btn btn-xs btn-default"
+								 rel="table-hover">Hover</a>
+								<a class="btn btn-xs btn-default"
+								 rel="table-condensed">Condensed</a>
+							</span>
+							<div class="preview">表格</div>
+							<div class="view">
+								<table class="table" contenteditable="true">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Product</th>
+											<th>Payment Taken</th>
+											<th>Status</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1</td>
+											<td>TB - Monthly</td>
+											<td>01/04/2012</td>
+											<td>Default</td>
+										</tr>
+										<tr class="active">
+											<td>1</td>
+											<td>TB - Monthly</td>
+											<td>01/04/2012</td>
+											<td>Approved</td>
+										</tr>
+										<tr class="success">
+											<td>2</td>
+											<td>TB - Monthly</td>
+											<td>02/04/2012</td>
+											<td>Declined</td>
+										</tr>
+										<tr class="warning">
+											<td>3</td>
+											<td>TB - Monthly</td>
+											<td>03/04/2012</td>
+											<td>Pending</td>
+										</tr>
+										<tr class="danger">
+											<td>4</td>
+											<td>TB - Monthly</td>
+											<td>04/04/2012</td>
+											<td>Call in to confirm</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> <a class="btn btn-xs btn-default"
+								 rel="form-inline">Inline</a>
+							</span>
+							<div class="preview">表单</div>
+							<div class="view">
+								<form role="form">
+									<div class="form-group">
+										<label for="exampleInputEmail1">Email address</label> <input
+											type="email" class="form-control" id="exampleInputEmail1"
+											placeholder="Enter email">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputPassword1">Password</label> <input
+											type="password" class="form-control"
+											id="exampleInputPassword1" placeholder="Password">
+									</div>
+									<div class="form-group">
+										<label for="exampleInputFile">File input</label> <input
+											type="file" id="exampleInputFile">
+										<p class="help-block">Example block-level help text here.</p>
+									</div>
+									<div class="checkbox">
+										<label> <input type="checkbox"> Check me out
+										</label>
+									</div>
+									<button type="submit" class="btn btn-default">Submit</button>
+								</form>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> </span>
+							<div class="preview">垂直表单</div>
+							<div class="view">
+								<form class="form-horizontal" role="form">
+									<div class="form-group">
+										<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+										<div class="col-sm-10">
+											<input type="email" class="form-control" id="inputEmail3"
+												placeholder="Email">
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+										<div class="col-sm-10">
+											<input type="password" class="form-control"
+												id="inputPassword3" placeholder="Password">
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-offset-2 col-sm-10">
+											<div class="checkbox">
+												<label> <input type="checkbox"> Remember me
+												</label>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-offset-2 col-sm-10">
+											<button type="submit" class="btn btn-default">Sign
+												in</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> <span
+								class="btn-group btn-group-xs"> <a
+									class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+									>Styles <span
+										class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li class=""><a 
+											rel="btn-default">Default</a></li>
+										<li class=""><a 
+											rel="btn-primary">Primary</a></li>
+										<li class=""><a 
+											rel="btn-success">Success</a></li>
+										<li class=""><a 
+											rel="btn-info">Info</a></li>
+										<li class=""><a 
+											rel="btn-warning">Warning</a></li>
+										<li class=""><a 
+											rel="btn-danger">Danger</a></li>
+										<li class=""><a 
+											rel="btn-link">Link</a></li>
+									</ul>
+							</span> <span class="btn-group btn-group-xs"> <a
+									class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+									>Size <span
+										class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li class=""><a 
+											rel="btn-lg">Large</a></li>
+										<li class=""><a 
+											rel="btn-default">Default</a></li>
+										<li class=""><a 
+											rel="btn-sm">Small</a></li>
+										<li class=""><a 
+											rel="btn-xs">Mini</a></li>
+									</ul>
+							</span> <a class="btn btn-xs btn-default"
+								 rel="btn-block">Block</a>
+								<a class="btn btn-xs btn-default"
+								 rel="active">Active</a> <a
+								class="btn btn-xs btn-default"
+								 rel="disabled">Disabled</a>
+							</span>
+							<div class="preview">按钮</div>
+							<div class="view">
+								<button type="button" class="btn btn-default"
+									contenteditable="true">Default</button>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> <span
+								class="btn-group btn-group-xs"> <a
+									class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+									>Styles <span
+										class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li class=""><a 
+											rel="btn-default">Default</a></li>
+										<li class=""><a 
+											rel="btn-primary">Primary</a></li>
+										<li class=""><a 
+											rel="btn-success">Success</a></li>
+										<li class=""><a 
+											rel="btn-info">Info</a></li>
+										<li class=""><a 
+											rel="btn-warning">Warning</a></li>
+										<li class=""><a 
+											rel="btn-danger">Danger</a></li>
+										<li class=""><a 
+											rel="btn-link">Link</a></li>
+									</ul>
+							</span> <span class="btn-group btn-group-xs"> <a
+									class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+									>Size <span
+										class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li class=""><a 
+											rel="btn-lg">Large</a></li>
+										<li class=""><a 
+											rel="btn-default">Default</a></li>
+										<li class=""><a 
+											rel="btn-sm">Small</a></li>
+										<li class=""><a 
+											rel="btn-xs">Mini</a></li>
+									</ul>
+							</span> <a class="btn btn-xs btn-default"
+								 rel="btn-block">Block</a>
+								<a class="btn btn-xs btn-default"
+								 rel="active">Active</a> <a
+								class="btn btn-xs btn-default"
+								 rel="disabled">Disabled</a>
+							</span>
+							<div class="preview">锚按钮</div>
+							<div class="view">
+								<a  class="btn"
+									type="button" contenteditable="true">Button</a>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> <span
+								class="btn-group btn-group-xs"> <a
+									class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+									>Styles <span
+										class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li class="active"><a
+											 rel="">Default</a></li>
+										<li class=""><a 
+											rel="img-rounded">Rounded</a></li>
+										<li class=""><a 
+											rel="img-circle">Circle</a></li>
+										<li class=""><a 
+											rel="img-thumbnail">Thumbnail</a></li>
+									</ul>
+							</span>
+							</span>
+							<div class="preview">图片</div>
+							<div class="view">
+								<img alt="Bootstrap Image Preview" src="./design/saved_resource">
+							</div>
+						</div>
+					</li>
+				</ul>
+
+				<ul class="nav nav-list accordion-group">
+					<li class="nav-header"><i class="glyphicon glyphicon-plus"></i>
+						组件
+						<div class="pull-right popover-info">
+							<i class="glyphicon glyphicon-question-sign "></i>
+							<div class="popover fade right">
+								<div class="arrow"></div>
+								<h3 class="popover-title">Help</h3>
+								<div class="popover-content">
+									Drag &amp; Drop the elements inside the columns where you want
+									to insert it. And from there, you can configure the style of
+									that component. If you need more info please visit <a
+										target="_blank" href="http://getbootstrap.com/components">Components.</a>
+								</div>
+							</div>
+						</div></li>
+					<li class="boxes" id="elmComponents">
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> <span
+								class="btn-group btn-group-xs"> <a
+									class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+									>Size <span
+										class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li class="active"><a
+											 rel="">Default</a></li>
+										<li class=""><a 
+											rel="btn-group-lg">Large</a></li>
+										<li class=""><a 
+											rel="btn-group-md">Medium</a></li>
+										<li class=""><a 
+											rel="btn-group-sm">Small</a></li>
+										<li class=""><a 
+											rel="btn-group-xs">Extra small</a></li>
+									</ul>
+							</span> <a class="btn btn-xs btn-default"
+								 rel="btn-group-vertical">Vertical</a>
+							</span>
+							<div class="preview">按钮组</div>
+							<div class="view">
+								<div class="btn-group">
+									<button class="btn btn-default" type="button">
+										<i class="glyphicon glyphicon-align-left"></i> Left
+									</button>
+									<button class="btn btn-default" type="button">
+										<i class="glyphicon glyphicon-align-center"></i> Center
+									</button>
+									<button class="btn btn-default" type="button">
+										<i class="glyphicon glyphicon-align-right"></i> Right
+									</button>
+									<button class="btn btn-default" type="button">
+										<i class="glyphicon glyphicon-align-justify"></i> Justify
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> <a class="btn btn-xs btn-default"
+								 rel="dropup">Dropup</a>
+							</span>
+							<div class="preview">下拉按钮</div>
+							<div class="view">
+								<div class="btn-group">
+									<button class="btn btn-default" contenteditable="true">Action</button>
+									<button data-toggle="dropdown"
+										class="btn btn-default dropdown-toggle">
+										<span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu" contenteditable="true">
+										<li><a >Action</a></li>
+										<li class="disabled"><a
+											>Another action</a></li>
+										<li class="divider"></li>
+										<li><a >Something
+												else here</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> <span
+								class="btn-group btn-group-xs"> <a
+									class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+									>Styles <span
+										class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li class=""><a 
+											rel="nav-tabs">Default</a></li>
+										<li class=""><a 
+											rel="nav-pills">Pills</a></li>
+									</ul>
+							</span> <a class="btn btn-xs btn-default"
+								 rel="nav-stacked">Stacked</a>
+							</span>
+							<div class="preview">导航</div>
+							<div class="view">
+								<ul class="nav nav-tabs" contenteditable="true">
+									<li class="active"><a
+										>Home</a></li>
+									<li><a >Profile</a></li>
+									<li class="disabled"><a
+										>Messages</a></li>
+									<li class="dropdown pull-right"><a
+										 data-toggle="dropdown"
+										class="dropdown-toggle">Dropdown <b class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<li><a >Action</a></li>
+											<li><a >Another
+													action</a></li>
+											<li><a >Something
+													else here</a></li>
+											<li class="divider"></li>
+											<li><a >Separated
+													link</a></li>
+										</ul></li>
+								</ul>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span>
+							<div class="preview">面包屑</div>
+							<div class="view">
+
+								<ul class="breadcrumb">
+									<li><a 
+										contenteditable="true">Home</a> <span class="divider">/</span></li>
+									<li><a 
+										contenteditable="true">Library</a> <span class="divider">/</span></li>
+									<li class="active" contenteditable="true">Data</li>
+								</ul>
+
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> <span
+								class="btn-group btn-group-xs"> <a
+									class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+									>Size <span
+										class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li class=""><a 
+											rel="pagination-lg">Large</a></li>
+										<li class="active"><a
+											 rel="">Medium</a></li>
+										<li class=""><a 
+											rel="pagination-sm">Small</a></li>
+									</ul>
+							</span>
+
+							</span>
+							<div class="preview">分页</div>
+							<div class="view">
+								<ul class="pagination" contenteditable="true">
+									<li><a >Prev</a></li>
+									<li><a >1</a></li>
+									<li><a >2</a></li>
+									<li><a >3</a></li>
+									<li><a >4</a></li>
+									<li><a >5</a></li>
+									<li><a >Next</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> <span
+								class="btn-group btn-group-xs"> <a
+									class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+									>Styles <span
+										class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li class=""><a 
+											rel="label-default">Default</a></li>
+										<li class=""><a 
+											rel="label-primary">Primary</a></li>
+										<li class=""><a 
+											rel="label-success">Success</a></li>
+										<li class=""><a 
+											rel="label-info">Info</a></li>
+										<li class=""><a 
+											rel="label-warning">Warning</a></li>
+										<li class=""><a 
+											rel="label-danger">Danger</a></li>
+									</ul>
+							</span>
+							</span>
+							<div class="preview">标签</div>
+							<div class="view">
+								<span class="label label-default" contenteditable="true">Label</span>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> </span>
+							<div class="preview">徽章</div>
+							<div class="view">
+								<ul class="nav nav-pills" contenteditable="true">
+									<li class="active"><a
+										> <span
+											class="badge pull-right">42</span> Home
+									</a></li>
+									<li><a > <span
+											class="badge pull-right">16</span> More
+									</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> <a class="btn btn-xs btn-default"
+								 rel="well">Well</a>
+							</span>
+							<div class="preview">大屏幕</div>
+							<div class="view">
+								<div class="jumbotron" contenteditable="true">
+									<h2>Hello, world!</h2>
+									<p>This is a template for a simple marketing or
+										informational website. It includes a large callout called the
+										hero unit and three supporting pieces of content. Use it as a
+										starting point to create something more unique.</p>
+									<p>
+										<a class="btn btn-primary btn-large"
+											>Learn more</a>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span>
+							<div class="preview">页头</div>
+							<div class="view">
+								<div class="page-header">
+									<h1 contenteditable="true">
+										LayoutIt! <small>Interface Builder for Bootstrap</small>
+									</h1>
+								</div>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span>
+							<div class="preview">文字</div>
+							<div class="view">
+								<h2 contenteditable="true">Heading</h2>
+								<p contenteditable="true">Donec id elit non mi porta gravida
+									at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
+									mauris condimentum nibh, ut fermentum massa justo sit amet
+									risus. Etiam porta sem malesuada magna mollis euismod. Donec
+									sed odio dui.</p>
+								<p>
+									<a class="btn" 
+										contenteditable="true">View details »</a>
+								</p>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span>
+							<div class="preview">缩略图</div>
+							<div class="view">
+								<div class="row">
+									<div class="col-md-4">
+										<div class="thumbnail">
+											<img alt="Bootstrap Thumbnail First"
+												src="./design/people-q-c-600-200-1.jpg">
+											<div class="caption" contenteditable="true">
+												<h3>Thumbnail label</h3>
+												<p>Cras justo odio, dapibus ac facilisis in, egestas
+													eget quam. Donec id elit non mi porta gravida at eget
+													metus. Nullam id dolor id nibh ultricies vehicula ut id
+													elit.</p>
+												<p>
+													<a class="btn btn-primary"
+														>Action</a> <a
+														class="btn" >Action</a>
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="thumbnail">
+											<img alt="Bootstrap Thumbnail Second"
+												src="./design/city-q-c-600-200-1.jpg">
+											<div class="caption" contenteditable="true">
+												<h3>Thumbnail label</h3>
+												<p>Cras justo odio, dapibus ac facilisis in, egestas
+													eget quam. Donec id elit non mi porta gravida at eget
+													metus. Nullam id dolor id nibh ultricies vehicula ut id
+													elit.</p>
+												<p>
+													<a class="btn btn-primary"
+														>Action</a> <a
+														class="btn" >Action</a>
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="thumbnail">
+											<img alt="Bootstrap Thumbnail Third"
+												src="./design/sports-q-c-600-200-1.jpg">
+											<div class="caption" contenteditable="true">
+												<h3>Thumbnail label</h3>
+												<p>Cras justo odio, dapibus ac facilisis in, egestas
+													eget quam. Donec id elit non mi porta gravida at eget
+													metus. Nullam id dolor id nibh ultricies vehicula ut id
+													elit.</p>
+												<p>
+													<a class="btn btn-primary"
+														>Action</a> <a
+														class="btn" >Action</a>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> <a class="btn btn-xs btn-default"
+								 rel="progress-striped">Striped</a>
+								<a class="btn btn-xs btn-default"
+								 rel="active">Active</a>
+							</span>
+							<div class="preview">进度条</div>
+							<div class="view">
+								<div class="progress">
+									<div class="progress-bar progress-success" style="width: 60%;"></div>
+								</div>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> <a class="btn btn-xs btn-default"
+								 rel="well">well</a>
+							</span>
+							<div class="preview">多媒体对象</div>
+							<div class="view">
+								<div class="media">
+									<a  class="pull-left">
+										<img alt="Bootstrap Media Preview"
+										src="./design/saved_resource(1)" class="media-object">
+									</a>
+									<div class="media-body" contenteditable="true">
+										<h4 class="media-heading">Nested media heading</h4>
+										Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
+										scelerisque ante sollicitudin commodo. Cras purus odio,
+										vestibulum in vulputate at, tempus viverra turpis.
+										<div class="media">
+											<a  class="pull-left">
+												<img alt="Bootstrap Media Another Preview"
+												src="./design/saved_resource(1)" class="media-object">
+											</a>
+											<div class="media-body" contenteditable="true">
+												<h4 class="media-heading">Nested media heading</h4>
+												Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
+												scelerisque ante sollicitudin commodo. Cras purus odio,
+												vestibulum in vulputate at, tempus viverra turpis.
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> </span>
+							<div class="preview">列表组</div>
+							<div class="view">
+								<div class="list-group" contenteditable="true">
+									<a 
+										class="list-group-item active">Home</a>
+									<div class="list-group-item">List header</div>
+									<div class="list-group-item">
+										<h4 class="list-group-item-heading">List group item
+											heading</h4>
+										<p class="list-group-item-text">...</p>
+									</div>
+									<div class="list-group-item">
+										<span class="badge">14</span>Help
+									</div>
+									<a class="list-group-item active"><span class="badge">14</span>Help</a>
+								</div>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> <span
+								class="btn-group btn-group-xs"> <a
+									class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+									>Styles <span
+										class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li class=""><a 
+											rel="panel-default">Default</a></li>
+										<li class=""><a 
+											rel="panel-primary">Primary</a></li>
+										<li class=""><a 
+											rel="panel-success">Success</a></li>
+										<li class=""><a 
+											rel="panel-info">Info</a></li>
+										<li class=""><a 
+											rel="panel-warning">Warning</a></li>
+										<li class=""><a 
+											rel="panel-danger">Danger</a></li>
+									</ul>
+							</span>
+
+							</span>
+							<div class="preview">面板</div>
+							<div class="view">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h3 class="panel-title" contenteditable="true">Panel
+											title</h3>
+									</div>
+									<div class="panel-body" contenteditable="true">Panel
+										content</div>
+									<div class="panel-footer" contenteditable="true">Panel
+										footer</div>
+								</div>
+							</div>
+						</div>
+
+					</li>
+				</ul>
+
+				<ul class="nav nav-list accordion-group latest-group-sidebar">
+					<li class="nav-header"><i class="glyphicon glyphicon-plus"></i>
+						JavaScript组件
+						<div class="pull-right popover-info">
+							<i class="glyphicon glyphicon-question-sign "></i>
+							<div class="popover fade right">
+								<div class="arrow"></div>
+								<h3 class="popover-title">Help</h3>
+								<div class="popover-content">
+									Drag &amp; Drop the elements inside the columns where you want
+									to insert it. And from there, you can configure the style of
+									that javascript. If you need more info please visit <a
+										target="_blank" href="http://getbootstrap.com/javascript">JavaScript.</a>
+								</div>
+							</div>
+						</div></li>
+					<li class="boxes mute" id="elmJS">
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span>
+							<div class="preview">弹出模块</div>
+							<div class="view">
+								<!-- Button to trigger modal -->
+								<a id="myModalLink"
+									href="http://www.layoutit.com/build#myModalContainer"
+									role="button" class="btn" data-toggle="modal">Launch demo
+									modal</a>
+
+								<!-- Modal -->
+								<div class="modal fade" id="myModalContainer" tabindex="-1"
+									role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-hidden="true">×</button>
+												<h4 class="modal-title" id="myModalLabel"
+													contenteditable="true">Modal title</h4>
+											</div>
+											<div class="modal-body" contenteditable="true">...</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal" contenteditable="true">Close</button>
+												<button type="button" class="btn btn-primary"
+													contenteditable="true">Save changes</button>
+											</div>
+										</div>
+										<!-- /.modal-content -->
+									</div>
+									<!-- /.modal-dialog -->
+								</div>
+								<!-- /.modal -->
+
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> <span
+								class="btn-group btn-group-xs"> <a
+									class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+									>Position <span
+										class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li class="active"><a
+											 rel="">Default</a></li>
+										<li class=""><a 
+											rel="navbar-static-top">Static top</a></li>
+										<li class=""><a 
+											rel="navbar-fixed-top">Navbar fixed top</a></li>
+										<li class=""><a 
+											rel="navbar-fixed-bottom">Navbar fixed bottom</a></li>
+									</ul>
+							</span> <a class="btn btn-xs btn-default"
+								 rel="navbar-inverse">Inverse</a>
+								<!--a class="btn btn-xs btn-default" href="#" rel="navbar-static-top">Static top</a>
+		<a class="btn btn-mini" href="#" rel="navbar-fixed-top">Navbar fixed top</a>
+		<a class="btn btn-mini" href="#" rel="navbar-fixed-bottom">Navbar fixed bottom</a-->
+							</span>
+							<div class="preview">导航</div>
+							<div class="view">
+
+								<nav class="navbar navbar-default" role="navigation">
+									<!-- Brand and toggle get grouped for better mobile display -->
+									<div class="navbar-header">
+										<button type="button" class="navbar-toggle"
+											data-toggle="collapse"
+											data-target="#bs-example-navbar-collapse-1">
+											<span class="sr-only">Toggle navigation</span> <span
+												class="icon-bar"></span> <span class="icon-bar"></span> <span
+												class="icon-bar"></span>
+										</button>
+										<a class="navbar-brand" >Brand</a>
+									</div>
+
+									<!-- Collect the nav links, forms, and other content for toggling -->
+									<div class="collapse navbar-collapse"
+										id="bs-example-navbar-collapse-1">
+										<ul class="nav navbar-nav">
+											<li class="active"><a
+												>Link</a></li>
+											<li><a >Link</a></li>
+											<li class="dropdown"><a
+												
+												class="dropdown-toggle" data-toggle="dropdown">Dropdown
+													<b class="caret"></b>
+											</a>
+												<ul class="dropdown-menu">
+													<li><a >Action</a></li>
+													<li><a >Another
+															action</a></li>
+													<li><a >Something
+															else here</a></li>
+													<li class="divider"></li>
+													<li><a >Separated
+															link</a></li>
+													<li class="divider"></li>
+													<li><a >One
+															more separated link</a></li>
+												</ul></li>
+										</ul>
+										<form class="navbar-form navbar-left" role="search">
+											<div class="form-group">
+												<input type="text" class="form-control" placeholder="Search">
+											</div>
+											<button type="submit" class="btn btn-default">Submit</button>
+										</form>
+										<ul class="nav navbar-nav navbar-right">
+											<li><a >Link</a></li>
+											<li class="dropdown"><a
+												
+												class="dropdown-toggle" data-toggle="dropdown">Dropdown
+													<b class="caret"></b>
+											</a>
+												<ul class="dropdown-menu">
+													<li><a >Action</a></li>
+													<li><a >Another
+															action</a></li>
+													<li><a >Something
+															else here</a></li>
+													<li class="divider"></li>
+													<li><a >Separated
+															link</a></li>
+												</ul></li>
+										</ul>
+									</div>
+									<!-- /.navbar-collapse -->
+								</nav>
+
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> </span>
+							<div class="preview">切换页</div>
+							<div class="view">
+								<div class="tabbable" id="myTabs">
+									<!-- Only required for left/right tabs -->
+									<ul class="nav nav-tabs">
+										<li class="active"><a
+											href="http://www.layoutit.com/build#tab1" data-toggle="tab"
+											contenteditable="true">Section 1</a></li>
+										<li><a href="http://www.layoutit.com/build#tab2"
+											data-toggle="tab" contenteditable="true">Section 2</a></li>
+									</ul>
+									<div class="tab-content">
+										<div class="tab-pane active" id="tab1">
+											<p contenteditable="true">I'm in Section 1.</p>
+										</div>
+										<div class="tab-pane" id="tab2">
+											<p contenteditable="true">Howdy, I'm in Section 2.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span> <span
+								class="configuration"> <span
+								class="btn-group btn-group-xs"> <a
+									class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+									>Styles <span
+										class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li class=""><a 
+											rel="alert-success">Success</a></li>
+										<li class=""><a 
+											rel="alert-info">Info</a></li>
+										<li class=""><a 
+											rel="alert-warning">Warning</a></li>
+										<li class=""><a 
+											rel="alert-danger">Danger</a></li>
+									</ul>
+							</span>
+
+							</span>
+							<div class="preview">提醒</div>
+							<div class="view">
+								<div class="alert alert-success alert-dismissable"
+									contenteditable="true">
+									<button type="button" class="close" data-dismiss="alert"
+										aria-hidden="true">×</button>
+									<h4>Alert!</h4>
+									<strong>Warning!</strong> Best check yo self, you're not
+									looking too good. <a 
+										class="alert-link">alert link</a>
+								</div>
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span>
+							<div class="preview">手风琴</div>
+							<div class="view">
+								<div class="panel-group" id="myAccordion">
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<a class="panel-title" data-toggle="collapse"
+												data-parent="#myAccordion"
+												href="http://www.layoutit.com/build#collapseOne"
+												contenteditable="true"> Collapsible Group Item #1 </a>
+										</div>
+										<div id="collapseOne" class="panel-collapse collapse in">
+											<div class="panel-body" contenteditable="true">Anim
+												pariatur cliche...</div>
+										</div>
+									</div>
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<a class="panel-title" data-toggle="collapse"
+												data-parent="#myAccordion"
+												href="http://www.layoutit.com/build#collapseTwo"
+												contenteditable="true"> Collapsible Group Item #2 </a>
+										</div>
+										<div id="collapseTwo" class="panel-collapse collapse">
+											<div class="panel-body" contenteditable="true">Anim
+												pariatur cliche...</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="box box-element ui-draggable">
+							<a href="http://www.layoutit.com/build#close"
+								class="remove label label-danger"><i
+								class="glyphicon glyphicon-remove"></i> 删除</a> <span
+								class="drag label label-default ui-draggable-handle"><i
+								class="glyphicon glyphicon-move"></i> 拖动</span>
+							<div class="preview">轮播</div>
+							<div class="view">
+
+
+								<div class="carousel slide" id="myCarousel">
+									<ol class="carousel-indicators">
+										<li class="active" data-slide-to="0" data-target="#myCarousel"></li>
+										<li data-slide-to="1" data-target="#myCarousel" class=""></li>
+										<li data-slide-to="2" data-target="#myCarousel" class=""></li>
+									</ol>
+									<div class="carousel-inner">
+										<div class="item active">
+											<img alt="Carousel Bootstrap First"
+												src="./design/sports-q-c-1600-500-1.jpg">
+											<div class="carousel-caption">
+												<h4>First Thumbnail label</h4>
+												<p>Cras justo odio, dapibus ac facilisis in, egestas
+													eget quam. Donec id elit non mi porta gravida at eget
+													metus. Nullam id dolor id nibh ultricies vehicula ut id
+													elit.</p>
+											</div>
+										</div>
+										<div class="item">
+											<img alt="Carousel Bootstrap Second"
+												src="./design/sports-q-c-1600-500-2.jpg">
+											<div class="carousel-caption">
+												<h4>Second Thumbnail label</h4>
+												<p>Cras justo odio, dapibus ac facilisis in, egestas
+													eget quam. Donec id elit non mi porta gravida at eget
+													metus. Nullam id dolor id nibh ultricies vehicula ut id
+													elit.</p>
+											</div>
+										</div>
+										<div class="item">
+											<img alt="Carousel Bootstrap Third"
+												src="./design/sports-q-c-1600-500-3.jpg">
+											<div class="carousel-caption">
+												<h4>Third Thumbnail label</h4>
+												<p>Cras justo odio, dapibus ac facilisis in, egestas
+													eget quam. Donec id elit non mi porta gravida at eget
+													metus. Nullam id dolor id nibh ultricies vehicula ut id
+													elit.</p>
+											</div>
+										</div>
+									</div>
+
+									<a class="left carousel-control"
+										href="http://www.layoutit.com/build#myCarousel"
+										data-slide="prev"> <span
+										class="glyphicon glyphicon-chevron-left"></span>
+									</a> <a class="right carousel-control"
+										href="http://www.layoutit.com/build#myCarousel"
+										data-slide="next"> <span
+										class="glyphicon glyphicon-chevron-right"></span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+
+			</div>
+			<div class="demo ui-sortable" style="min-height: 790px;"></div>
+			<div class="powered-by col-xs-12 text-right">
+				Using <a href="http://getbootstrap.com/" target="_blank">bigCloudAi</a>
+				0.0.1
+			</div>
+			<div id="download-layout">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<nav class="navbar navbar-default" role="navigation">
+								<div class="navbar-header">
+
+									<button type="button" class="navbar-toggle"
+										data-toggle="collapse"
+										data-target="#bs-example-navbar-collapse-1">
+										<span class="sr-only">Toggle navigation</span><span
+											class="icon-bar"></span><span class="icon-bar"></span><span
+											class="icon-bar"></span>
+									</button>
+									<a class="navbar-brand" >Brand</a>
+								</div>
+
+								<div class="collapse navbar-collapse"
+									id="bs-example-navbar-collapse-1">
+									<ul class="nav navbar-nav">
+										<li class="active"><a
+											>Link</a></li>
+										<li><a >Link</a></li>
+										<li class="dropdown"><a
+											 class="dropdown-toggle"
+											data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+											<ul class="dropdown-menu">
+												<li><a >Action</a>
+												</li>
+												<li><a >Another
+														action</a></li>
+												<li><a >Something
+														else here</a></li>
+												<li class="divider"></li>
+												<li><a >Separated
+														link</a></li>
+												<li class="divider"></li>
+												<li><a >One
+														more separated link</a></li>
+											</ul></li>
+									</ul>
+									<form class="navbar-form navbar-left" role="search">
+										<div class="form-group">
+											<input type="text" class="form-control">
+										</div>
+										<button type="submit" class="btn btn-default">Submit
+										</button>
+									</form>
+									<ul class="nav navbar-nav navbar-right">
+										<li><a >Link</a></li>
+										<li class="dropdown"><a
+											 class="dropdown-toggle"
+											data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+											<ul class="dropdown-menu">
+												<li><a >Action</a>
+												</li>
+												<li><a >Another
+														action</a></li>
+												<li><a >Something
+														else here</a></li>
+												<li class="divider"></li>
+												<li><a >Separated
+														link</a></li>
+											</ul></li>
+									</ul>
+								</div>
+
+							</nav>
+							<div class="jumbotron">
+								<h2>Hello, world!</h2>
+								<p>This is a template for a simple marketing or
+									informational website. It includes a large callout called the
+									hero unit and three supporting pieces of content. Use it as a
+									starting point to create something more unique.</p>
+								<p>
+									<a class="btn btn-primary btn-large"
+										>Learn more</a>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<h2>Heading</h2>
+							<p>Donec id elit non mi porta gravida at eget metus. Fusce
+								dapibus, tellus ac cursus commodo, tortor mauris condimentum
+								nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
+								malesuada magna mollis euismod. Donec sed odio dui.</p>
+							<p>
+								<a class="btn" >View
+									details »</a>
+							</p>
+						</div>
+						<div class="col-md-4">
+							<h2>Heading</h2>
+							<p>Donec id elit non mi porta gravida at eget metus. Fusce
+								dapibus, tellus ac cursus commodo, tortor mauris condimentum
+								nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
+								malesuada magna mollis euismod. Donec sed odio dui.</p>
+							<p>
+								<a class="btn" >View
+									details »</a>
+							</p>
+						</div>
+						<div class="col-md-4">
+							<h2>Heading</h2>
+							<p>Donec id elit non mi porta gravida at eget metus. Fusce
+								dapibus, tellus ac cursus commodo, tortor mauris condimentum
+								nibh, ut fermentum massa justo sit amet risus. Etiam porta sem
+								malesuada magna mollis euismod. Donec sed odio dui.</p>
+							<p>
+								<a class="btn" >View
+									details »</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+					});
+		</script>
+	</div>
+
+
+
+	<div class="modal fade" id="layoutitModal" tabindex="-1" role="dialog"
+		aria-labelledby="layoutitModal" aria-hidden="true"
+		style="display: none;">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<h4 class="modal-title">页面源码</h4>
+				</div>
+				<div class="modal-body downloadModal">
+					<div id="download-logged" class="">
+						<div class="alert alert-info">
+							你 <strong>好，</strong> 以下是你设计的界面的html源码
+						</div>
+						<p>
+							<textarea></textarea>
+						</p>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<!-- <a class="btn btn-primary" id="download">Download .zip</a>
+       <a class="btn btn-primary" id="downloadhtml">Download .html only</a> -->
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+<!-- 
+<script type="text/javascript" src="./design/nr-100.js"></script>
+<script type="text/javascript" src="./design/0748fcde3e"></script> -->
+
+
+</body>
+</html>
