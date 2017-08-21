@@ -22,7 +22,7 @@ public class Sample {
         client.setSocketTimeoutInMillis(60000);
 
         // 调用API
-        String image = "E:\\git\\bigCloudAI\\bigCloudAi\\bigCloudAi\\bigCloudAi\\aiApp\\src\\lib\\7.png";
+        String image = "E:\\git\\bigCloudAI\\bigCloudAi\\bigCloudAi\\bigCloudAi\\aiApp\\src\\lib\\9.jpg";
         
         HashMap<String, String> options = new HashMap<String, String>();
         
