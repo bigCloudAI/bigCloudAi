@@ -27,7 +27,12 @@ public class MyHttpServer {
         requestPath = null;
     }
     private void doGet(DataInputStream reader, OutputStream out) throws Exception {
-    	if (new File(WEB_ROOT + this.requestPath).exists()) {
+    	 String line = reader.readLine();
+         while (line != null) {
+             System.out.println(line);
+             line = reader.readLine();
+             }
+    	/*if (new File(WEB_ROOT + this.requestPath).exists()) {
             //从服务器根目录下找到用户请求的文件并发送回浏览器
             InputStream fileIn = new FileInputStream(WEB_ROOT + this.requestPath);
             byte[] buf = new byte[fileIn.available()];
@@ -37,7 +42,7 @@ public class MyHttpServer {
             fileIn.close();
             reader.close();
             System.out.println("request complete.");
-        }
+        }*/
     }
     //处理post请求
     private void doPost(DataInputStream reader, OutputStream out) throws Exception {
