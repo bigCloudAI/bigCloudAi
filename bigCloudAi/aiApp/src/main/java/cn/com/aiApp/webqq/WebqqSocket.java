@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class WebqqSocket implements Runnable {
 
@@ -16,8 +18,15 @@ public class WebqqSocket implements Runnable {
 	public String cookieLoginParam = "daid%3D164%26target%3Dself%26style%3D16%26mibao_css%3Dm_webqq%26appid%3D501004106%26enable_qlogin%3D0%26no_verifyimg%3D1%26s_url%3Dhttp%253A%252F%252Fw.qq.com%252Fproxy.html%26f_url%3Dloginerroralert%26strong_login%3D1%26login_state%3D10%26t%3D20131024001";
 	public String cookieUikey = "dd40ef970b33ac795b73dd67912c430ae1a79f86714ff53ff175105bf9fc22bc";
 	public String cookiePtuiIdentifier = "000D54FAC028F09EB53AA632DDA353B5CD2FBA808C75A369FDC94CF6";
-
+	
 	public String cookieQrsig = "xxxxxxxxxxxxxxxxxxxxxx";
+	
+	public String cookiePtwebqq = "XXXXXX";	
+	
+	public Map<String,String> cookieMaps=new HashMap<String,String>();
+	public Map<String,Map<String,String>> cookieMapMaps=new HashMap<String,Map<String,String>>();
+	
+	public String content;
 
 	public WebqqSocket(Socket webqqSocket) {
 		this.webqqSocket = webqqSocket;
@@ -55,6 +64,12 @@ public class WebqqSocket implements Runnable {
 				} else if (line.indexOf("Set-Cookie") != -1) {
 					String[] cookies = line.split(":")[1].split(";");
 					for (int j = 0; j < cookies.length; j++) {
+						if(line.contains("DOMAIN=web2.qq.com;")){
+							if(cookies[j].indexOf("pt4_token") != -1||cookies[j].indexOf("p_uin") != -1
+									||cookies[j].indexOf("p_skey") != -1){
+								cookieMaps.put(cookies[j].split("=")[0].trim(), cookies[j].split("=")[1].trim());
+							}
+						}
 						if (cookies[j].indexOf("qrsig") != -1) {
 							this.setCookieQrsig(cookies[j].split("=")[1]);
 						}
@@ -79,6 +94,9 @@ public class WebqqSocket implements Runnable {
 						if (cookies[j].indexOf("ptui_identifier") != -1) {
 							this.setCookiePtuiIdentifier(cookies[j].split("=")[1]);
 						}
+						if (cookies[j].indexOf("ptwebqq") != -1) {
+							this.cookiePtwebqq=cookies[j].split("=")[1];
+						}
 						
 					}
 				}
@@ -98,13 +116,15 @@ public class WebqqSocket implements Runnable {
 	public void readData(DataInputStream reader) throws Exception {
 		switch (contentType) {
 		case 0:
+			this.contentLength=reader.available();
 			byte[] conbytes = new byte[this.contentLength];
 			reader.read(conbytes, 0, this.contentLength);
-			String con = new String(conbytes, "UTF-8");
+			String con = new String(conbytes,"UTF-8");
 			System.out.println(con);
+			this.content=con;
 			break;
 		case 1:
-			String cPic = "C:/Users/Administrator.2013-20160705FH/Desktop/cPic.png";
+			String cPic = "F:/cPic.png";
 			File file = new File(cPic);
 			FileOutputStream fos = new FileOutputStream(file);
 			int len;
