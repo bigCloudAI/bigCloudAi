@@ -51,7 +51,7 @@ public class WebqqSocket implements Runnable {
 			String line = dis.readLine();// dis.readLine();
 			int i = 0;
 			while (line != null) {
-				System.out.println("line->" + line);
+				//System.out.println("line->" + line);
 				line = dis.readLine();
 				if ("".equals(line.trim())) {
 					break;
