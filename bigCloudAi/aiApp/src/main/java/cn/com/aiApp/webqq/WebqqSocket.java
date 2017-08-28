@@ -6,7 +6,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class WebqqSocket implements Runnable {
@@ -21,7 +23,7 @@ public class WebqqSocket implements Runnable {
 	
 	public String cookieQrsig = "xxxxxxxxxxxxxxxxxxxxxx";
 	
-	public String cookiePtwebqq = "XXXXXX";	
+	public String cookiePtwebqq = "";	
 	
 	public Map<String,String> cookieMaps=new HashMap<String,String>();
 	public Map<String,Map<String,String>> cookieMapMaps=new HashMap<String,Map<String,String>>();
@@ -51,7 +53,7 @@ public class WebqqSocket implements Runnable {
 			String line = dis.readLine();// dis.readLine();
 			int i = 0;
 			while (line != null) {
-				//System.out.println("line->" + line);
+				System.out.println("line->" + line);
 				line = dis.readLine();
 				if ("".equals(line.trim())) {
 					break;
@@ -69,6 +71,9 @@ public class WebqqSocket implements Runnable {
 									||cookies[j].indexOf("p_skey") != -1){
 								cookieMaps.put(cookies[j].split("=")[0].trim(), cookies[j].split("=")[1].trim());
 							}
+						}
+						if(cookies[j].indexOf(" skey=") != -1){
+							cookieMaps.put(cookies[j].split("=")[0].trim(), cookies[j].split("=")[1].trim());
 						}
 						if (cookies[j].indexOf("qrsig") != -1) {
 							this.setCookieQrsig(cookies[j].split("=")[1]);
@@ -113,15 +118,42 @@ public class WebqqSocket implements Runnable {
 		}
 	}
 
+	public void readDataAll(DataInputStream reader) throws Exception {
+		List<Byte> conbyteAlls= new ArrayList<Byte>(); 
+		while((this.contentLength=reader.available())!=0){
+			System.out.println(this.contentLength);
+			byte[] conbytes = new byte[this.contentLength];
+			reader.read(conbytes, 0, this.contentLength);
+			for (int i = 0; i < conbytes.length; i++) {
+				conbyteAlls.add(conbytes[i]);
+			}
+			Thread.sleep(1000);
+		}
+		byte[] conbyteAllss = new byte[conbyteAlls.size()];
+		for (int i = 0; i < conbyteAllss.length; i++) {
+			conbyteAllss[i]=conbyteAlls.get(i);
+		}
+		String con = new String(conbyteAllss);
+		System.out.println(con);
+	} 
+	
+	
+	public void readDataByte(DataInputStream reader) throws Exception{
+		while((this.contentLength=reader.available())!=0){
+			//System.out.println("-->"+this.contentLength);
+			byte[] conbytes = new byte[this.contentLength];
+			reader.read(conbytes,0, this.contentLength);
+			String con =  new String(conbytes);//   reader.readUTF();
+			//System.out.println(con);
+			this.content+=con;
+			Thread.sleep(1000);
+		}
+		System.out.println(this.content.replaceAll("\r\n.{2,5}\r\n", ""));
+	} 
 	public void readData(DataInputStream reader) throws Exception {
 		switch (contentType) {
 		case 0:
-			this.contentLength=reader.available();
-			byte[] conbytes = new byte[this.contentLength];
-			reader.read(conbytes, 0, this.contentLength);
-			String con = new String(conbytes,"UTF-8");
-			System.out.println(con);
-			this.content=con;
+			this.readDataByte(reader);
 			break;
 		case 1:
 			String cPic = "F:/cPic.png";
