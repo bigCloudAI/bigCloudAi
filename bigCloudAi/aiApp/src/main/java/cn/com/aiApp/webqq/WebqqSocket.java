@@ -137,23 +137,36 @@ public class WebqqSocket implements Runnable {
 		System.out.println(con);
 	} 
 	
-	
+	public void readDataByteO(DataInputStream reader) throws Exception{
+		this.contentLength=reader.available();
+			//System.out.println("-->"+this.contentLength);
+			byte[] conbytes = new byte[this.contentLength];
+			reader.read(conbytes,0, this.contentLength);
+			String con =  new String(conbytes,"UTF-8");//   reader.readUTF();
+			System.out.println(con);
+			this.content=con;
+	} 
 	public void readDataByte(DataInputStream reader) throws Exception{
 		while((this.contentLength=reader.available())!=0){
 			//System.out.println("-->"+this.contentLength);
 			byte[] conbytes = new byte[this.contentLength];
 			reader.read(conbytes,0, this.contentLength);
-			String con =  new String(conbytes);//   reader.readUTF();
+			String con =  new String(conbytes,"UTF-8");//   reader.readUTF();
 			//System.out.println(con);
 			this.content+=con;
 			Thread.sleep(1000);
 		}
-		System.out.println(this.content.replaceAll("\r\n.{2,5}\r\n", ""));
+		this.content=this.content.replaceAll("\r\n.{2,5}\r\n", "");
+		System.err.println(this.content);
 	} 
 	public void readData(DataInputStream reader) throws Exception {
 		switch (contentType) {
 		case 0:
+			this.readDataByteO(reader);
+			break;
+		case 2:
 			this.readDataByte(reader);
+			this.contentType = 0;
 			break;
 		case 1:
 			String cPic = "F:/cPic.png";
