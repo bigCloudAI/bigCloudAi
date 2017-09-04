@@ -28,6 +28,7 @@
 		<module>bigFs</module>
 		<module>cloudOs</module>
 		<module>aiApp</module>
+		<module>uiDesign</module>
 	</modules>
 	
 </project>
