@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>logo</title>
+
+<!-- Le styles -->
+
+	<script src="js/easeljs.min.js" charset="utf-8"></script>
+</head>
+
+
+<body onload="init();">
+  <canvas id="demoCanvas" style="background-color:red" width="500" height="300"></canvas>
+
+</body>
+<script>
+  function init() {
+    // ’‚¿Ô–¥¥˙¬Î
+	var stage = new createjs.Stage("demoCanvas");
+	stage.alpha = 1;
+	stage.enableMouseOver(100); 
+	//stage.scaleX=2;
+	//stage.scaleY=2;
+
+    var gameView=new createjs.Container();
+    stage.addChild(gameView);
+
+
+    var face = new createjs.Shape();
+	face.graphics.beginFill("#ff00ff").drawCircle(0, 0, 50);
+	face.x = 75;
+	face.y = 100;
+	gameView.addChild(face);
+
+
+	var leftEar = new createjs.Shape();
+	leftEar.graphics.beginFill("#ffffff").drawCircle(0, 0, 20);
+	leftEar.x = 50;
+	leftEar.y = 100;
+	gameView.addChild(leftEar);
+     var leftEarx = new createjs.Shape();
+	leftEarx.graphics.beginFill("#000000").drawCircle(0, 0, 5);
+	leftEarx.x = 50;
+	leftEarx.y = 100;
+     gameView.addChild(leftEarx);
+
+	var reghtEar = new createjs.Shape();
+	reghtEar.graphics.beginFill("#ffffff").drawCircle(0, 0, 20);
+	reghtEar.x = 100;
+	reghtEar.y = 100;
+	gameView.addChild(reghtEar);
+	var reghtEarx = new createjs.Shape();
+	reghtEarx.graphics.beginFill("#000000").drawCircle(0, 0, 5);
+	reghtEarx.x = 100;
+	reghtEarx.y = 100;
+	gameView.addChild(reghtEarx);
+
+
+
+	
+
+	gameView.addEventListener("mouseover",function(e){
+	 console.log(e.localX+"+"+e.localY)
+	});
+
+
+
+	createjs.Ticker.addEventListener("tick", handleTicker);
+	function handleTicker(e){
+	  stage.update();
+	}
+
+       }
+
+
+</script>
+
+</html>
