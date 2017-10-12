@@ -29,11 +29,45 @@
     var gameView=new createjs.Container();
     stage.addChild(gameView);
 
+
     var face = new createjs.Shape();
 	face.graphics.beginFill("#ff00ff").drawCircle(0, 0, 50);
 	face.x = 75;
 	face.y = 100;
 	gameView.addChild(face);
+
+
+	var leftEar = new createjs.Shape();
+	leftEar.graphics.beginFill("#ffffff").drawCircle(0, 0, 20);
+	leftEar.x = 50;
+	leftEar.y = 100;
+	gameView.addChild(leftEar);
+     var leftEarx = new createjs.Shape();
+	leftEarx.graphics.beginFill("#000000").drawCircle(0, 0, 5);
+	leftEarx.x = 50;
+	leftEarx.y = 100;
+     gameView.addChild(leftEarx);
+
+	var reghtEar = new createjs.Shape();
+	reghtEar.graphics.beginFill("#ffffff").drawCircle(0, 0, 20);
+	reghtEar.x = 100;
+	reghtEar.y = 100;
+	gameView.addChild(reghtEar);
+	var reghtEarx = new createjs.Shape();
+	reghtEarx.graphics.beginFill("#000000").drawCircle(0, 0, 5);
+	reghtEarx.x = 100;
+	reghtEarx.y = 100;
+	gameView.addChild(reghtEarx);
+
+
+
+	
+
+	gameView.addEventListener("mouseover",function(e){
+	 console.log(e.localX+"+"+e.localY)
+	});
+
+
 
 	createjs.Ticker.addEventListener("tick", handleTicker);
 	function handleTicker(e){
