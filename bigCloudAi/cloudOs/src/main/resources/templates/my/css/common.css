@@ -1,0 +1,108 @@
+body{
+	background:url(../images/galaxy.jpg);
+}
+.andios_header {
+	height: 80px;
+	line-height: 80px;
+	/* background: #690; */
+	width: 100%;
+	position: absolute;
+	z-index: 5;
+	top: 0;
+}
+
+.header_logo {
+	margin: 0 40px 0px 140px;
+}
+
+.andios_app {
+	/* background: #FC0; */
+	width: 100%;
+	overflow: auto;
+	top: 80px;
+	position: absolute;
+	z-index: 10;
+	bottom: 25px;
+}
+
+.andios_menu {
+	margin: 0px 120px 0px 120px;
+}
+
+.icon {
+    background:url(../images/shadow.png) no-repeat left center;
+	float:left;
+	width:60px;
+	height:80px;
+	margin: 10px 40px 0px 0px;
+	cursor:pointer;
+	zoom:1
+}
+.icon:hover {
+	opacity:0.6;
+}
+.icon span {
+	float:left;
+	width:60px;
+	height:10px;
+	margin:5px auto;
+	display:block;
+	color:#FFF;
+	font-size:10px;
+	font-family:"Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+	text-align:center;
+	line-height:10px;
+	text-shadow:0 1px 2px #000000;
+}
+
+.andios_menu img {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+}
+
+.andios_nav {
+	position: absolute;
+	left:0px;
+	top: 0px;
+	color:#FFc;
+	background: #690;
+	height: 100%;
+	width: 100px;
+	margin-left: -98px;
+	z-index: 11;
+}
+
+.andios_nav2 {
+	position: absolute;
+	left:0px;
+	top: 0px;
+	color:#FFc;
+	background: #690;
+	height: 100%;
+	width: 100px;
+	margin-left: 0px;
+	z-index: 11;
+}
+
+.andios_setting {
+	position: absolute;
+	top: 0px;
+	right:0px;
+	color:green;
+	background: red;
+	height: 100%;
+	width: 100px;
+	z-index: 11;
+}
+
+.andios_task {
+	height: 25px;
+	line-height: 25px;
+	background: #690;
+	width: 100%;
+	position: absolute;
+	z-index: 9;
+	bottom: 0;
+}
+}

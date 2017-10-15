@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>jQuery+CSS3模拟苹果桌面系统</title> 
+<link type="text/css" rel="stylesheet" href="css/reset.css" /> 
+<link type="text/css" rel="stylesheet" href="css/common.css" /> 
+<link type="text/css" rel="stylesheet" href="css/index.css" /> 
+</head> 
+<body>
+	<div class="andios_header">
+		 <div class="header_logo"><a href=""></a><span style="color: white;font-family: Segoe Script;">AnDiOs</span></div>
+	</div>
+	<div class="andios_app">
+	    <div class="andios_menu">
+		  <div class="icon"><img src="images/safari.png" title="safari"/><span>设置</span></div>
+          <div class="icon"><img src="images/Mail.png" title="Mail" /><span>Mail</span></div>
+          <div class="icon"><img src="images/Appstore.png" title="Appstore" /><span>Appstore</span></div>
+          <div class="icon"><img src="images/Pages.png" title="Pages" /><span>Pages</span></div>
+          <div class="icon"><img src="images/Numbers.png" title="Numbers" /><span>Numbers</span></div>
+          <div class="icon"><img src="images/Keynote.png" title="Keynote" /><span>Keynote</span></div>
+          <div class="icon"><img src="images/Aperture.png" title="Aperture" /><span>Aperture</span></div>
+          <div class="icon"><img src="images/AddressBook.png" title="AddressBook"/><span>AddressBook</span></div>
+    
+          <div class="icon"><img src="images/iCalendar.png" title="iCalendar" /><span>iCalendar</span></div>
+          <div class="icon"><img src="images/FaceTime.png" title="FaceTime" /><span>FaceTime</span></div>
+          <div class="icon"><img src="images/iPhoto.png" title="iPhoto" /><span>iPhoto</span></div>
+          <div class="icon"><img src="images/iMovie.png" title="iMovie" /><span>iMovie</span></div>
+          <div class="icon"><img src="images/GarageBand.png" title="GarageBand" /><span>GarageBand</span></div>
+          <div class="icon"><img src="images/Djay.png" title="Djay" /><span>Djay</span></div>
+          <div class="icon"><img src="images/iTunes.png" title="iTunes" /><span>iTunes</span></div>
+          <div class="icon"><img src="images/PhotoBooth.png" title="PhotoBooth" /><span>PhotoBooth</span></div> 
+        </div>
+	</div>
+	
+	<div class="andios_task">1234</div>
+	
+	<div class="andios_nav" id="nav" onclick="a(event)">
+	     </br></br></br>
+		<div>个性化设置</div></br>
+	    <div>我的用户</div>
+	    </br>
+	    <button id="back">收回</button>
+	</div>
+	<div class="andios_setting">
+	    </br></br></br>
+		<div>个性化设置</div></br>
+	    <div>我的用户</div>
+	    </br>
+	    <button>收回</button>
+	
+	</div>
+<script>
+function a(e){
+	var e=e||window.event;
+    var obj=e.target||e.srcElement;
+    if(obj.id=="back"){
+    	var nav = document.getElementById('nav');
+    	nav.setAttribute("class", "andios_nav"); 
+    }else{
+		var nav = document.getElementById('nav');
+		nav.setAttribute("class", "andios_nav2"); 
+    }
+}
+var navopen=false;
+function a1(e){
+    if(!navopen){
+    	var nav = document.getElementById('nav');
+    	nav.setAttribute("class", "andios_nav"); 
+    }else{
+		var nav = document.getElementById('nav');
+		nav.setAttribute("class", "andios_nav2"); 
+    }
+    navopen=!navopen;
+}
+</script>
+</body>
+ </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
