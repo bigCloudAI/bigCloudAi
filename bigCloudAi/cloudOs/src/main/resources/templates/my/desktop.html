@@ -6,12 +6,17 @@
 <link type="text/css" rel="stylesheet" href="css/reset.css" /> 
 <link type="text/css" rel="stylesheet" href="css/common.css" /> 
 <link type="text/css" rel="stylesheet" href="css/index.css" /> 
+<link type="text/css" rel="stylesheet" href="css/nav.css" /> 
+<link type="text/css" rel="stylesheet" href="css/setting.css" /> 
+<script src="plugins/vue.js"></script>
 </head> 
-<body>
+<body >
+  <div id="app">
+
 	<div class="andios_header">
 		 <div class="header_logo"><a href=""></a><span style="color: white;font-family: Segoe Script;">AnDiOs</span></div>
 	</div>
-	<div class="andios_app">
+	<div class="andios_app" @click="settingswitch(true)">
 	    <div class="andios_menu">
 		  <div class="icon"><img src="images/safari.png" title="safari"/><span>设置</span></div>
           <div class="icon"><img src="images/Mail.png" title="Mail" /><span>Mail</span></div>
@@ -33,48 +38,29 @@
         </div>
 	</div>
 	
-	<div class="andios_task">1234</div>
+	<div class="andios_task"><span @click="settingswitch(false)">{{message}}</span></div>
 	
-	<div class="andios_nav" id="nav" onclick="a(event)">
-	     </br></br></br>
-		<div>个性化设置</div></br>
-	    <div>我的用户</div>
-	    </br>
-	    <button id="back">收回</button>
+	<div class="andios_navbtn" v-bind:class="{'ltrbtnshowf': ltrhide, 'ltrbtnhidef': ltrshow }" 
+		@click="navswitch">
 	</div>
-	<div class="andios_setting">
+	<div class="andios_nav"  v-bind:class="{ 'ltrshowf': ltrshow, 'ltrhidef': ltrhide }">
+	     </br></br></br>
+		<div  @click="settingswitch(false)">个性化设置</div></br>
+	    <div  @click="settingswitch(false)">我的用户</div>
+	    </br>
+	    <button @click="navswitch">收回</button>
+	</div>
+	
+	<div class="andios_setting" v-bind:class="{'rtlshowf': rtlshow, 'rtlhidef': rtlhide }">
 	    </br></br></br>
 		<div>个性化设置</div></br>
 	    <div>我的用户</div>
 	    </br>
-	    <button>收回</button>
-	
+	    <button @click="settingswitch">收回</button>
 	</div>
-<script>
-function a(e){
-	var e=e||window.event;
-    var obj=e.target||e.srcElement;
-    if(obj.id=="back"){
-    	var nav = document.getElementById('nav');
-    	nav.setAttribute("class", "andios_nav"); 
-    }else{
-		var nav = document.getElementById('nav');
-		nav.setAttribute("class", "andios_nav2"); 
-    }
-}
-var navopen=false;
-function a1(e){
-    if(!navopen){
-    	var nav = document.getElementById('nav');
-    	nav.setAttribute("class", "andios_nav"); 
-    }else{
-		var nav = document.getElementById('nav');
-		nav.setAttribute("class", "andios_nav2"); 
-    }
-    navopen=!navopen;
-}
-</script>
+  </div>
 </body>
+<script src="js/desktop.js"></script>
  </html>
 
 

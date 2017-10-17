@@ -1,0 +1,32 @@
+.rtlshowf{
+	animation:rtlshow 0.2s;
+	-webkit-animation:rtlshow 0.2s;
+	-webkit-animation-direction: alternate;
+	animation-fill-mode : forwards;
+}
+.rtlhidef{
+	animation:rtlhide 0.2s;
+	-webkit-animation:rtlhide 0.2s;
+	-webkit-animation-direction: alternate;
+	animation-fill-mode : forwards;
+}
+@keyframes rtlhide
+{
+	from {right:0px;}
+	to {right:-350px;}
+}
+@-webkit-keyframes rtlhide /* Safari ”Î Chrome */
+{
+    from {right: 0px;}
+    to {right: -350px;}
+}
+@keyframes rtlshow
+{
+	from {right:-350px;}
+	to {right:0px;}
+}
+@-webkit-keyframes rtlshow /* Safari ”Î Chrome */
+{
+    from {right: -350px;}
+    to {right: 0px;}
+}

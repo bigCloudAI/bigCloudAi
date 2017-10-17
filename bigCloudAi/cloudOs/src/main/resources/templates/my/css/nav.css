@@ -1,0 +1,67 @@
+.ltrshowf{
+	animation:ltrshow 0.2s;
+	-webkit-animation:ltrshow 0.2s;
+	-webkit-animation-direction: alternate;
+	animation-fill-mode : forwards;
+}
+.ltrhidef{
+	animation:ltrhide 0.2s;
+	-webkit-animation:ltrhide 0.2s;
+	-webkit-animation-direction: alternate;
+	animation-fill-mode : forwards;
+}
+@keyframes ltrhide
+{
+	from {margin-left:0px;}
+	to {margin-left:-100px;}
+}
+@-webkit-keyframes ltrhide /* Safari 与 Chrome */
+{
+    from {margin-left: 0px;}
+    to {margin-left: -100px;}
+}
+@keyframes ltrshow
+{
+	from {margin-left:-100px;}
+	to {margin-left:0px;}
+}
+@-webkit-keyframes ltrshow /* Safari 与 Chrome */
+{
+    from {margin-left: -100px;}
+    to {margin-left: 0px;}
+}
+
+
+
+.ltrbtnshowf{
+	animation:ltrbtnshow 0.2s;
+	-webkit-animation:ltrbtnshow 0.2s;
+	-webkit-animation-direction: alternate;
+	animation-fill-mode : forwards;
+}
+.ltrbtnhidef{
+	animation:ltrbtnhide 0.2s;
+	-webkit-animation:ltrbtnhide 0.2s;
+	-webkit-animation-direction: alternate;
+	animation-fill-mode : forwards;
+}
+@keyframes ltrbtnhide
+{
+	from {margin-left:0px;}
+	to {margin-left:-20px;}
+}
+@-webkit-keyframes ltrbtnhide /* Safari 与 Chrome */
+{
+    from {margin-left: 0px;}
+    to {margin-left: -20px;}
+}
+@keyframes ltrbtnshow
+{
+	from {margin-left:-20px;}
+	to {margin-left:0px;}
+}
+@-webkit-keyframes ltrbtnshow /* Safari 与 Chrome */
+{
+    from {margin-left: -20px;}
+    to {margin-left: 0px;}
+}

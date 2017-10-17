@@ -1,5 +1,6 @@
 body{
 	background:url(../images/galaxy.jpg);
+	 overflow-x:hidden;
 }
 .andios_header {
 	height: 80px;
@@ -69,18 +70,18 @@ body{
 	background: #690;
 	height: 100%;
 	width: 100px;
-	margin-left: -98px;
+	margin-left: -100px;
 	z-index: 11;
 }
 
-.andios_nav2 {
+.andios_navbtn{
+	background: #808080;
 	position: absolute;
 	left:0px;
-	top: 0px;
+	top: 240px;
 	color:#FFc;
-	background: #690;
-	height: 100%;
-	width: 100px;
+	height: 8%;
+	width: 20px;
 	margin-left: 0px;
 	z-index: 11;
 }
@@ -88,21 +89,22 @@ body{
 .andios_setting {
 	position: absolute;
 	top: 0px;
-	right:0px;
+	right:-350px;
 	color:green;
 	background: red;
 	height: 100%;
-	width: 100px;
+	width: 350px;
 	z-index: 11;
+	 
 }
 
 .andios_task {
+	background: #690;
 	height: 25px;
 	line-height: 25px;
-	background: #690;
 	width: 100%;
 	position: absolute;
 	z-index: 9;
 	bottom: 0;
-}
+	opacity: 0.5
 }
