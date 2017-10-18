@@ -1,7 +1,17 @@
 body{
 	background:url(../images/galaxy.jpg);
-	 overflow-x:hidden;
+	 height:auto;
+	 background-size:100%;
+    background-repeat:repeat; 
+    overflow-x:hidden 
 }
+
+/* .andios_desktop{
+	background:url(../images/galaxy.jpg);
+	background-size:100px 100px;
+    background-repeat:repeat; 
+} */
+
 .andios_header {
 	height: 80px;
 	line-height: 80px;
@@ -19,7 +29,6 @@ body{
 .andios_app {
 	/* background: #FC0; */
 	width: 100%;
-	overflow: auto;
 	top: 80px;
 	position: absolute;
 	z-index: 10;
