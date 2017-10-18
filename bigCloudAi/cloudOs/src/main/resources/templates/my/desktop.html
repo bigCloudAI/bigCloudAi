@@ -12,7 +12,7 @@
 </head> 
 <body >
   <div id="app" class="andios_desktop">
-	<div class="andios_header">
+	<div class="andios_header" @click="settingswitch(true)">
 		 <div class="header_logo"><a href=""></a><span style="color: white;font-family: Segoe Script;">AnDiOs</span></div>
 	</div>
 	<div class="andios_app" @click="settingswitch(true)">
@@ -36,8 +36,23 @@
           <div class="icon"><img src="images/PhotoBooth.png" title="PhotoBooth" /><span>PhotoBooth</span></div> 
         </div>
 	</div>
-	
-	<div class="andios_task"><span @click="settingswitch(false)">{{message}}</span></div>
+	<div style="left: 200px; top: 300px; z-index: 104; display: block; position: absolute;">
+			
+			<div class="win_title" style="line-height:26px;background-color: #456">
+				<b>文档资料 </b>
+				<!-- <span class="win_btnblock">
+					<a href="#" class="winMinimize" title="最小化">zuidahua</a>
+					<a href="#" class="winMaximize"	title="最大化"></a>
+					<a href="#" class="winHyimize" title="还原" style="display: none;"></a>
+					<a href="#" class="winClose" title="关闭"></a>
+				</span> -->
+			</div>
+			
+			<iframe scrolling="auto" width="100%" src="http://www.baidu.com"
+			style="width: 940px; height: 453px;"></iframe> 
+	</div>
+
+		<div class="andios_task"><span @click="settingswitch(false)">{{message}}</span></div>
 	
 	<div class="andios_navbtn" v-bind:class="{'ltrbtnshowf': ltrhide, 'ltrbtnhidef': ltrshow }" 
 		@click="navswitch">

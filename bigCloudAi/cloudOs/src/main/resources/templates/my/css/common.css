@@ -3,7 +3,8 @@ body{
 	 height:auto;
 	 background-size:100%;
     background-repeat:repeat; 
-    overflow-x:hidden 
+    overflow-x:hidden;
+    overflow-y:hidden  
 }
 
 /* .andios_desktop{
