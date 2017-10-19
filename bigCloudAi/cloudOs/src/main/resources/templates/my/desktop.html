@@ -1,4 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml"> 
 <head> 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
@@ -9,72 +8,149 @@
 <link type="text/css" rel="stylesheet" href="css/nav.css" /> 
 <link type="text/css" rel="stylesheet" href="css/setting.css" /> 
 <script src="plugins/vue.js"></script>
+<script type="text/javascript">
+//定义移动对象和移动坐标
+var Mouse_Obj="none",_x,_y;
+//拖动对象函数(自动)
+document.onmousemove=function()
+{
+ if(Mouse_Obj!=="none")
+ {
+ document.getElementById(Mouse_Obj).style.left=_x+event.x;
+ document.getElementById(Mouse_Obj).style.top=_y+event.y;
+ event.returnValue=false;
+ }
+}
+//停止拖动函数(自动)
+document.onmouseup=function()
+{
+ Mouse_Obj="none";
+}
+//确定被拖动对象函数 o为被拖动对象
+function m(o)
+{
+ Mouse_Obj=o;
+ _x=parseInt(document.getElementById(Mouse_Obj).style.left)-event.x;
+ _y=parseInt(document.getElementById(Mouse_Obj).style.top)-event.y;
+}
+</script>
 </head> 
 <body >
-  <div id="app" class="andios_desktop">
-	<div class="andios_header" @click="settingswitch(true)">
-		 <div class="header_logo"><a href=""></a><span style="color: white;font-family: Segoe Script;">AnDiOs</span></div>
-	</div>
-	<div class="andios_app" @click="settingswitch(true)">
-	    <div class="andios_menu">
-		  <div class="icon"><img src="images/safari.png" title="safari"/><span>设置</span></div>
-          <div class="icon"><img src="images/Mail.png" title="Mail" /><span>Mail</span></div>
-          <div class="icon"><img src="images/Appstore.png" title="Appstore" /><span>Appstore</span></div>
-          <div class="icon"><img src="images/Pages.png" title="Pages" /><span>Pages</span></div>
-          <div class="icon"><img src="images/Numbers.png" title="Numbers" /><span>Numbers</span></div>
-          <div class="icon"><img src="images/Keynote.png" title="Keynote" /><span>Keynote</span></div>
-          <div class="icon"><img src="images/Aperture.png" title="Aperture" /><span>Aperture</span></div>
-          <div class="icon"><img src="images/AddressBook.png" title="AddressBook"/><span>AddressBook</span></div>
-    
-          <div class="icon"><img src="images/iCalendar.png" title="iCalendar" /><span>iCalendar</span></div>
-          <div class="icon"><img src="images/FaceTime.png" title="FaceTime" /><span>FaceTime</span></div>
-          <div class="icon"><img src="images/iPhoto.png" title="iPhoto" /><span>iPhoto</span></div>
-          <div class="icon"><img src="images/iMovie.png" title="iMovie" /><span>iMovie</span></div>
-          <div class="icon"><img src="images/GarageBand.png" title="GarageBand" /><span>GarageBand</span></div>
-          <div class="icon"><img src="images/Djay.png" title="Djay" /><span>Djay</span></div>
-          <div class="icon"><img src="images/iTunes.png" title="iTunes" /><span>iTunes</span></div>
-          <div class="icon"><img src="images/PhotoBooth.png" title="PhotoBooth" /><span>PhotoBooth</span></div> 
-        </div>
-	</div>
-	<div style="left: 200px; top: 300px; z-index: 104; display: block; position: absolute;">
+
+	<div id="app" class="andios_desktop">
+		<div class="andios_header" @click="settingswitch(true)">
+			<div class="header_logo">
+				<a href=""></a><span
+					style="color: white; font-family: Segoe Script;">AnDiOs</span>
+			</div>
+		</div>
+		<div class="andios_app" @click="settingswitch(true)">
+			<div class="andios_menu">
+				<div class="icon">
+					<img src="images/safari.png" title="safari" /><span>设置</span>
+				</div>
+				<div class="icon">
+					<img src="images/Mail.png" title="Mail" /><span>Mail</span>
+				</div>
+				<div class="icon">
+					<img src="images/Appstore.png" title="Appstore" /><span>Appstore</span>
+				</div>
+				<div class="icon">
+					<img src="images/Pages.png" title="Pages" /><span>Pages</span>
+				</div>
+				<div class="icon">
+					<img src="images/Numbers.png" title="Numbers" /><span>Numbers</span>
+				</div>
+				<div class="icon">
+					<img src="images/Keynote.png" title="Keynote" /><span>Keynote</span>
+				</div>
+				<div class="icon">
+					<img src="images/Aperture.png" title="Aperture" /><span>Aperture</span>
+				</div>
+				<div class="icon">
+					<img src="images/AddressBook.png" title="AddressBook" /><span>AddressBook</span>
+				</div>
+
+				<div class="icon">
+					<img src="images/iCalendar.png" title="iCalendar" /><span>iCalendar</span>
+				</div>
+				<div class="icon">
+					<img src="images/FaceTime.png" title="FaceTime" /><span>FaceTime</span>
+				</div>
+				<div class="icon">
+					<img src="images/iPhoto.png" title="iPhoto" /><span>iPhoto</span>
+				</div>
+				<div class="icon">
+					<img src="images/iMovie.png" title="iMovie" /><span>iMovie</span>
+				</div>
+				<div class="icon">
+					<img src="images/GarageBand.png" title="GarageBand" /><span>GarageBand</span>
+				</div>
+				<div class="icon">
+					<img src="images/Djay.png" title="Djay" /><span>Djay</span>
+				</div>
+				<div class="icon">
+					<img src="images/iTunes.png" title="iTunes" /><span>iTunes</span>
+				</div>
+				<div class="icon">
+					<img src="images/PhotoBooth.png" title="PhotoBooth" /><span>PhotoBooth</span>
+				</div>
+			</div>
+		</div>
+
+		 
+	<div  id="win"  onmousedown="m(this.id)" style="left: 200px; top: 100px; z-index: 104; display: block; position: absolute;">
 			
 			<div class="win_title" style="line-height:26px;background-color: #456">
 				<b>文档资料 </b>
-				<!-- <span class="win_btnblock">
+				<span class="win_btnblock">
 					<a href="#" class="winMinimize" title="最小化">zuidahua</a>
 					<a href="#" class="winMaximize"	title="最大化"></a>
 					<a href="#" class="winHyimize" title="还原" style="display: none;"></a>
 					<a href="#" class="winClose" title="关闭"></a>
-				</span> -->
+				</span>
 			</div>
 			
-			<iframe scrolling="auto" width="100%" src="http://www.baidu.com"
-			style="width: 940px; height: 453px;"></iframe> 
-	</div>
+			<iframe scrolling="auto" width="100%" src="./app.html"
+			style="width: 940px; height: 403px;"></iframe> 
+	</div> 
 
-		<div class="andios_task"><span @click="settingswitch(false)">{{message}}</span></div>
-	
-	<div class="andios_navbtn" v-bind:class="{'ltrbtnshowf': ltrhide, 'ltrbtnhidef': ltrshow }" 
-		@click="navswitch">
+		<div class="andios_task">
+			<span @click="settingswitch(false)">{{message}}</span>
+		</div>
+
+		<div class="andios_navbtn"
+			v-bind:class="{'ltrbtnshowf': ltrhide, 'ltrbtnhidef': ltrshow }"
+			@click="navswitch"></div>
+		<div class="andios_nav"
+			v-bind:class="{ 'ltrshowf': ltrshow, 'ltrhidef': ltrhide }">
+			</br>
+			</br>
+			</br>
+			<div @click="settingswitch(false)">个性化设置</div>
+			</br>
+			<div @click="settingswitch(false)">我的用户</div>
+			</br>
+			<button @click="navswitch">收回</button>
+		</div>
+
+		<div class="andios_setting"
+			v-bind:class="{'rtlshowf': rtlshow, 'rtlhidef': rtlhide }">
+			</br>
+			</br>
+			</br>
+			<div>个性化设置</div>
+			</br>
+			<div>我的用户</div>
+			</br>
+			<button @click="settingswitch">收回</button>
+		</div>
 	</div>
-	<div class="andios_nav"  v-bind:class="{ 'ltrshowf': ltrshow, 'ltrhidef': ltrhide }">
-	     </br></br></br>
-		<div  @click="settingswitch(false)">个性化设置</div></br>
-	    <div  @click="settingswitch(false)">我的用户</div>
-	    </br>
-	    <button @click="navswitch">收回</button>
-	</div>
-	
-	<div class="andios_setting" v-bind:class="{'rtlshowf': rtlshow, 'rtlhidef': rtlhide }">
-	    </br></br></br>
-		<div>个性化设置</div></br>
-	    <div>我的用户</div>
-	    </br>
-	    <button @click="settingswitch">收回</button>
-	</div>
-  </div>
 </body>
 <script src="js/desktop.js"></script>
+
+
+
  </html>
 
 

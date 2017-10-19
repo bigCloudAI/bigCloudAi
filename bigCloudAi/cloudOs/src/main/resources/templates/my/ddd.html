@@ -1,0 +1,81 @@
+<style type="text/css">
+/* body {
+ margin: 0px;
+}
+#div1 {
+ display: none;
+ position: absolute;
+ z-index: 1000;
+ height: 100%;
+ width: 100%;
+ background: #000000;
+ filter:Alpha(opacity=30);
+} */
+/* #div2 {
+ /* display: block;
+ position: absolute;
+ /* 
+ height: 100%;
+ width: 100%;
+ padding-top: 10%; */
+ z-index: 1001;
+} */
+/* #div3 {
+ display: block;
+ position: absolute;
+ z-index: 999;
+} */
+</style>
+
+
+<script type="text/javascript">
+//定义移动对象和移动坐标
+var Mouse_Obj="none",_x,_y;
+//拖动对象函数(自动)
+document.onmousemove=function()
+{
+ if(Mouse_Obj!=="none")
+ {
+ document.getElementById(Mouse_Obj).style.left=_x+event.x;
+ document.getElementById(Mouse_Obj).style.top=_y+event.y;
+ event.returnValue=false;
+ }
+}
+//停止拖动函数(自动)
+document.onmouseup=function()
+{
+ Mouse_Obj="none";
+}
+//确定被拖动对象函数 o为被拖动对象
+function m(o)
+{
+ Mouse_Obj=o;
+ _x=parseInt(document.getElementById(Mouse_Obj).style.left)-event.x;
+ _y=parseInt(document.getElementById(Mouse_Obj).style.top)-event.y;
+}
+</script>
+
+	<div id="div2" onmousedown="m(this.id)" style="left: 0px;top: 0px;z-index: 101; position: absolute;display: block; ">
+<table width="50%" border="0" cellpadding="3" cellspacing="1"
+style="background: #ff7300;
+position:static;filter:progid:DXImageTransform.Microsoft.DropShadow
+(color=#666666,offX=4,offY=4,positives=true)" align="left">
+ <tr style="cursor: move;">
+  <td><font color="#FFFFFF">温馨提示：</font></td>
+  <td align="right"><input type="button" value="ｘ"
+onClick="document.getElementById
+('div1').style.display='none';document.getElementById
+('div2').style.display='none';" style="cursor: hand;"></td>
+ </tr>
+ <tr>
+  <td colspan="2" width="100%" bgcolor="#FFFFFF" height="150"
+align="middle">欢迎访问　<a href="http://www.jb51.net">http://www.jb51.net</a></td>
+ </tr>
+</table>
+</div>
+
+<!-- <div id="div3"><input type="button" value="打开层"
+onClick="document.getElementById
+('div1').style.display='block';
+document.getElementById
+('div2').style.display='block';"></div> -->
