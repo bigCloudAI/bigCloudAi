@@ -1,0 +1,128 @@
+body{
+	 background:url(../images/galaxy.jpg); 
+	background-color:#f7f7f7;
+	 height:auto;
+	 background-size:100%;
+    background-repeat:repeat; 
+    overflow-x:hidden;
+    overflow-y:hidden  
+}
+
+/* .andios_desktop{
+	background:url(../images/galaxy.jpg);
+	background-size:100px 100px;
+    background-repeat:repeat; 
+} */
+
+.andios_header {
+	height: 80px;
+	line-height: 80px;
+	/* background: #690; */
+	width: 100%;
+	position: absolute;
+	z-index: 5;
+	top: 0;
+}
+
+.header_logo {
+	margin: 0 40px 0px 140px;
+}
+
+.andios_app {
+	/* background: #FC0; */
+	width: 100%;
+	top: 80px;
+	position: absolute;
+	z-index: 10;
+	bottom: 25px;
+}
+
+.andios_menu {
+	margin: 0px 120px 0px 120px;
+}
+
+.icon {
+    background:url(../images/shadow.png) no-repeat left center;
+	float:left;
+	width:60px;
+	height:80px;
+	margin: 10px 40px 0px 0px;
+	cursor:pointer;
+	zoom:1
+}
+.icon:hover {
+	opacity:0.6;
+}
+.icon span {
+	float:left;
+	width:60px;
+	height:10px;
+	margin:5px auto;
+	display:block;
+	color:#FFF;
+	font-size:10px;
+	font-family:"Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+	text-align:center;
+	line-height:10px;
+	text-shadow:0 1px 2px #000000;
+}
+
+.andios_menu img {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+}
+
+.andios_nav {
+	position: absolute;
+	left:0px;
+	top: 0px;
+	color:#FFc;
+	background: #690;
+	height: 100%;
+	width: 100px;
+	margin-left: -100px;
+	z-index: 11;
+}
+
+.andios_navbtn{
+	background: #808080;
+	position: absolute;
+	left:0px;
+	top: 480px;
+	color:#FFc;
+	height: 8%;
+	width: 20px;
+	margin-left: 0px;
+	z-index: 11;
+}
+
+.andios_setting {
+	position: absolute;
+	top: 0px;
+	right:-350px;
+	color:green;
+	background: red;
+	height: 100%;
+	width: 350px;
+	z-index: 11;
+	 
+}
+
+.andios_task {
+	background: #690;
+	height: 25px;
+	line-height: 25px;
+	width: 100%;
+	position: absolute;
+	z-index: 9;
+	bottom: 0;
+	opacity: 0.5
+}
+
+.activ {
+  z-index:51
+}
+.noactiv {
+  z-index: 50; display: block; position: absolute;
+}

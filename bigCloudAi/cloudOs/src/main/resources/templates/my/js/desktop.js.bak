@@ -1,0 +1,110 @@
+var app = new Vue({
+  el: '#app',
+  data: {
+	wincount:0,
+	ltrshow:false,
+	ltrhide:false,
+	rtlshow:false,
+	rtlhide:false,
+    message: '开始',
+    wins:[]
+  },
+  methods: {
+	    navswitch: function (event) {
+	    	this.ltrshow=!this.ltrshow;
+	    	this.ltrhide=!this.ltrshow;
+	    },
+	    settingswitch:function(c){
+	    	if(c){
+	    		if(this.rtlshow){
+	    			this.rtlshow=false;
+	    			this.rtlhide=!this.rtlshow;
+	    		}
+	    		return;
+	    	}
+	    	this.rtlshow=!this.rtlshow;
+	    	this.rtlhide=!this.rtlshow;
+	    },
+	    openWin:function(name,src){
+			var openwin={
+				name:name,id:this.wincount++,
+				hide:false,close:false,
+				left:6*this.wincount+200,
+				top:12*this.wincount+100,
+				width: 940,
+				height: 403,
+				recleft:6*this.wincount+200,
+				rectop:12*this.wincount+100,
+				recwidth: 940,
+				recheight: 403,
+				max:false,
+				activ:true,
+				backactivwin:null,
+				src:src
+			};
+			this.wins.forEach(function(win){
+				if(win.activ){
+					win.activ=false;
+					openwin.backactivwin=win;
+				}
+			})
+	    	this.wins.push(openwin);
+	    },
+	    closeWin:function(win,event){
+	    	win.close=true;
+			if(win.activ){
+				win.activ=false;
+			   if(win.backactivwin!=null&&!win.backactivwin.hide&&!win.backactivwin.close) 
+				   {win.backactivwin.activ=true;}
+			}
+			event.cancelBubble = true;
+	    },
+		maxWin:function(win,event){
+		   win.left=0;
+		   win.top=0;
+		   win.width= document.documentElement.clientWidth-2;
+		   win.height= document.documentElement.clientHeight-2;
+		   event.cancelBubble = true;
+		},
+	    maxOrRecWin:function(win,event){
+			if(win.max){
+			    win.max=false;
+				win.left=win.recleft;
+				win.top=win.rectop;
+				win.width= win.recwidth;
+				win.height= win.recheight;
+			}else{
+				win.max=true;
+				win.recleft=win.left;
+				win.rectop=win.top;
+				win.recwidth= win.width;
+				win.recheight= win.height;
+				win.left=-1;
+				win.top=0;
+				win.width= document.documentElement.clientWidth-2;
+				win.height= document.documentElement.clientHeight-2;
+			}
+		   event.cancelBubble = true;
+		},
+		hideWin:function(win,event){
+		   win.hide=true;
+		   event.cancelBubble = true;
+		},
+		showWin:function(win){
+	    	win.hide=false;
+	    },
+		showOrHideWin:function(win){
+		   if(win.hide){win.hide=false;}else{win.hide=true;}
+		},
+		activWin:function(activWin){
+			if(activWin.activ){return;}
+		  this.wins.forEach(function(win){
+				if(win.activ){
+					win.activ=false;
+					activWin.backactivwin=win;
+				}});
+		   activWin.activ=true;
+		}
+  }
+})
+

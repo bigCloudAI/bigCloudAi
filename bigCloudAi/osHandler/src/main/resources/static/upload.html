@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>TextToChart</title>
+    <link rel="stylesheet" type="text/css" href="css/iview/iview.css">
+    <script type="text/javascript" src="js/vue/vue.min.js"></script>
+    <script type="text/javascript" src="js/iview/iview.min.js"></script>
+   <!-- <script src="http://vuejs.org/js/vue.min.js"></script>
+    <link rel="stylesheet" href="http://unpkg.com/iview/dist/styles/iview.css">
+    <script src="http://unpkg.com/iview/dist/iview.min.js"></script>-->
+    
+  <script type="text/javascript" src="js/jsxlsx/xlsx.js"></script>
+  <script type="text/javascript" src="js/echarts/echarts.min.js"></script>
+    <style>
+    .demo-spin-icon-load{
+        animation: ani-demo-spin 1s linear infinite;
+    }
+    @keyframes ani-demo-spin {
+        from { transform: rotate(0deg);}
+        50%  { transform: rotate(180deg);}
+        to   { transform: rotate(360deg);}
+    }
+    .demo-spin-col{
+        height: 100px;
+        position: relative;
+        border: 1px solid #eee;
+    }
+</style>
+    </head>
+<body>
+<div id="app">
+    <Row>
+	    <i-col span="24">
+			<Upload id="files"   :before-upload="handleUpload" :on-success="showFile" multiple type="drag" 
+				action="https://jsonplaceholder.typicode.com/posts/">
+				<div style="padding: 20px 0">
+					<Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
+					<p>点击或拖拽文件到这里</p>
+				</div>
+			</Upload>
+			 <div v-if="file !== null">文件名: {{ file.name }} <i-button type="text" @click="upload" :loading="loadingStatus">{{ loadingStatus ? '上传中' : '点击长传' }}</i-button></div>
+			<div style="background:#eee;padding: 20px">
+		        <Card :bordered="false">
+		            <p slot="title">柱状图</p>
+		            <p>{{fileCon}}</p>
+		            <div id="main" style="height:500px;"></div>
+		            <Spin fix v-if="loaddata">
+		                <Icon type="load-c" size=18 class="demo-spin-icon-load"></Icon>
+		                <div>加载中...</div>
+		            </Spin>
+		        </Card>
+		    </div>
+		</i-col>
+    </Row>
+    
+    <!--<Row>
+        <Col class="demo-spin-col" span="8">
+            <Spin fix>加载中...</Spin>
+        </Col>
+        <Col class="demo-spin-col" span="8">
+            
+        </Col>
+        <Col class="demo-spin-col" span="8">
+            <Spin fix>
+                <div class="loader">
+                    <svg class="circular" viewBox="25 25 50 50">
+                        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"></circle>
+                    </svg>
+                </div>
+            </Spin>
+        </Col>
+    </Row>-->
+<!--<Row :gutter="16"  style="height: 80px;background-color:yellow">
+        <i-col span="8" style="height: 80px;background-color:red">123</i-col>
+        <i-col span="8" style="height: 80px;background-color:red">col-8</i-col>
+        <i-col span="8" style="height: 80px;background-color:red">col-8</i-col>
+    </Row>-->
+    
+</div>
+<script>
+var reader = new FileReader();
+reader.onload = (function(theFile) {
+	return function(e) {
+		var data = e.target.result;
+		vm.dohandlerFile(data);
+	};
+})(this.file);
+var vm = new Vue({
+			el:'#app',
+		data : {
+			file:null,
+			fileCon:"",
+			filesystype:1,
+			loadingStatus: false,
+			loaddata:false
+		},
+		methods : {
+			handleUpload:function(file) {
+                this.file = file;
+                console.log(this.file);
+                this.loaddata=true;
+                if(vm.file.type == "application/vnd.ms-excel") {
+                	reader.readAsBinaryString(file);
+                }else{
+                	reader.readAsText(file,'UTF-8')
+                }
+                return false;
+            },
+			showFile:function(res, file, fileList){
+				alert(file);
+			},
+			upload:function () {
+                this.loadingStatus = true;
+            }, 
+            dohandlerFile:function(data){
+            	if(this.file.type == "application/vnd.ms-excel") {
+					var wb = XLSX.read(data, {
+						type: "binary"
+					});
+					this.fileCon = wb;
+				} else {
+					this.fileCon = data;
+					switch (this.filesystype){
+						case 1:
+							option = JSON.parse(this.fileCon);
+							this.initbarchart("main",option);
+							break;
+						default:
+							break;
+					}
+				}
+				this.loaddata = false;
+            },
+            initbarchart:function(id,option){
+				var myChart = echarts.init(document.getElementById(id));
+				myChart.setOption(option);
+			}
+		}
+	})
+	
+
+
+var option = {
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [{
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        type: 'line',
+        areaStyle: {}
+    }]
+};
+        
+ console.log(JSON.stringify(option));
+        
+</script>
+</body>
+</html>

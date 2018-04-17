@@ -1,0 +1,168 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery+CSS3模拟苹果桌面系统</title>
+<link type="text/css" rel="stylesheet" href="css/reset.css" />
+<link type="text/css" rel="stylesheet" href="css/common.css" />
+<link type="text/css" rel="stylesheet" href="css/index.css" />
+<link type="text/css" rel="stylesheet" href="css/nav.css" />
+<link type="text/css" rel="stylesheet" href="css/setting.css" />
+<style type="text/css">
+
+.drag{position:absolute;top:100px;left:100px;width:300px;height:160px;background:#e9e9e9;border:1px solid #444;border-radius:5px;box-shadow:0 1px 3px 2px #666;}
+.drag .title{position:relative;height:27px;margin:5px;}
+.drag .title h2{font-size:14px;height:27px;line-height:24px;border-bottom:1px solid #A1B4B0;}
+.drag .title div{position:absolute;height:19px;top:2px;right:0;}
+.drag .title a,a.open{float:left;width:21px;height:19px;display:block;margin-left:5px;background:url(img/tool.png) no-repeat;}
+a.open{position:absolute;top:10px;left:50%;margin-left:-10px;background-position:0 0;}
+a.open:hover{background-position:0 -29px;}
+.drag .title a.min{background-position:-29px 0;}
+.drag .title a.min:hover{background-position:-29px -29px;}
+.drag .title a.max{background-position:-60px 0;}
+.drag .title a.max:hover{background-position:-60px -29px;}
+.drag .title a.revert{background-position:-149px 0;display:none;}
+.drag .title a.revert:hover{background-position:-149px -29px;}
+.drag .title a.close{background-position:-89px 0;}
+.drag .title a.close:hover{background-position:-89px -29px;}
+.drag .content{overflow:auto;margin:0 5px;}
+.drag .resizeBR{position:absolute;width:14px;height:14px;right:0;bottom:0;overflow:hidden;cursor:nw-resize;background:url(img/resize.png) no-repeat;}
+.drag .resizeL,#drag .resizeT,#drag .resizeR,#drag .resizeB,#drag .resizeLT,#drag .resizeTR,#drag .resizeLB{position:absolute;background:#000;overflow:hidden;opacity:0;filter:alpha(opacity=0);}
+.drag .resizeL,#drag .resizeR{top:0;width:5px;height:100%;cursor:w-resize;}
+.drag .resizeR{right:0;}
+.drag .resizeT,#drag .resizeB{width:100%;height:5px;cursor:n-resize;}
+.drag .resizeT{top:0;}
+.drag .resizeB{bottom:0;}
+.drag .resizeLT,#drag .resizeTR,#drag .resizeLB{width:8px;height:8px;background:#FF0;}
+.drag .resizeLT{top:0;left:0;cursor:nw-resize;}
+.drag .resizeTR{top:0;right:0;cursor:ne-resize;}
+.drag .resizeLB{left:0;bottom:0;cursor:ne-resize;}
+</style>
+
+</script>
+
+<script src="plugins/vue.js"></script>
+<script src="plugins/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+	<div id="app" class="andios_desktop" >
+		<div class="andios_header" @click="settingswitch(true)">
+			<div class="header_logo">
+				<a href=""></a><span
+					style="color: white; font-family: Segoe Script;">AnDiOs</span>
+			</div>
+		</div>
+		<div class="andios_app" @click="settingswitch(true)">
+			<div class="andios_menu">
+				<div class="icon" @dblclick="openWin('设置','./app.html')">
+					<img src="images/safari.png" title="safari" /><span>设置</span>
+				</div>
+				<div class="icon" @dblclick="openWin('镜像市场')">
+					<img src="images/safari.png" title="safari" /><span>镜像市场</span>
+				</div>
+			</div>
+		</div>
+		<div>
+
+<div class="drag" style="z-index: 5555"  v-show="!win.close&&!win.hide" v-for="(win,index) in wins" v-bind:style="{left:win.left + 'px',top:win.top + 'px',width:win.width+'px',height:win.height+'px' }" :class="{activ:win.activ,noactiv:!win.activ}">
+    <div class="title">
+        <h2>这是一个可以拖动的窗口</h2>
+        <div>
+            <a class="min" href="javascript:;" title="最小化"></a>
+            <a class="max" @click="maxOrRecWin(win,$event)" href="javascript:;" title="最大化"></a>
+            <a class="revert" href="javascript:;" title="还原"></a>
+            <a class="close" href="javascript:;" title="关闭"></a>
+        </div>
+    </div>
+    <div class="resizeL"></div>
+    <div class="resizeT"></div>
+    <div class="resizeR"></div>
+    <div class="resizeB"></div>
+    <div class="resizeLT"></div>
+    <div class="resizeTR"></div>
+    <div class="resizeBR"></div>
+    <div class="resizeLB"></div>
+ 
+      	<!--<iframe @click="activWin(win)" v-if="!win.close"  scrolling="auto" width="100%" v-bind:src="win.src"
+					v-bind:style="{width:win.width + 'px',height:win.height + 'px' }"></iframe>-->
+       
+</div>
+
+		<!--	<div  v-show="!win.close&&!win.hide" v-for="(win,index) in wins" @click="activWin(win)" onmousedown="m(this)" v-bind:style="{left:win.left + 'px',top:win.top + 'px' }" :class="{activ:win.activ,noactiv:!win.activ}">
+				<div class="win_title"
+					style="line-height: 26px; background-color: #456; width: 100%;cursor:pointer">
+					<b>{{win.name}}</b> 
+					<input type="button" value="ｘ"
+						@click="closeWin(win,$event)"
+						style="margin-right: 2px;margin-top: 3px;float:right;cursor:pointer">
+					<input type="button" v-bind:value="win.max?' o ':'O'"
+					    @click="maxOrRecWin(win,$event)"
+						style="margin-right: 2px;margin-top: 3px;float:right;cursor:pointer">
+					<input type="button" value=" - "
+					    @click="hideWin(win,$event)"
+						style="margin-right: 2px;margin-top: 3px;float:right;cursor:pointer">				
+				</div>
+				<iframe @click="activWin(win)" v-if="!win.close"  scrolling="auto" width="100%" v-bind:src="win.src"
+					v-bind:style="{width:win.width + 'px',height:win.height + 'px' }"></iframe>
+			</div>-->
+
+
+
+			<!--<div  v-for="(win,index)  in wins">
+			{{win.name}}{{win.id}} {{win.activ?"ok":""}}
+			</div>-->
+		</div>
+		
+		<div class="andios_task">
+			<span @click="settingswitch(false)">{{message}}{{wins.length}}</span>
+		    <span v-show="!win.close" @click="showOrHideWin(win)" v-for="win in wins" style="cursor:pointer;margin-left:5px;background-color: #112;color:#fff">{{win.name}}</span>
+		</div>
+
+		<div class="andios_navbtn"
+			v-bind:class="{'ltrbtnshowf': ltrhide, 'ltrbtnhidef': ltrshow }"
+			@click="navswitch"></div>
+			
+			
+		<div class="andios_nav"
+			v-bind:class="{ 'ltrshowf': ltrshow, 'ltrhidef': ltrhide }">
+			</br> </br> </br>
+			<div @click="settingswitch(false)">个性化设置</div>
+			</br>
+			<div @click="settingswitch(false)">我的用户</div>
+			</br>
+			<button @click="navswitch">收回</button>
+		</div>
+
+		<div class="andios_setting"
+			v-bind:class="{'rtlshowf': rtlshow, 'rtlhidef': rtlhide }">
+			</br> </br> </br>
+			<div>个性化设置</div>
+			</br>
+			<div>我的用户</div>
+			</br>
+			<button @click="settingswitch">收回</button>
+		</div>
+	</div>
+</body>
+<script src="js/desktop.js"></script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

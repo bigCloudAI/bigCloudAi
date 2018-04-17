@@ -1,5 +1,4 @@
 $(document).ready(function(){
-	
 			var canvas = document.getElementById('app');	
 			/*$("#app")[0];
 			alert(canvas+" "+$("#app")[0]);*/

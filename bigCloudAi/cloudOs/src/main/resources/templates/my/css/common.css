@@ -1,5 +1,6 @@
 body{
-	background:url(../images/galaxy.jpg);
+	 background:url(../images/galaxy.jpg); 
+	background-color:#f7f7f7;
 	 height:auto;
 	 background-size:100%;
     background-repeat:repeat; 
@@ -88,7 +89,7 @@ body{
 	background: #808080;
 	position: absolute;
 	left:0px;
-	top: 240px;
+	top: 480px;
 	color:#FFc;
 	height: 8%;
 	width: 20px;
@@ -117,4 +118,11 @@ body{
 	z-index: 9;
 	bottom: 0;
 	opacity: 0.5
+}
+
+.activ {
+  z-index:51;display: block; position: absolute;
+}
+.noactiv {
+  z-index: 50; display: block; position: absolute;
 }

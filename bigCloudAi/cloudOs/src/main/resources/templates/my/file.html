@@ -1,0 +1,66 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据图表</title>
+</head>
+<body>
+<input type="file" id="files" name="files"/>
+<output id="list"></output>
+
+<div id="dropbox">dfd</div>
+<script>
+	
+	
+	var dropbox;
+
+dropbox = document.getElementById("dropbox");
+dropbox.addEventListener("dragenter", dragenter, false);
+dropbox.addEventListener("dragover", dragover, false);
+dropbox.addEventListener("drop", drop, false);
+
+function dragenter(e) {
+  e.stopPropagation();
+  e.preventDefault();
+}
+
+function dragover(e) {
+  e.stopPropagation();
+  e.preventDefault();
+}
+
+function drop(e) {
+  e.stopPropagation();
+  e.preventDefault();
+
+  var dt = e.dataTransfer;
+  var files = dt.files;
+   let postFiles = Array.prototype.slice.call(files);
+   
+  handleFileSelect(postFiles);
+  alert(postFiles);
+}
+
+
+    function handleFileSelect(files) {
+        //var files = evt.target.files; // FileList object
+        for (var i = 0, f; f = files[i]; i++) {
+        	console.log(f);
+            var reader = new FileReader();
+            reader.onload = (function (theFile) {
+                return function (e) {
+                    var span = document.createElement('span');
+                    span.innerHTML = e.target.result;
+                    
+                    document.getElementById('list').insertBefore(span, null);
+                };
+            })(f);
+            reader.readAsText(f);
+        }
+    }
+
+    document.getElementById('files').addEventListener('change', handleFileSelect, false);
+</script>
+
+</body>
+</html>
