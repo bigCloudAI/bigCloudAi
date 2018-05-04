@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <title>vue,vue-router,vuex项目框架</title>
+	    <script type="text/javascript" src="../js/vue/vue.js"></script>
+	    <script type="text/javascript" src="../js/vue-router/vue-router.js"></script>
+	    <script type="text/javascript" src="../js/vuex/vuex.js"></script>
+	    <script type="text/javascript" src="../js/jquery/jquery-3.3.1.min.js"></script>
+	    <script type="text/javascript" src="../js/iview/iview.min.js"></script>
+	    
+	    <link rel="stylesheet" type="text/css" href="css/style.css">
+	    <link rel="stylesheet" type="text/css" href="../css/iview/iview.css">
+	    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	    <link rel="stylesheet" type="text/css" href="./css/compent/nav/zjkmenu.css">
+	    <style>
+	    	body {
+			  background: yellow;
+			  overflow: hidden;
+			}
+		</style>
+	</head>
+	<body><!---->
+		<div id="app" >  
+			<Layout>
+	            <Header :style="{position: 'fixed', width: '100%'}">
+	            	 <Row>
+				        <i-col span="24" style=" text-align: center;"><zjk-menu></zjk-menu></i-col>
+				    </Row>
+	            	
+	            </Header>
+	            <!--<Content :style="{margin: '88px 20px 0', background: '#fff', minHeight: '500px'}">
+                Content
+            	</Content>-->
+           </Layout>
+           
+		  	<div style="z-index: -1;position: absolute;  left: 0px;  top: 0px;">
+				<backgroud></backgroud>
+				<backgroud2></backgroud2>
+			</div>
+		</div>
+	</body>
+
+	<script type="text/javascript" src="compent/backgroud/backgroud.js"></script>
+	<script type="text/javascript" src="compent/backgroud/backgroud2.js"></script>
+	<script type="text/javascript" src="compent/nav/zjkmenu.js"></script>
+	
+	<script type="text/javascript" src="store/store.js"></script>
+	<script type="text/javascript" src="router/router.js"></script>
+	<script type="text/javascript" src="js/main.js"> </script>
+</html>

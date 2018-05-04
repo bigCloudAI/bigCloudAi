@@ -1,0 +1,11 @@
+.card{
+	color: greenyellow;
+	background-color: gold;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	width: 90%;
+	height: 90%;
+	min-height: 180px;
+}
+.card-div{
+	color: greenyellow;
+}
