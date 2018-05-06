@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"  
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"  
+       >  
+  
+  
+    <bean id="ds1" name="ds1"  
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource" primary="true">  //这里多数据源,springBoot启动时需要指定一个默认的数据源，所以需要加primary="true",否则会出现数据源bean匹配失败错误  
+        <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>  
+        <property name="url" value="jdbc:sqlserver://127.0.0.1:1433;databaseName=xxx"/>  
+        <property name="username" value="test"/>  
+        <property name="password" value="xxx"/>  
+    </bean>  
+  
+    <bean id="ds2" name="ds2"  
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource" >  
+        <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>  
+        <property name="url" value="jdbc:sqlserver://127.0.0.1:1433;databaseName=cc"/>  
+        <property name="username" value="test"/>  
+        <property name="password" value="xxx"/>  
+    </bean>  
+  
+    <!--动态选择数据源-->  
+    <bean id="dataSource" class="cc.study.springboot.domain.DynamicDataSource" >  
+        <property name="targetDataSources">  
+            <map key-type="java.lang.String">  
+                <entry key="1" value-ref="ds1"/>  
+                <entry key="2" value-ref="ds2"/>  
+            </map>  
+        </property>  
+       <property name="defaultTargetDataSource" ref="ds1"/> //不可少  
+    </bean>  
+  
+    <bean id="entityManagerFactory"  
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"  
+          destroy-method="destroy" >  
+        <property name="dataSource" ref="dataSource" />     //这里将动态数据源bean注入  
+        <property name="jpaVendorAdapter">   
+            <bean  
+                    class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">  
+                <property name="databasePlatform" value="org.hibernate.dialect.SQLServer2008Dialect"/>  
+                <property name="showSql" value="true"/>  
+            </bean>  
+        </property>  
+        <property name="packagesToScan" value="cc.study.springboot.domain"/>  
+        <property name="jpaPropertyMap">  
+            <map>  
+                <entry key="javax.persistence.schema-generation.database.action" value="none"/>  
+            </map>  
+        </property>  
+    </bean>  
+  
+    <bean id="transactionManager"  
+          class="org.springframework.orm.jpa.JpaTransactionManager">  
+  
+        <property name="entityManagerFactory"  
+                  ref="entityManagerFactory"/>  
+    </bean>  
+  
+    <tx:annotation-driven transaction-manager="transactionManager"/>  
+  
+</beans>  
