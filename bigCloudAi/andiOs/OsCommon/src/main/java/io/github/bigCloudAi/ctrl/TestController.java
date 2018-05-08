@@ -1,13 +1,11 @@
 package io.github.bigCloudAi.ctrl;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import java.sql.SQLException;
 
-import org.hibernate.cfg.Configuration;  
-import org.hibernate.tool.hbm2ddl.SchemaExport; 
+import org.hibernate.boot.Metadata;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -53,16 +51,27 @@ public class TestController {
 	
 	@RequestMapping(value ="/0",method = RequestMethod.GET)
 	 public String index0(){
-		EntityManagerFactory emf = null;   
-		emf = Persistence.createEntityManagerFactory("myJPA");   
-		EntityManager em = emf.createEntityManager();
-//		emf..
-	/*	Configuration cfg = new Configuration().configure();
-		SchemaExport export = new SchemaExport();
-		export.
-		export.create(true,true);*/
-		SchemaExport export = new SchemaExport();
-		export.create(targetTypes, metadata);
+//		Configuration config = new Configuration().configure();
+		System.out.println();
+	/*	ServiceRegistry ssr = (ServiceRegistry)SpringUtil.getBean(ServiceRegistry.class);
+      System.err.println(ssr);
+      */
+		LocalContainerEntityManagerFactoryBean entityManager = (LocalContainerEntityManagerFactoryBean)SpringUtil.getBean(LocalContainerEntityManagerFactoryBean.class);
+		DriverManagerDataSource ds = (DriverManagerDataSource)entityManager.getDataSource();
+		System.out.println(ds.getUrl());
+		entityManager.afterPropertiesSet();
+		
+			
+		// entityManager.createEntityGraph(Task.class);
+      /*Metadata m = (Metadata)SpringUtil.getBean(Metadata.class);
+      System.err.println(m);*/
+	/*	  StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+                .configure().build();
+        Metadata metadata = new MetadataSources(serviceRegistry)
+                .buildMetadata();
+        SchemaExport schemaExport = new SchemaExport();
+    schemaExport.create(EnumSet.of(TargetType.DATABASE), metadata);
+		*/
 		return "";
 	  }
 }

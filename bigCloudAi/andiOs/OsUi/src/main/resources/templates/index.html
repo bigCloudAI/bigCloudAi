@@ -1,18 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-
-<script type="text/javascript" src="/plugins/jquery/jquery-2.0.3.min.js"></script>
-<script type="text/javascript" src="/plugins/vue/vue.js"></script>
-<script type="text/javascript" src="/plugins/echart/echarts.min.js"></script>
-<title>智能应用首页</title>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<meta name="description" content="bigcloudai" />
+<title>andiOs</title>
+<!--[if lt IE 7]>
+<script>
+window.top.location = 'http://desktop.sonspring.com/ie.html';
+</script>
+<![endif]-->
+<link rel="stylesheet" href="/css/jquerydesktop/reset.css" />
+<link rel="stylesheet" href="/css/jquerydesktop/desktop.css" />
+<!--[if lt IE 9]>
+<link rel="stylesheet" href="assets/css/ie.css" />
+<![endif]-->
+<script type="text/javascript" src="/js/vue/vue.js"></script>
 </head>
+<body> 
+<div class="abs" id="wrapper">
 
-	<body>
-		<h2>欢迎使用智能应用（aiApp）</h2>
-		<button onClick="show('scatter-large')">add</button>
-	</body>
-	<script type="text/javascript" src="/plugins/vueEchartComp/scatterLarge/scatterLarge.js"></script>
-	<script type="text/javascript" src="/plugins/aiApp/graphlab.js"></script>
+<!-- <div th:replace="./common/top.html"></div> -->
+<!-- <div th:replace="./common/desktop.html"></div> -->
+
+<div class="abs" id="desktop">
+    <div th:replace="./common/desktopmenu.html"></div>
+    <div th:replace="./common/desktopcon.html"></div>
+</div>
+
+
+<div th:replace="./common/bottom.html"></div>
+  
+<!--<div style="z-index: -1;position: absolute;  left: 0px;  top: 0px;">
+					<backgroud></backgroud> 
+					<backgroud2></backgroud2> 
+	</div> -->
+</div>
+
+<script src="/js/jquery/jquery-3.3.1.min.js"></script>
+<script src="/js/jquery/jquery-ui.js"></script>
+<script src="/js/jquery/jquery.desktop.js"></script>
+
+
+<!-- <script type="text/javascript" src="../../vue,vue-router,vuex/compent/backgroud/backgroud.js"></script>
+	<script type="text/javascript" src="../../vue,vue-router,vuex/compent/backgroud/backgroud2.js"></script> -->
+	<!--<script type="text/javascript" src="compent/nav/zjkmenu.js"></script>-->
+	
+	<!--<script type="text/javascript" src="store/store.js"></script>-->
+	<!--<script type="text/javascript" src="router/router.js"></script>--> 
+	<!-- <script type="text/javascript" src="../../vue,vue-router,vuex/js/main.js"> </script> -->
+</body>
 </html>
