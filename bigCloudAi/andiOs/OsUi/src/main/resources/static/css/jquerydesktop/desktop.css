@@ -120,8 +120,8 @@ div.ui-resizable-handle {
   -webkit-background-clip: padding-box;
   color: #000;
   display: none;
-  width: 700px;
-  height: 300px;
+  width: 960px;
+  height: 560px;
   top: 30px;
   left: 120px;
   z-index: 2;

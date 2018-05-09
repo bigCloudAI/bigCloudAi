@@ -1,23 +1,5 @@
-    <a class="abs icon" style="left:20px;top:20px;" href="#icon_dock_computer">
+    <a  v-for="(menu,index) in $store.getters.menusindex" class="abs icon" v-bind:style="{left:menu.left+'px',top:menu.top+'px'}" v-bind:href="'#icon_dock_'+menu.code">
       <img src="/img/jquerydesktop/icons/icon_32_computer.png" />
-      我的云系统
-    </a>
-    
-    <a class="abs icon" style="left:20px;top:340px;" href="#icon_dock_computer">
-      <img src="/img/jquerydesktop/icons/icon_32_computer.png" />
-      我的应用
-    </a>
-    
-    <a class="abs icon" style="left:20px;top:100px;" href="#icon_dock_drive">
-      <img src="/img/jquerydesktop/icons/icon_32_drive.png" />
-      存储
-    </a>
-    <a class="abs icon" style="left:20px;top:180px;" href="#icon_dock_disc">
-      <img src="/img/jquerydesktop/icons/icon_32_disc.png" />
-    听听音乐
-    </a>
-    <a class="abs icon" style="left:20px;top:260px;" href="#icon_dock_network">
-      <img src="/img/jquerydesktop/icons/icon_32_network.png" />
-      网络
-    </a>
+      {{menu.name}}
+    </a> 
   

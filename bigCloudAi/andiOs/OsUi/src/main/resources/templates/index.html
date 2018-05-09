@@ -16,25 +16,24 @@ window.top.location = 'http://desktop.sonspring.com/ie.html';
 <link rel="stylesheet" href="assets/css/ie.css" />
 <![endif]-->
 <script type="text/javascript" src="/js/vue/vue.js"></script>
+<script type="text/javascript" src="/js/vue-router/vue-router.js"></script>
+<script type="text/javascript" src="/js/vuex/vuex.js"></script>
 </head>
 <body> 
 <div class="abs" id="wrapper">
 
 <!-- <div th:replace="./common/top.html"></div> -->
 <!-- <div th:replace="./common/desktop.html"></div> -->
-
 <div class="abs" id="desktop">
     <div th:replace="./common/desktopmenu.html"></div>
     <div th:replace="./common/desktopcon.html"></div>
 </div>
-
-
 <div th:replace="./common/bottom.html"></div>
-  
+
 <!--<div style="z-index: -1;position: absolute;  left: 0px;  top: 0px;">
 					<backgroud></backgroud> 
 					<backgroud2></backgroud2> 
-	</div> -->
+</div> -->
 </div>
 
 <script src="/js/jquery/jquery-3.3.1.min.js"></script>
@@ -45,9 +44,10 @@ window.top.location = 'http://desktop.sonspring.com/ie.html';
 <!-- <script type="text/javascript" src="../../vue,vue-router,vuex/compent/backgroud/backgroud.js"></script>
 	<script type="text/javascript" src="../../vue,vue-router,vuex/compent/backgroud/backgroud2.js"></script> -->
 	<!--<script type="text/javascript" src="compent/nav/zjkmenu.js"></script>-->
-	
-	<!--<script type="text/javascript" src="store/store.js"></script>-->
-	<!--<script type="text/javascript" src="router/router.js"></script>--> 
-	<!-- <script type="text/javascript" src="../../vue,vue-router,vuex/js/main.js"> </script> -->
+<script type="text/javascript" src="/js/store/menu/menu.js"></script>	
+<script type="text/javascript" src="/js/store/store.js"></script>
+
+<script type="text/javascript" src="/js/router/router.js"></script> 
+<script type="text/javascript" src="/js/main.js"> </script> 
 </body>
 </html>

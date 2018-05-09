@@ -1,31 +1,10 @@
 <div class="abs" id="bar_bottom">
-    <a class="float_left" href="#" id="show_desktop" title="显示桌面">
-      <img src="/img/jquerydesktop/icons/icon_22_desktop.png" />
-    </a>
-    <ul id="dock">
-      <li id="icon_dock_computer">
-        <a href="#window_computer">
-          <img src="/img/jquerydesktop/icons/icon_22_computer.png" />
-          我的云系统
-        </a>
-      </li>
-      <li id="icon_dock_drive">
-        <a href="#window_drive">
-          <img src="/img/jquerydesktop/icons/icon_22_drive.png" />
-          存储
-        </a>
-      </li>
-      <li id="icon_dock_disc">
-        <a href="#window_disc">
-          <img src="/img/jquerydesktop/icons/icon_22_disc.png" />
-          听听音乐
-        </a>
-      </li>
-      <li id="icon_dock_network">
-        <a href="#window_network">
-          <img src="/img/jquerydesktop/icons/icon_22_network.png" />
-          网络
-        </a>
-      </li>
-    </ul>
-  </div>
+	<a class="float_left" href="#" id="show_desktop" title="显示桌面"> <img
+		src="/img/jquerydesktop/icons/icon_22_desktop.png" />
+	</a>
+	<ul id="dock">
+		<li  v-for="(menu,index) in $store.getters.menusindex" v-bind:id="'icon_dock_'+menu.code"><a v-bind:href="'#window_'+menu.code"> <img
+				src="/img/jquerydesktop/icons/icon_22_computer.png" />  {{menu.name}}
+		</a></li>
+	</ul>
+</div>
