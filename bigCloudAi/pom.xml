@@ -24,14 +24,14 @@
 		<!-- <thymeleaf.version> 3.0.2.RELEASE </thymeleaf.version>
 		<thymeleaf-layout-dialect.version> 2.1.1 </thymeleaf-layout-dialect.version> -->
 	</properties>
-    <modules>
+        <modules>
 		<module>bigFs</module>
 		<module>cloudOs</module>
 		<module>aiApp</module>
 		<module>uiDesign</module>
 		<module>flowTask</module>
 		<module>osHandler</module>
-        <module>andiOs</module>
-  </modules>
+                <module>andiOs</module>
+         </modules>
 	
 </project>
