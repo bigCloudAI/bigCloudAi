@@ -1,5 +1,7 @@
     <a  v-for="(menu,index) in $store.getters.menusindex" class="abs icon" v-bind:style="{left:menu.left+'px',top:menu.top+'px'}" v-bind:href="'#icon_dock_'+menu.code">
-      <img src="/img/jquerydesktop/icons/icon_32_computer.png" />
+      <!-- <img src="/img/jquerydesktop/icons/icon_32_computer.png" /> -->
+     <!--  <span class="fa fa-camera-retro"></span> -->
+      <div><i v-bind:class="menu.icon" class="fa-4x"></i> </div>
       {{menu.name}}
     </a> 
   

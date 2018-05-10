@@ -17,7 +17,6 @@ public class FlowTaskImpl implements FlowTask{
 	
 	private static final Logger log = LoggerFactory.getLogger(FlowTaskImpl.class);
 
-	
 	@Override
 	public List<Task> receiveTask() {
 		// TODO Auto-generated method stub
@@ -25,11 +24,11 @@ public class FlowTaskImpl implements FlowTask{
 		return null;
 	}
 
-	@Override
 	@Async
 	public void execTask(Task task) {
 		try {
 			log.info("execTask-start");
+			
 			Thread.sleep(10000l);
 			log.info("execTask-end");
 		} catch (InterruptedException e) {
@@ -40,10 +39,10 @@ public class FlowTaskImpl implements FlowTask{
 	}
 	
 	@Override
-	@Async
+	@Async("huExecutor")
 	public Future<String> execTaskF(Task task) {//時間限制
 		Future<String> future;
-		ExecTask execTask = null;
+		/*ExecTask execTask = null;
 		 try {
 			Class<?> execTaskClass=Class.forName(task.getExecClass());
 			Object obj = execTaskClass.newInstance();
@@ -55,7 +54,8 @@ public class FlowTaskImpl implements FlowTask{
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-		 execTask.exec(task);
+		 execTask.exec(task);*/
+		log.info("running");
 		try {
 			Thread.sleep(1000 * 1);
 			future = new AsyncResult<String>("success");

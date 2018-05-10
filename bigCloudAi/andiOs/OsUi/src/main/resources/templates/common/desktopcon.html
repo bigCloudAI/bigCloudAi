@@ -3,27 +3,17 @@
 v-bind:id="'window_'+menu.code" class="abs window">
 	<div class="abs window_inner">
 		<div class="window_top">
-			<span class="float_left"> <img
-				src="/img/jquerydesktop/icons/icon_16_computer.png" /> {{menu.name}}
+			<span class="float_left"> <!-- <img
+				src="/img/jquerydesktop/icons/icon_16_computer.png" />  -->
+				<div><i v-bind:class="menu.icon" class="fa-1x"></i> </div>
+				{{menu.name}}
 			</span> <span class="float_right"> <a href="#" class="window_min"></a>
 				<a href="#" class="window_resize"></a> <a v-bind:href="'#icon_dock_'+menu.code"
 				class="window_close"></a>
 			</span>
 		</div>
-		
-		<!-- <div th:replace="./os/index.html"></div>
-		{{menu.con}} -->
-		<div :th:replace="menu.con"></div> 
-		<!-- <iframe style="width: 100%;" src="http://www.baidu.com"></iframe>-->
-		<!-- <div class="abs window_content">
-          <div class="window_aside">
-            Hello. You look nice today!
-          </div>
-          <div class="window_main">
-          	<iframe style="width: 100%;height:600px;" src="http://www.baidu.com"></iframe>
-           </div>
-        </div>-->
-		<div class="abs window_bottom">Build: TK421</div>
+		<div th:replace="./main/main.html"></div>
+		<div class="abs window_bottom">Build: bigCloudAi</div>
 	</div>
 	<span class="abs ui-resizable-handle ui-resizable-se"></span>
 </div>

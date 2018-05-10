@@ -1,0 +1,20 @@
+<div class="window_aside" v-if="menu.code=='os'">
+	<div th:replace="./main/os/index.html"></div>
+</div>
+
+<div class="window_aside" v-else-if="menu.code=='app'">
+	<div th:replace="./main/app/index.html"></div>
+</div>
+
+<div class="window_aside" v-else-if="menu.code=='appstore'">
+	<div th:replace="./main/appstore/index.html"></div>
+</div>
+
+<!-- <div class="window_aside" v-else-if="menu.code=='dev'">
+	<div th:replace="./main/dev/index.html"></div>
+</div> -->
+<!-- <div class="window_aside" v-else-if="menu.code=='sysconfig'">
+	<div th:replace="./main/sysconfig/index.html"></div>
+</div> -->
+
+<div class="window_aside" v-else>紧急开发当中</div>

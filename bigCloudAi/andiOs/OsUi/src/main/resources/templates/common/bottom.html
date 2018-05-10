@@ -3,8 +3,10 @@
 		src="/img/jquerydesktop/icons/icon_22_desktop.png" />
 	</a>
 	<ul id="dock">
-		<li  v-for="(menu,index) in $store.getters.menusindex" v-bind:id="'icon_dock_'+menu.code"><a v-bind:href="'#window_'+menu.code"> <img
-				src="/img/jquerydesktop/icons/icon_22_computer.png" />  {{menu.name}}
+		<li  v-for="(menu,index) in $store.getters.menusindex" v-bind:id="'icon_dock_'+menu.code">
+		<a v-bind:href="'#window_'+menu.code"> 
+				<i v-bind:class="menu.icon" class="fa-1x"></i>
+				{{menu.name}}
 		</a></li>
 	</ul>
 </div>

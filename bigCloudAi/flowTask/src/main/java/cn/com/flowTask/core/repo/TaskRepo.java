@@ -19,7 +19,6 @@ public interface TaskRepo extends CrudRepository<Task,Integer>{
 	
 	public List<Task> findAll();
 	
-	@Modifying
 	@Query("SELECT T FROM Task T ORDER BY T.createTime")
 	public Page<Task> findTaskTopN(Pageable pageable);//查当前前15个未执行的任务
 	
