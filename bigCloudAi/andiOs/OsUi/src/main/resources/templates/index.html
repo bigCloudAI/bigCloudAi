@@ -13,6 +13,11 @@
 	<link rel="stylesheet" href="/css/jquerydesktop/reset.css" />
 	<link rel="stylesheet" href="/css/jquerydesktop/desktop.css" />
 	<link rel="stylesheet" href="/css/font-awesome/font-awesome.min.css" />
+	
+	<link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" />
+<!-- <link rel="stylesheet" href="/assets/css/form-elements.css">
+        <link rel="stylesheet" href="/assets/css/style.css">  -->
+	<!-- <link rel="stylesheet" href="/css/style.css" type="text/css" media="all"> -->
 	<!-- <link rel="stylesheet" href="/css/iview/iview.css" /> -->
 	<!--[if lt IE 9]>
 	<link rel="stylesheet" href="assets/css/ie.css" />
@@ -28,36 +33,7 @@
 <!-- <div th:replace="./common/top.html"></div> -->
 <!-- <div th:replace="./common/desktop.html"></div> -->
 <div class="abs" id="desktop">
-<div style="width:500px;height:340px; position: absolute;top:50%;left:50%;margin-top:-200px;margin-left:-250px;z-index:5000">
-    <div class="tab-pane">
-    	<div class="tab">1</div>
-    	<div class="tab">2</div>
-    </div>
-</div>
-
-<!--  <Card style="width:500px;height:340px; position: absolute;top:50%;left:50%;margin-top:-200px;margin-left:-250px;z-index:5000">
-         <Tabs active-key="login">
-	        <Tab-pane label="登陆" key="login"> 
-		      <Card style="margin-top: -10px">
-				<i-input type="text" style="margin-top: 12px" placeholder="请输入登录邮箱/手机号"> <Icon
-					type="ios-person-outline" slot="prepend"></Icon> </i-input> <br>
-				<i-input type="password" placeholder="请输入密码"> <Icon
-					type="ios-locked-outline" slot="prepend"></Icon> </i-input> <br>
-				<Checkbox style="position: absolute;left:16px;">下次自动登录</Checkbox> <span
-					style="position: absolute; right: 18px;">忘记密码</span> <br>
-				<br>
-				<i-button long>登陆</i-button>
-				<br>
-				<span style="position: absolute; left: 22px;margin-top: 12px">其他方式登录</span>
-				<br>
-				<br>
-			   </Card>
-        	</Tab-pane>
-        	
-	        <Tab-pane label="注册" key="register">注册</Tab-pane>
-         </Tabs>
-       <i-button type="text" style="position: absolute;top:8px;right:5px;">X</i-button>
-</Card>  -->
+    <div th:replace="./common/loginandregister.html"></div>
 
     <div th:replace="./common/desktopmenu.html"></div>
     <div th:replace="./common/desktopcon.html"></div> 
@@ -70,6 +46,7 @@
 <script src="/js/jquery/jquery-3.3.1.min.js"></script>
 <script src="/js/jquery/jquery-ui.js"></script>
 <script src="/js/jquery/jquery.desktop.js"></script>
+<script type="text/javascript" src="/js/bootstrap/bootstrap.js"></script>
 
 
 <!-- <script type="text/javascript" src="../../vue,vue-router,vuex/compent/backgroud/backgroud.js"></script>

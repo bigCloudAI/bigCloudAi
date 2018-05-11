@@ -5,8 +5,7 @@ v-bind:id="'window_'+menu.code" class="abs window">
 		<div class="window_top">
 			<span class="float_left"> <!-- <img
 				src="/img/jquerydesktop/icons/icon_16_computer.png" />  -->
-				<div><i v-bind:class="menu.icon" class="fa-1x"></i> </div>
-				{{menu.name}}
+				<div><i v-bind:class="menu.icon" class="fa-1x"></i> {{menu.name}}</div>
 			</span> <span class="float_right"> <a href="#" class="window_min"></a>
 				<a href="#" class="window_resize"></a> <a v-bind:href="'#icon_dock_'+menu.code"
 				class="window_close"></a>
