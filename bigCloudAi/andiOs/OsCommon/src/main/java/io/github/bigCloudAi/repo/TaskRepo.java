@@ -1,4 +1,4 @@
-package io.github.bigCloudAi.repo;
+/*package io.github.bigCloudAi.repo;
 
 import java.util.List;
 
@@ -19,3 +19,4 @@ public interface TaskRepo extends CrudRepository<Task,Integer>{
 	public Page<Task> findTaskTopN(Pageable pageable);//查当前前15个未执行的任务
 	
 }
+*/

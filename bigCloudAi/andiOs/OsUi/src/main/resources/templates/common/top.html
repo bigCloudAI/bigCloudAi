@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <div class="abs" id="bar_top">
+    <!-- <span class="float_right" id="clock"></span> -->
     <span class="float_right" id="clock"></span>
+    <a class="float_right" style="margin-right: 5px" @click="$store.commit('logout')"
+      href="#" id="show_desktop" title="用户">{{$store.state.rbac.user.name}}
+	</a> 
     <ul>
       <li>
         <a class="menu_trigger" href="#">安迪云(andiOs)</a>

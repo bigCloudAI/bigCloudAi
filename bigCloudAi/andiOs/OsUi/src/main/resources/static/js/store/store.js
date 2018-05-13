@@ -1,6 +1,6 @@
 var store = new Vuex.Store({
 	modules : {
-		menu : menu
+		rbac : rbac
 	},
 	state : {
 		count:1

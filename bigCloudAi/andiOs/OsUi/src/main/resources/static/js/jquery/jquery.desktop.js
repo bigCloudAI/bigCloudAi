@@ -31,33 +31,33 @@ var JQD = (function($, window, document, undefined) {
         var minute = date_obj.getMinutes();
         var day = date_obj.getDate();
         var year = date_obj.getFullYear();
-        var suffix = 'AM';
+        var suffix = '上午';
 
         // Array for weekday.
         var weekday = [
-          'Sunday',
-          'Monday',
-          'Tuesday',
-          'Wednesday',
-          'Thursday',
-          'Friday',
-          'Saturday'
+          '周日',
+          '周一',
+          '周二',
+          '周三',
+          '周四',
+          '周五',
+          '周六'
         ];
 
         // Array for month.
         var month = [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-          'July',
-          'August',
-          'September',
-          'October',
-          'November',
-          'December'
+          '一月',
+          '二月',
+          '三月',
+          '四月',
+          '五月',
+          '六月',
+          '七月',
+          '八月',
+          '九月',
+          '十月',
+          '十一月',
+          '十二月'
         ];
 
         // Assign weekday, month, date, year.
@@ -66,7 +66,7 @@ var JQD = (function($, window, document, undefined) {
 
         // AM or PM?
         if (hour >= 12) {
-          suffix = 'PM';
+          suffix = '下午';
         }
 
         // Convert to 12-hour.

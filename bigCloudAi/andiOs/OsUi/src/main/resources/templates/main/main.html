@@ -10,6 +10,10 @@
 	<div th:replace="./main/appstore/index.html"></div>
 </div>
 
+<div class="window_aside" style="width:100%;"  v-else-if="menu.code=='rbac'">
+	<div th:replace="./main/rbac/index.html"></div>
+</div>
+
 <!-- <div class="window_aside" v-else-if="menu.code=='dev'">
 	<div th:replace="./main/dev/index.html"></div>
 </div> -->

@@ -1,61 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge" />
-	<meta name="description" content="bigcloudai" />
-	<title>andiOs</title>
-	<!--[if lt IE 7]>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge" />
+<meta name="description" content="bigcloudai" />
+<title>andiOs</title>
+<!--[if lt IE 7]>
 	<script>
 	window.top.location = 'http://desktop.sonspring.com/ie.html';
 	</script>
 	<![endif]-->
-	<link rel="stylesheet" href="/css/jquerydesktop/reset.css" />
-	<link rel="stylesheet" href="/css/jquerydesktop/desktop.css" />
-	<link rel="stylesheet" href="/css/font-awesome/font-awesome.min.css" />
-	
-	<link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/jquerydesktop/reset.css" />
+<link rel="stylesheet" href="/css/jquerydesktop/desktop.css" />
+<link rel="stylesheet" href="/css/font-awesome/font-awesome.min.css" />
+
+<link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" />
+<link rel="stylesheet" href="/assets/css/signin.css">
+
 <!-- <link rel="stylesheet" href="/assets/css/form-elements.css">
         <link rel="stylesheet" href="/assets/css/style.css">  -->
-	<!-- <link rel="stylesheet" href="/css/style.css" type="text/css" media="all"> -->
-	<!-- <link rel="stylesheet" href="/css/iview/iview.css" /> -->
-	<!--[if lt IE 9]>
+<!-- <link rel="stylesheet" href="/css/style.css" type="text/css" media="all"> -->
+<!-- <link rel="stylesheet" href="/css/iview/iview.css" /> -->
+<!--[if lt IE 9]>
 	<link rel="stylesheet" href="assets/css/ie.css" />
 	<![endif]-->
-	<script type="text/javascript" src="/js/vue/vue.js"></script>
-	<script type="text/javascript" src="/js/vue-router/vue-router.js"></script>
-	<script type="text/javascript" src="/js/vuex/vuex.js"></script>
-	<!-- <script type="text/javascript" src="/js/iview/iview.min.js"></script> -->
+
+<script type="text/javascript" src="/js/vue/vue.js"></script>
+<script type="text/javascript" src="/js/vue-router/vue-router.js"></script>
+<script type="text/javascript" src="/js/vuex/vuex.js"></script>
+	<script type="text/javascript">
+						function showUser()
+						{
+							$("#userSys").animate({left:'250px'});
+							/* $("#userSys").show();
+							$("#roleSys").hide(); */
+							
+						}
+						function showRole()
+						{
+							/* $("#userSys").hide(); */
+							$("#roleSys").removeClass("hide");
+							/* $("#roleSys").show();
+							$("#roleSys").animate({left:'250px'}); */
+						}
+						</script>
+
 </head>
-<body> 
-<div class="abs" style="background-color: gray" id="wrapper">
+<body>
+	<div class="abs" style="background-color: gray" id="wrapper">
 
-<!-- <div th:replace="./common/top.html"></div> -->
-<!-- <div th:replace="./common/desktop.html"></div> -->
-<div class="abs" id="desktop">
-    <div th:replace="./common/loginandregister.html"></div>
+		<div th:replace="./common/loginandregister.html"></div>
+		<div th:replace="./common/top.html"></div>
+		<!-- <div th:replace="./common/desktop.html"></div> -->
+		<div class="abs" id="desktop">
 
-    <div th:replace="./common/desktopmenu.html"></div>
-    <div th:replace="./common/desktopcon.html"></div> 
-</div>
-<div th:replace="./common/bottom.html"></div>
-
-
-</div>
-
-<script src="/js/jquery/jquery-3.3.1.min.js"></script>
-<script src="/js/jquery/jquery-ui.js"></script>
-<script src="/js/jquery/jquery.desktop.js"></script>
-<script type="text/javascript" src="/js/bootstrap/bootstrap.js"></script>
+			<div th:replace="./common/desktopmenu.html"></div>
+			<div th:replace="./common/desktopcon.html"></div>
+		</div>
+		<div th:replace="./common/bottom.html"></div>
 
 
-<!-- <script type="text/javascript" src="../../vue,vue-router,vuex/compent/backgroud/backgroud.js"></script>
+	</div>
+
+	<script src="/js/jquery/jquery-3.3.1.min.js"></script>
+	<script src="/js/jquery/jquery-ui.js"></script>
+	<script src="/js/jquery/jquery.desktop.js"></script>
+	<script type="text/javascript" src="/js/bootstrap/bootstrap.js"></script>
+
+
+	<!-- <script type="text/javascript" src="../../vue,vue-router,vuex/compent/backgroud/backgroud.js"></script>
 	<script type="text/javascript" src="../../vue,vue-router,vuex/compent/backgroud/backgroud2.js"></script> -->
 	<!--<script type="text/javascript" src="compent/nav/zjkmenu.js"></script>-->
-<script type="text/javascript" src="/js/store/menu/menu.js"></script>	
-<script type="text/javascript" src="/js/store/store.js"></script>
+	<script type="text/javascript" src="/js/store/rbac/rbac.js"></script>
+	<script type="text/javascript" src="/js/store/store.js"></script>
 
-<script type="text/javascript" src="/js/router/router.js"></script> 
-<script type="text/javascript" src="/js/main.js"> </script> 
+	<script type="text/javascript" src="/js/router/router.js"></script>
+	<script type="text/javascript" src="/js/main.js"> </script>
+
 </body>
 </html>

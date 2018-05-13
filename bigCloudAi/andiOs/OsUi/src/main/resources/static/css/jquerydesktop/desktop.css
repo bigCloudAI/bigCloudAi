@@ -1,9 +1,9 @@
 /* `Basic HTML
 ----------------------------------------------------------------------------------------------------*/
 
-* {
+/* * {
   cursor: default;
-}
+} */
 
 html,
 body {
@@ -375,6 +375,7 @@ th.shrink {
   padding-top: 5px;
   padding-bottom: 5px;
   text-shadow: #000 0 1px 1px;
+  height: 40px; 
   bottom: 0;
 }
 

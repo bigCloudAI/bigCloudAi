@@ -16,10 +16,10 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@Configuration
+/*@Configuration
 //此处是你dao文件所在的包名
 @EnableJpaRepositories("io.github.bigCloudAi.repo")
-@EnableTransactionManagement
+@EnableTransactionManagement*/
 public class JpaConfig {
 
     @Autowired
