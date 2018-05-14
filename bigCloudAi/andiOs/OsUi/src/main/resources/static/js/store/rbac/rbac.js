@@ -1,6 +1,7 @@
 var rbac = {
   state: {
 	  count:100,
+	  menu:"user",
 	  user:{
 		  name:'',desc:'',
 		  pwd:'',
@@ -39,6 +40,9 @@ var rbac = {
   },
   mutations: { 
 	  isLoginCheck:function(state){
+		  $("#userSys").show();
+		  $("#roleSys").hide();
+		  $("#accessSys").hide();
 		  $.get("/osUi/isLogin",
 				  function(data,status){
 					  if(data.success){
@@ -47,7 +51,6 @@ var rbac = {
 					  }else{
 						  state.user.isLogin=false;
 					  }
-					  
 				  });
 		 
 	  },
@@ -82,10 +85,26 @@ var rbac = {
 	  },
 	  descfocus:function(state){
 		  state.user.desc="";
+	  },
+	  rbacuser:function(state){
+		  var value='user';
+		  chooseone(value);
+		  state.menu='user';
+	  },
+	  rbacrole:function(state){
+		  var value='role';
+		  chooseone(value); state.menu='role';
+	  },
+	  rbacaccess:function(state){
+		  var value='access';
+		  chooseone(value); state.menu='access';
+	  },
+	  rbacaccesslog:function(state){
+		  var value='accesslog';
+		  chooseone(value); state.menu='accesslog';
 	  }
   },
   actions: { 
-	  
   },
   getters: {
 	  userdesc:function(state){
@@ -100,4 +119,16 @@ var rbac = {
 	  }
 	  
   }
+}
+
+function chooseone(value){
+	  var menu=['user','role','access','accesslog'];
+	  for (var i = 0; i < menu.length; i++) {
+		if(menu[i]==value){
+			$("#"+menu[i]+"Sys").show();
+		}else{
+			$("#"+menu[i]+"Sys").hide();
+		}
+	}
+	  
 }

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.com.andiOs.OsUi.entry.User;
+import cn.com.andiOs.repo.rbac.UserRepo;
 
 /**
  * 项目各个界面的请求地址
@@ -28,8 +30,11 @@ public class MenuController {
 	
 	  public final static String SESSION_KEY = "user";
 	
+	  @Autowired
+	  UserRepo userRepo;
 	@RequestMapping(value = "/..", method = RequestMethod.GET)
 	public ModelAndView index() {
+		System.out.println(userRepo.findAll().size());
 		ModelAndView mv = new ModelAndView("index");
 		return mv;
 	}

@@ -7,21 +7,24 @@
 				<!-- <li role="presentation" class="active"><a href="#">用户管理</a></li>
 				<li role="presentation"><a href="#">角色管理</a></li>
 				<li role="presentation"><a href="#">权限管理</a></li> -->
-				<li role="presentation"><button type="button" onclick="showUser()"
-						style="background-color: black; color: white"
+				<li role="presentation"><button type="button" @click="$store.commit('rbacuser')"  id="usermenu"
+						v-bind:style="{background:$store.state.rbac.menu=='user'?'black':'gray' , color: 'white'}"
 						class="btn btn-default btn-block">用户管理</button></li>
-				<li role="presentation"><button type="button" onClick="showRole()"
-						style="background-color: gray; color: white"
+				<li role="presentation"><button type="button" @click="$store.commit('rbacrole')" id="rolemenu"
+						v-bind:style="{background:$store.state.rbac.menu=='role'?'black':'gray' , color: 'white'}"
 						class="btn btn-default btn-block">角色管理</button></li>
-				<li role="presentation"><button type="button"
-						style="background-color: gray; color: white"
+				<li role="presentation"><button type="button" @click="$store.commit('rbacaccess')" id="accessmenu"
+						v-bind:style="{background:$store.state.rbac.menu=='access'?'black':'gray' , color: 'white'}"
 						class="btn btn-default btn-block">权限管理</button></li>
+				<li role="presentation"><button type="button" @click="$store.commit('rbacaccesslog')" id="accesslogmenu"
+						v-bind:style="{background:$store.state.rbac.menu=='accesslog'?'black':'gray' , color: 'white'}"
+						class="btn btn-default btn-block">操作日志</button></li>
 			</ul>
 		</nav>
 	</div>
 </div>
 
-<div class="text-center" style="position:absolute;width:96%" id="userSys">
+<div class="text-center" id="userSys">
 	<div class="row" style="margin-bottom: 8px; margin-right: 8px">
 		<div class="fixed-table-toolbar">
 			<div class="columns columns-right btn-group pull-right">
@@ -117,7 +120,7 @@
 </div>
 
 
-<div class="text-center hide" id="roleSys">
+<div class="text-center" id="roleSys">
 	<div class="row" style="margin-bottom: 8px; margin-right: 8px">
 		<div class="fixed-table-toolbar">
 			<div class="columns columns-right btn-group pull-right">
@@ -213,8 +216,103 @@
 </div>
 
 
+<div class="text-center" id="accessSys">
+	<div class="row" style="margin-bottom: 8px; margin-right: 8px">
+		<div class="fixed-table-toolbar">
+			<div class="columns columns-right btn-group pull-right">
+				<button class="btn btn-default" type="button" name="refresh"
+					title="刷新">
+					<i class="glyphicon glyphicon-refresh icon-refresh"></i>
+				</button>
+				<button class="btn btn-default" type="button" name="toggle"
+					title="Toggle">
+					<i class="glyphicon glyphicon glyphicon-list-alt icon-list-alt"></i>
+				</button>
+			</div>
+			<div class="pull-right search">
+				<input class="form-control" type="text" placeholder="关键字">
+			</div>
+		</div>
+	</div>
 
+	<table class="table table-bordered" style="margin-bottom: -2px">
+		<thead>
+			<tr>
+				<th>序号</th>
+				<th>urls</th>
+				<th>创建时间</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th scope="row">1</th>
+				<td>admin</td>
+				<td>1999/1/2 8/1</td>
+				<td><a style="cursor: pointer">设置</a> <a
+					style="cursor: pointer; margin-left: 5px">删除</a></td>
+			</tr>
+			<tr>
+				<th scope="row">2</th>
+				<td>Jacob</td>
+				<td>Thornton</td>
+				<td>@fat</td>
+			</tr>
+			<tr>
+				<th scope="row">3</th>
+				<td>Larry</td>
+				<td>the Bird</td>
+				<td>@twitter</td>
+			</tr>
+			<tr>
+				<th scope="row">3</th>
+				<td>Larry</td>
+				<td>the Bird</td>
+				<td>@twitter</td>
+			</tr>
+			<tr>
+				<th scope="row">3</th>
+				<td>Larry</td>
+				<td>the Bird</td>
+				<td>@twitter</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="row">
+		<div class="col-md-6 text-left pagination-detail"
+			style="margin-top: 30px">
+			<span class="pagination-info"> 1 - 10 共 21 </span><span
+				class="page-list" style="display: none;"><span
+				class="btn-group dropup"><button type="button"
+						class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						<span class="page-size">10</span> <span class="caret"></span>
+					</button>
+					<ul role="menu">
+						<li class="active"><a href="javascript:void(0)">10</a></li>
+					</ul></span> 条 / 页</span>
+		</div>
+		<div class="col-md-6 text-right">
+			<nav aria-label="navigation pull-right">
+				<ul class="pagination">
+					<li><a href="#" aria-label="Previous"> <span
+							aria-hidden="true">«</span>
+					</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#" aria-label="Next"> <span
+							aria-hidden="true">»</span>
+					</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
 
-
+<div class="text-center" id="accesslogSys">
+accesslog
+</div>
 
 
