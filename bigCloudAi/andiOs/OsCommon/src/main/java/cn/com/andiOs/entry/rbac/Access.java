@@ -41,8 +41,8 @@ public class Access implements Serializable {
 	private Byte status;
 
 	/** udated_time. */	
-	@Column(name="udatedTime",columnDefinition = "timestamp DEFAULT '0000-00-00 00:00:00' NOT NULL COMMENT 'udated_time : 最后一次更新时间'",  nullable=false, unique = false)
-	private Date udatedTime;
+	@Column(name="updatedTime",columnDefinition = "timestamp DEFAULT '0000-00-00 00:00:00' NOT NULL COMMENT 'udated_time : 最后一次更新时间'",  nullable=false, unique = false)
+	private Date updatedTime;
 
 	/** created_time. */	
 	@Column(name="createdTime",columnDefinition = "timestamp DEFAULT '0000-00-00 00:00:00' NOT NULL COMMENT 'created_time : 插入时间'",  nullable=false, unique = false)
@@ -136,8 +136,8 @@ public class Access implements Serializable {
 	 * @param udatedTime
 	 *            udated_time
 	 */
-	public void setUdatedTime(Date udatedTime) {
-		this.udatedTime = udatedTime;
+	public void setUpdatedTime(Date updatedTime) {
+		this.updatedTime = updatedTime;
 	}
 
 	/**
@@ -145,8 +145,8 @@ public class Access implements Serializable {
 	 * 
 	 * @return udated_time
 	 */
-	public Date getUdatedTime() {
-		return this.udatedTime;
+	public Date getUpdatedTime() {
+		return this.updatedTime;
 	}
 
 	/**

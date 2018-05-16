@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import cn.com.andiOs.OsUi.entry.User;
+import cn.com.andiOs.entry.rbac.User;
 import cn.com.andiOs.repo.rbac.UserRepo;
 
 /**

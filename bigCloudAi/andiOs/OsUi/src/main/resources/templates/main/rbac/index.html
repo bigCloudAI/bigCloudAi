@@ -1,9 +1,8 @@
 <div class="row clearfix"
 	style="width: 100%; margin-top: 10px; margin-bottom: 12px">
-	<div class="col-lg-5"></div>
 	<div class="col-lg-7">
 		<nav>
-			<ul class="nav nav-pills pull-right">
+			<ul class="nav nav-pills pull-left">
 				<!-- <li role="presentation" class="active"><a href="#">用户管理</a></li>
 				<li role="presentation"><a href="#">角色管理</a></li>
 				<li role="presentation"><a href="#">权限管理</a></li> -->
@@ -25,289 +24,371 @@
 </div>
 
 <div class="text-center" id="userSys">
-	<div class="row" style="margin-bottom: 8px; margin-right: 8px">
-		<div class="fixed-table-toolbar">
-			<div class="columns columns-right btn-group pull-right">
-				<button class="btn btn-default" type="button" name="refresh"
-					title="刷新">
-					<i class="glyphicon glyphicon-refresh icon-refresh"></i>
-				</button>
-				<button class="btn btn-default" type="button" name="toggle"
-					title="Toggle">
-					<i class="glyphicon glyphicon glyphicon-list-alt icon-list-alt"></i>
-				</button>
+	<div id="listuserSys">
+		<div class="row" style="margin-bottom: 8px; margin-right: 8px">
+			<div class="fixed-table-toolbar">
+				<div class="columns columns-right btn-group pull-right">
+					<button class="btn btn-default" type="button" name="refresh" @click="$store.commit('listUserlike')"
+						title="搜索">
+						<i class="glyphicon glyphicon-search"></i>
+					</button>
+					<button class="btn btn-default" type="button" name="toggle"
+						title="Toggle"
+						onClick="$('#listuserSys').hide();$('#adduserSys').show();">
+						<i class="glyphicon glyphicon-plus"></i>
+					</button>
+				</div>
+				<div class="pull-right search">
+					<input v-model="$store.state.rbac.users.likekey" class="form-control" type="text" placeholder="关键字">
+				</div>
 			</div>
-			<div class="pull-right search">
-				<input class="form-control" type="text" placeholder="关键字">
+		</div>
+		<table class="table table-bordered" style="margin-bottom: -2px">
+			<thead>
+				<tr>
+					<th>序号</th>
+					<th>用户名</th>
+					<th>创建时间</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+			    <tr v-show="$store.state.rbac.users.content.length==0">
+			        <td colspan="4" class="text-center">没有数据</td>
+			    </tr>
+				<tr v-for="(user,index) in $store.state.rbac.users.content">
+					<th scope="row">{{index+1}}</th>
+					<td>{{user.name}}</td>
+					<td>{{user.updatedTime|formatDate}}</td>
+					<td><a style="cursor: pointer">设置</a> 
+					<a  @click="$store.commit('delUser',user.id)" href="#"
+						style="cursor: pointer; margin-left: 5px">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="row">
+			<div class="col-md-6 text-left pagination-detail"
+				style="margin-top: 30px">
+				<span class="pagination-info"> {{($store.state.rbac.users.number)*$store.state.rbac.users.size+1}} - {{($store.state.rbac.users.number)*$store.state.rbac.users.size+$store.state.rbac.users.numberOfElements}} 共 {{$store.state.rbac.users.totalElements}} </span><span
+					class="page-list" style="display: none;"><span
+					class="btn-group dropup"><button type="button"
+							class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							<span class="page-size">10</span> <span class="caret"></span>
+						</button>
+						<ul role="menu">
+							<li class="active"><a href="javascript:void(0)">10</a></li>
+						</ul></span> 条 / 页</span>
+			</div>
+			<div class="col-md-6 text-right">
+				<nav aria-label="navigation pull-right">
+					<ul class="pagination" style="cursor: pointer;">
+						<li v-if="!$store.state.rbac.users.first"><a 
+							@click="$store.commit('toNumberlistUser',1)" href="#"
+							aria-label="Previous"> <span
+								aria-hidden="true">«</span>
+						</a></li>
+						<li v-if="$store.state.rbac.users.first" class="disabled"><a
+							href="#"
+							aria-label="Previous"> <span
+								aria-hidden="true">|«</span>
+						</a></li>
+						
+						<li  v-for="page in $store.state.rbac.users.totalPages"><a href="#" v-bind:style="{background:(page==($store.state.rbac.users.number+1)?'#ddd':'')}" 
+							@click="$store.commit('toNumberlistUser',page)">{{page}}</a></li>
+							
+						<li v-if="!$store.state.rbac.users.last" ><a  href="#"
+							@click="$store.commit('toNumberlistUser',$store.state.rbac.users.totalPages)"
+							 aria-label="Next"> <span
+								aria-hidden="true">»</span>
+						</a></li>
+						<li v-if="$store.state.rbac.users.last" class="disabled"><a   href="#"
+							 aria-label="Next"> <span
+								aria-hidden="true">»|</span>
+						</a></li>
+					</ul>
+				</nav>
 			</div>
 		</div>
 	</div>
 
-	<table class="table table-bordered" style="margin-bottom: -2px">
-		<thead>
-			<tr>
-				<th>序号</th>
-				<th>用户名</th>
-				<th>创建时间</th>
-				<th>操作</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<th scope="row">1</th>
-				<td>admin</td>
-				<td>1999/1/2 8/1</td>
-				<td><a style="cursor: pointer">设置</a> <a
-					style="cursor: pointer; margin-left: 5px">删除</a></td>
-			</tr>
-			<tr>
-				<th scope="row">2</th>
-				<td>Jacob</td>
-				<td>Thornton</td>
-				<td>@fat</td>
-			</tr>
-			<tr>
-				<th scope="row">3</th>
-				<td>Larry</td>
-				<td>the Bird</td>
-				<td>@twitter</td>
-			</tr>
-			<tr>
-				<th scope="row">3</th>
-				<td>Larry</td>
-				<td>the Bird</td>
-				<td>@twitter</td>
-			</tr>
-			<tr>
-				<th scope="row">3</th>
-				<td>Larry</td>
-				<td>the Bird</td>
-				<td>@twitter</td>
-			</tr>
-		</tbody>
-	</table>
-	<div class="row">
-		<div class="col-md-6 text-left pagination-detail"
-			style="margin-top: 30px">
-			<span class="pagination-info"> 1 - 10 共 21 </span><span
-				class="page-list" style="display: none;"><span
-				class="btn-group dropup"><button type="button"
-						class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-						<span class="page-size">10</span> <span class="caret"></span>
+	<div id="adduserSys">
+		<div class="row" style="margin-bottom: 8px; margin-right: 8px">
+			<div class="fixed-table-toolbar">
+				<div class="columns columns-right btn-group pull-right">
+					<button class="btn btn-default" type="button" name="toggle"
+						title="返回"
+						onClick="$('#listuserSys').show();$('#adduserSys').hide();">
+						<i class="glyphicon glyphicon-arrow-left"></i>
 					</button>
-					<ul role="menu">
-						<li class="active"><a href="javascript:void(0)">10</a></li>
-					</ul></span> 条 / 页</span>
+				</div>
+			</div>
 		</div>
-		<div class="col-md-6 text-right">
-			<nav aria-label="navigation pull-right">
-				<ul class="pagination">
-					<li><a href="#" aria-label="Previous"> <span
-							aria-hidden="true">«</span>
-					</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#" aria-label="Next"> <span
-							aria-hidden="true">»</span>
-					</a></li>
-				</ul>
-			</nav>
-		</div>
+		
+		<form class="form-signin text-left">
+			    <h2 class="form-signin-heading">添加用户</h2>
+				<div class="form-group">
+					<input v-model:value="$store.state.rbac.tempUser.name" @focus="$store.commit('descfocus')"
+						type="text" class="form-control"
+						placeholder="请输入用户名">
+				</div>
+				<div class="form-group">
+					<!-- <label for="exampleInputPassword1">Password</label>  -->
+					<input v-model:value="$store.state.rbac.tempUser.email"  @focus="$store.commit('descfocus')"
+						type="email" class="form-control"
+						placeholder="请输入邮箱">
+				</div>
+				<div class="form-group" style="color:red">{{$store.state.rbac.tempUser.desc}}</div>
+				<button type="input"  class="btn btn-default btn-lg btn-block"
+				@click="$store.commit('addUser')"
+				>确定</button>
+		</form>
+		
+		
 	</div>
+
 </div>
 
 
 <div class="text-center" id="roleSys">
-	<div class="row" style="margin-bottom: 8px; margin-right: 8px">
-		<div class="fixed-table-toolbar">
-			<div class="columns columns-right btn-group pull-right">
-				<button class="btn btn-default" type="button" name="refresh"
-					title="刷新">
-					<i class="glyphicon glyphicon-refresh icon-refresh"></i>
-				</button>
-				<button class="btn btn-default" type="button" name="toggle"
-					title="Toggle">
-					<i class="glyphicon glyphicon glyphicon-list-alt icon-list-alt"></i>
-				</button>
+	<div id="listroleSys">
+		<div class="row" style="margin-bottom: 8px; margin-right: 8px">
+			<div class="fixed-table-toolbar">
+				<div class="columns columns-right btn-group pull-right">
+					<button class="btn btn-default" type="button" name="refresh" @click="$store.commit('listRolelike')"
+						title="搜索">
+						<i class="glyphicon glyphicon-search"></i>
+					</button>
+					<button class="btn btn-default" type="button" name="toggle"
+						title="Toggle"
+						onClick="$('#listroleSys').hide();$('#addroleSys').show();">
+						<i class="glyphicon glyphicon-plus"></i>
+					</button>
+				</div>
+				<div class="pull-right search">
+					<input v-model="$store.state.rbac.roles.likekey" class="form-control" type="text" placeholder="关键字">
+				</div>
 			</div>
-			<div class="pull-right search">
-				<input class="form-control" type="text" placeholder="关键字">
+		</div>
+		<table class="table table-bordered" style="margin-bottom: -2px">
+			<thead>
+				<tr>
+					<th>序号</th>
+					<th>角色名</th>
+					<th>创建时间</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+			    <tr v-show="$store.state.rbac.roles.content.length==0">
+			        <td colspan="4" class="text-center">没有数据</td>
+			    </tr>
+				<tr v-for="(role,index) in $store.state.rbac.roles.content">
+					<th scope="row">{{index+1}}</th>
+					<td>{{role.name}}</td>
+					<td>{{role.updatedTime|formatDate}}</td> 
+					<td><a style="cursor: pointer">设置</a> 
+					<a  @click="$store.commit('delRole',role.id)" href="#"
+						style="cursor: pointer; margin-left: 5px">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="row">
+			<div class="col-md-6 text-left pagination-detail"
+				style="margin-top: 30px">
+				<span class="pagination-info"> {{($store.state.rbac.roles.number)*$store.state.rbac.roles.size+1}} - {{($store.state.rbac.roles.number)*$store.state.rbac.roles.size+$store.state.rbac.roles.numberOfElements}} 共 {{$store.state.rbac.roles.totalElements}} </span><span
+					class="page-list" style="display: none;"><span
+					class="btn-group dropup"><button type="button"
+							class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							<span class="page-size">10</span> <span class="caret"></span>
+						</button>
+						<ul role="menu">
+							<li class="active"><a href="javascript:void(0)">10</a></li>
+						</ul></span> 条 / 页</span>
+			</div>
+			<div class="col-md-6 text-right">
+				<nav aria-label="navigation pull-right">
+					<ul class="pagination" style="cursor: pointer;">
+						<li v-if="!$store.state.rbac.roles.first"><a 
+							@click="$store.commit('toNumberlistRole',1)" href="#"
+							aria-label="Previous"> <span
+								aria-hidden="true">«</span>
+						</a></li>
+						<li v-if="$store.state.rbac.roles.first" class="disabled"><a 
+							 href="#"
+							aria-label="Previous"> <span
+								aria-hidden="true">|«</span>
+						</a></li>
+						
+						
+						<li v-for="page in $store.state.rbac.roles.totalPages"><a href="#" v-bind:style="{background:(page==($store.state.rbac.roles.number+1)?'#ddd':'')}" 
+							@click="$store.commit('toNumberlistRole',page)">{{page}}</a></li>
+							
+						<li v-if="!$store.state.rbac.roles.last"><a  href="#"
+							@click="$store.commit('toNumberlistRole',$store.state.rbac.roles.totalPages)"
+							 aria-label="Next"> <span
+								aria-hidden="true">»</span>
+						</a></li>
+						<li v-if="$store.state.rbac.roles.last" class="disabled"><a  href="#"
+							 aria-label="Next"> <span
+								aria-hidden="true">»|</span>
+						</a></li>
+						
+						
+					</ul>
+				</nav>
 			</div>
 		</div>
 	</div>
-
-	<table class="table table-bordered" style="margin-bottom: -2px">
-		<thead>
-			<tr>
-				<th>序号</th>
-				<th>角色名</th>
-				<th>创建时间</th>
-				<th>操作</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<th scope="row">1</th>
-				<td>admin</td>
-				<td>1999/1/2 8/1</td>
-				<td><a style="cursor: pointer">设置</a> <a
-					style="cursor: pointer; margin-left: 5px">删除</a></td>
-			</tr>
-			<tr>
-				<th scope="row">2</th>
-				<td>Jacob</td>
-				<td>Thornton</td>
-				<td>@fat</td>
-			</tr>
-			<tr>
-				<th scope="row">3</th>
-				<td>Larry</td>
-				<td>the Bird</td>
-				<td>@twitter</td>
-			</tr>
-			<tr>
-				<th scope="row">3</th>
-				<td>Larry</td>
-				<td>the Bird</td>
-				<td>@twitter</td>
-			</tr>
-			<tr>
-				<th scope="row">3</th>
-				<td>Larry</td>
-				<td>the Bird</td>
-				<td>@twitter</td>
-			</tr>
-		</tbody>
-	</table>
-	<div class="row">
-		<div class="col-md-6 text-left pagination-detail"
-			style="margin-top: 30px">
-			<span class="pagination-info"> 1 - 10 共 21 </span><span
-				class="page-list" style="display: none;"><span
-				class="btn-group dropup"><button type="button"
-						class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-						<span class="page-size">10</span> <span class="caret"></span>
+	<div id="addroleSys">
+		<div class="row" style="margin-bottom: 8px; margin-right: 8px">
+			<div class="fixed-table-toolbar">
+				<div class="columns columns-right btn-group pull-right">
+					<button class="btn btn-default" type="button" name="toggle"
+						title="返回"
+						onClick="$('#listroleSys').show();$('#addroleSys').hide();">
+						<i class="glyphicon glyphicon-arrow-left"></i>
 					</button>
-					<ul role="menu">
-						<li class="active"><a href="javascript:void(0)">10</a></li>
-					</ul></span> 条 / 页</span>
+				</div>
+			</div>
 		</div>
-		<div class="col-md-6 text-right">
-			<nav aria-label="navigation pull-right">
-				<ul class="pagination">
-					<li><a href="#" aria-label="Previous"> <span
-							aria-hidden="true">«</span>
-					</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#" aria-label="Next"> <span
-							aria-hidden="true">»</span>
-					</a></li>
-				</ul>
-			</nav>
-		</div>
+		
+		<form class="form-signin text-left">
+			    <h2 class="form-signin-heading">添加角色</h2>
+				<div class="form-group">
+					<input v-model:value="$store.state.rbac.tempRole.name" @focus="$store.commit('descfocus')"
+						type="text" class="form-control"
+						placeholder="请输入角色名">
+				</div>
+				<div class="form-group" style="color:red">{{$store.state.rbac.tempRole.desc}}</div>
+				<button type="input"  class="btn btn-default btn-lg btn-block"
+				@click="$store.commit('addRole')"
+				>确定</button>
+		</form>
 	</div>
 </div>
 
 
 <div class="text-center" id="accessSys">
-	<div class="row" style="margin-bottom: 8px; margin-right: 8px">
-		<div class="fixed-table-toolbar">
-			<div class="columns columns-right btn-group pull-right">
-				<button class="btn btn-default" type="button" name="refresh"
-					title="刷新">
-					<i class="glyphicon glyphicon-refresh icon-refresh"></i>
-				</button>
-				<button class="btn btn-default" type="button" name="toggle"
-					title="Toggle">
-					<i class="glyphicon glyphicon glyphicon-list-alt icon-list-alt"></i>
-				</button>
+	<div id="listaccessSys">
+		<div class="row" style="margin-bottom: 8px; margin-right: 8px">
+			<div class="fixed-table-toolbar">
+				<div class="columns columns-right btn-group pull-right">
+					<button class="btn btn-default" type="button" name="refresh" @click="$store.commit('listAccesslike')"
+						title="搜索">
+						<i class="glyphicon glyphicon-search"></i>
+					</button>
+					<button class="btn btn-default" type="button" name="toggle"
+						title="Toggle"
+						onClick="$('#listaccessSys').hide();$('#addaccessSys').show();">
+						<i class="glyphicon glyphicon-plus"></i>
+					</button>
+				</div>
+				<div class="pull-right search">
+					<input v-model="$store.state.rbac.accesss.likekey" class="form-control" type="text" placeholder="关键字">
+				</div>
 			</div>
-			<div class="pull-right search">
-				<input class="form-control" type="text" placeholder="关键字">
+		</div>
+		<table class="table table-bordered" style="margin-bottom: -2px">
+			<thead>
+				<tr>
+					<th>序号</th>
+					<th>权限标题名</th>
+					<th>权限内容</th>
+					<th>创建时间</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+			    <tr v-show="$store.state.rbac.accesss.content.length==0">
+			        <td colspan="4" class="text-center">没有数据</td>
+			    </tr>
+				<tr v-for="(access,index) in $store.state.rbac.accesss.content">
+					<th scope="row">{{index+1}}</th>
+					<td>{{access.title}}</td>
+					<td>{{access.urls}}</td>
+					<td>{{access.updatedTime|formatDate}}</td> 
+					<td><a style="cursor: pointer">设置</a> 
+					<a  @click="$store.commit('delAccess',access.id)" href="#"
+						style="cursor: pointer; margin-left: 5px">删除</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="row">
+			<div class="col-md-6 text-left pagination-detail"
+				style="margin-top: 30px">
+				<span class="pagination-info"> {{($store.state.rbac.accesss.number)*$store.state.rbac.accesss.size+1}} - {{($store.state.rbac.accesss.number)*$store.state.rbac.accesss.size+$store.state.rbac.accesss.numberOfElements}} 共 {{$store.state.rbac.accesss.totalElements}} </span><span
+					class="page-list" style="display: none;"><span
+					class="btn-group dropup"><button type="button"
+							class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+							<span class="page-size">10</span> <span class="caret"></span>
+						</button>
+						<ul access="menu">
+							<li class="active"><a href="javascript:void(0)">10</a></li>
+						</ul></span> 条 / 页</span>
+			</div>
+			<div class="col-md-6 text-right">
+				<nav aria-label="navigation pull-right">
+					<ul class="pagination" style="cursor: pointer;">
+						<li v-if="!$store.state.rbac.accesss.first"><a 
+							@click="$store.commit('toNumberlistAccess',1)" href="#"
+							aria-label="Previous"> <span
+								aria-hidden="true">«</span>
+						</a></li>
+						<li v-if="$store.state.rbac.accesss.first" class="disabled"><a 
+							 href="#"
+							aria-label="Previous"> <span
+								aria-hidden="true">|«</span>
+						</a></li>
+						
+						
+						<li v-for="page in $store.state.rbac.accesss.totalPages"><a href="#" v-bind:style="{background:(page==($store.state.rbac.accesss.number+1)?'#ddd':'')}" 
+							@click="$store.commit('toNumberlistAccess',page)">{{page}}</a></li>
+							
+						<li v-if="!$store.state.rbac.accesss.last"><a  href="#"
+							@click="$store.commit('toNumberlistAccess',$store.state.rbac.accesss.totalPages)"
+							 aria-label="Next"> <span
+								aria-hidden="true">»</span>
+						</a></li>
+						<li v-if="$store.state.rbac.accesss.last" class="disabled"><a  href="#"
+							 aria-label="Next"> <span
+								aria-hidden="true">»|</span>
+						</a></li>
+						
+						
+					</ul>
+				</nav>
 			</div>
 		</div>
 	</div>
-
-	<table class="table table-bordered" style="margin-bottom: -2px">
-		<thead>
-			<tr>
-				<th>序号</th>
-				<th>urls</th>
-				<th>创建时间</th>
-				<th>操作</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<th scope="row">1</th>
-				<td>admin</td>
-				<td>1999/1/2 8/1</td>
-				<td><a style="cursor: pointer">设置</a> <a
-					style="cursor: pointer; margin-left: 5px">删除</a></td>
-			</tr>
-			<tr>
-				<th scope="row">2</th>
-				<td>Jacob</td>
-				<td>Thornton</td>
-				<td>@fat</td>
-			</tr>
-			<tr>
-				<th scope="row">3</th>
-				<td>Larry</td>
-				<td>the Bird</td>
-				<td>@twitter</td>
-			</tr>
-			<tr>
-				<th scope="row">3</th>
-				<td>Larry</td>
-				<td>the Bird</td>
-				<td>@twitter</td>
-			</tr>
-			<tr>
-				<th scope="row">3</th>
-				<td>Larry</td>
-				<td>the Bird</td>
-				<td>@twitter</td>
-			</tr>
-		</tbody>
-	</table>
-	<div class="row">
-		<div class="col-md-6 text-left pagination-detail"
-			style="margin-top: 30px">
-			<span class="pagination-info"> 1 - 10 共 21 </span><span
-				class="page-list" style="display: none;"><span
-				class="btn-group dropup"><button type="button"
-						class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-						<span class="page-size">10</span> <span class="caret"></span>
+	<div id="addaccessSys">
+		<div class="row" style="margin-bottom: 8px; margin-right: 8px">
+			<div class="fixed-table-toolbar">
+				<div class="columns columns-right btn-group pull-right">
+					<button class="btn btn-default" type="button" name="toggle"
+						title="返回"
+						onClick="$('#listaccessSys').show();$('#addaccessSys').hide();">
+						<i class="glyphicon glyphicon-arrow-left"></i>
 					</button>
-					<ul role="menu">
-						<li class="active"><a href="javascript:void(0)">10</a></li>
-					</ul></span> 条 / 页</span>
+				</div>
+			</div>
 		</div>
-		<div class="col-md-6 text-right">
-			<nav aria-label="navigation pull-right">
-				<ul class="pagination">
-					<li><a href="#" aria-label="Previous"> <span
-							aria-hidden="true">«</span>
-					</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#" aria-label="Next"> <span
-							aria-hidden="true">»</span>
-					</a></li>
-				</ul>
-			</nav>
-		</div>
+		<form class="form-signin text-left">
+			    <h2 class="form-signin-heading">添加权限</h2>
+				<div class="form-group">
+					<input v-model:value="$store.state.rbac.tempAccess.title" @focus="$store.commit('descfocus')"
+						type="text" class="form-control"
+						placeholder="请输入权限名">
+				</div>
+				<div class="form-group">
+					<input v-model:value="$store.state.rbac.tempAccess.urls" @focus="$store.commit('descfocus')"
+						type="text" class="form-control"
+						placeholder="请输入权限内容">
+				</div>
+				<div class="form-group" style="color:red">{{$store.state.rbac.tempAccess.desc}}</div>
+				<button type="input"  class="btn btn-default btn-lg btn-block"
+				@click="$store.commit('addAccess')"
+				>确定</button>
+		</form>
 	</div>
 </div>
 

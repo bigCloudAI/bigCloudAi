@@ -31,30 +31,35 @@ public class User implements Serializable {
 	/** name. */
 	@Column(name="name",columnDefinition = "varchar(20) default '' COMMENT 'name : 姓名'", length=20, nullable=false, unique = false)
 	private String name;
+	
+	
+	/** name. */
+	@Column(name="pwd",columnDefinition = "varchar(32) default '' COMMENT 'pwd : 密码'", length=20, nullable=true, unique = false)
+	private String pwd;
 
 	/** email. */
-	@Column(name="email",columnDefinition = "varchar(30) default '' COMMENT 'email : 邮箱'", length=30, nullable=false, unique = false)
+	@Column(name="email",columnDefinition = "varchar(30) default '' COMMENT 'email : 邮箱'", length=30, nullable=true, unique = false)
 	private String email;
 
 	/** qq. */
-	@Column(name="qq",columnDefinition = "varchar(12) default '' COMMENT 'qq'", length=12, nullable=false, unique = false)
+	@Column(name="qq",columnDefinition = "varchar(12) default '' COMMENT 'qq'", length=12, nullable=true, unique = false)
 	private String qq;
 
 	/** wechat. */
-	@Column(name="wechat",columnDefinition = "varchar(12) default '' COMMENT '微信'", length=12, nullable=false, unique = false)
+	@Column(name="wechat",columnDefinition = "varchar(12) default '' COMMENT '微信'", length=12, nullable=true, unique = false)
 	private String wechat;
 
 	/** phone. */
-	@Column(name="phone",columnDefinition = "varchar(12) default '' COMMENT '电话'", length=12, nullable=false, unique = false)
+	@Column(name="phone",columnDefinition = "varchar(12) default '' COMMENT '电话'", length=12, nullable=true, unique = false)
 	private String phone;
 
 	/** is_admin. */
 	@Column(name="isAdmin",columnDefinition = "int(1) DEFAULT 0 NOT NULL COMMENT 'is_admin : 是否是超级管理员 1是 0不是'", length=1, nullable=false, unique = false)
-	private Byte isAdmin;
+	private int isAdmin;
 
 	/** status. */
 	@Column(name="status",columnDefinition = "tinyint(1) DEFAULT 0 NOT NULL COMMENT 'is_admin : 是否是超级管理员 1是 0不是'", length=1, nullable=false, unique = false)
-	private Byte status;
+	private int status;
 
 	/** updated_time. */
 	@Column(name="updatedTime",columnDefinition = "timestamp DEFAULT '0000-00-00 00:00:00' NOT NULL COMMENT 'updated_time : 最后一次更新时间'", nullable=false, unique = false)
@@ -190,7 +195,7 @@ public class User implements Serializable {
 	 * @param isAdmin
 	 *            is_admin
 	 */
-	public void setIsAdmin(Byte isAdmin) {
+	public void setIsAdmin(int isAdmin) {
 		this.isAdmin = isAdmin;
 	}
 
@@ -199,7 +204,7 @@ public class User implements Serializable {
 	 * 
 	 * @return is_admin
 	 */
-	public Byte getIsAdmin() {
+	public int getIsAdmin() {
 		return this.isAdmin;
 	}
 
@@ -209,7 +214,7 @@ public class User implements Serializable {
 	 * @param status
 	 *            status
 	 */
-	public void setStatus(Byte status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 
@@ -218,7 +223,7 @@ public class User implements Serializable {
 	 * 
 	 * @return status
 	 */
-	public Byte getStatus() {
+	public int getStatus() {
 		return this.status;
 	}
 
@@ -258,6 +263,14 @@ public class User implements Serializable {
 	 */
 	public Date getCreatedTime() {
 		return this.createdTime;
+	}
+
+	public String getPwd() {
+		return pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 
 	/**

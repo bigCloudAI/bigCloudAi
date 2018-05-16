@@ -35,14 +35,68 @@ var rbac = {
 			  name:'权限管理',code:'rbac',
 			  icon:'fa fa-drivers-license-o',
 		  }
-	  ]
-	  
+	  ],
+	  tempUser:{
+		  name:'',
+		  pwd:'000000',
+		  email:'',
+		  desc:'',
+		  adding:false
+	  },
+	  users:{
+		  content:[],
+		  first:true,
+		  last:false,
+		  number:0,
+		  numberOfElements:0,
+		  size:8,
+		  totalElements:0,
+		  totalPages:0,
+		  likekey:''
+	  },
+	  tempRole:{
+		  name:'',
+		  status:0,
+		  adding:false
+	  },
+	  roles:{
+		  content:[],
+		  first:true,
+		  last:false,
+		  number:0,
+		  numberOfElements:0,
+		  size:8,
+		  totalElements:0,
+		  totalPages:0,
+		  likekey:''
+	  },
+	  tempAccess:{
+		  title:'',
+		  urls:'',
+		  status:0,
+		  adding:false
+	  },
+	  accesss:{
+		  content:[],
+		  first:true,
+		  last:false,
+		  number:0,
+		  numberOfElements:0,
+		  size:8,
+		  totalElements:0,
+		  totalPages:0,
+		  likekey:''
+	  }
+ 
+  
   },
   mutations: { 
 	  isLoginCheck:function(state){
 		  $("#userSys").show();
+		  $("#adduserSys").hide();
 		  $("#roleSys").hide();
 		  $("#accessSys").hide();
+		  $("#accesslogSys").hide();
 		  $.get("/osUi/isLogin",
 				  function(data,status){
 					  if(data.success){
@@ -52,6 +106,7 @@ var rbac = {
 						  state.user.isLogin=false;
 					  }
 				  });
+		  vm.$store.commit('listUser');
 		 
 	  },
 	  login:function(state){
@@ -85,24 +140,172 @@ var rbac = {
 	  },
 	  descfocus:function(state){
 		  state.user.desc="";
+		  state.tempUser.desc="";
+		  state.tempRole.desc="";
+		  state.tempAccess.desc="";
 	  },
 	  rbacuser:function(state){
 		  var value='user';
-		  chooseone(value);
-		  state.menu='user';
+		  chooseone(value);state.menu='user';
+		  vm.$store.commit('listUser');
 	  },
+	  listUser:function(state){
+		  $.get("/rbac/user/page/"+state.users.number+"/"+state.users.size+"",function(data,status){
+			  state.users.content=data.content;
+			  state.users.first=data.first;
+			  state.users.last=data.last;
+			  state.users.number=data.number;
+			  state.users.numberOfElements=data.numberOfElements;
+			  state.users.size=data.size;
+			  state.users.totalElements=data.totalElements;
+			  state.users.totalPages=data.totalPages;
+		  });
+	  },
+	  listUserlike:function(state){
+		  $.post("/rbac/user/page/"+state.users.number+"/"+state.users.size,JSON.stringify({likekey:state.users.likekey}),function(data,status){
+			  state.users.content=data.content;
+			  state.users.first=data.first;
+			  state.users.last=data.last;
+			  state.users.number=data.number;
+			  state.users.numberOfElements=data.numberOfElements;
+			  state.users.size=data.size;
+			  state.users.totalElements=data.totalElements;
+			  state.users.totalPages=data.totalPages;
+		  });
+	  },
+	  toNumberlistUser:function(state,value){
+		  state.users.number=value-1;
+		  vm.$store.commit('listUser');
+	  },
+	  addUser:function(state){
+		  if(''==state.tempUser.name){ state.tempUser.desc="用户不可为空";	
+		  return;
+		  }
+		  if(''==state.tempUser.email){state.tempUser.desc="邮箱不可为空"; 
+			  return;
+		  }
+		  state.tempUser.adding=true;
+		  $.post("/rbac/user/add",state.tempUser,function(data,status){
+			  $("#adduserSys").hide();
+			  $("#listuserSys").show();
+			  vm.$store.commit('listUser');
+			  state.tempUser.adding=false;
+		  });
+		  state.tempUser.adding=false;
+	  },
+	  delUser:function(state,value){
+		  $.get("/rbac/user/del/"+value,function(data,status){
+			  vm.$store.commit('listUser');
+		  });
+	  },
+	  
 	  rbacrole:function(state){
 		  var value='role';
-		  chooseone(value); state.menu='role';
+		  chooseone(value);
+		  $("#addroleSys").hide();
+		  state.menu='role';
+		  vm.$store.commit('listRole');
 	  },
+	  listRole:function(state){
+		  $.get("/rbac/role/page/"+state.roles.number+"/"+state.roles.size+"",function(data,status){
+			  state.roles.content=data.content;
+			  state.roles.first=data.first;
+			  state.roles.last=data.last;
+			  state.roles.number=data.number;
+			  state.roles.numberOfElements=data.numberOfElements;
+			  state.roles.size=data.size;
+			  state.roles.totalElements=data.totalElements;
+			  state.roles.totalPages=data.totalPages;
+		  });
+	  },
+	  listRolelike:function(state){
+		  $.post("/rbac/role/page/"+state.roles.number+"/"+state.roles.size,JSON.stringify({likekey:state.roles.likekey}),function(data,status){
+			  state.roles.content=data.content;
+			  state.roles.first=data.first;
+			  state.roles.last=data.last;
+			  state.roles.number=data.number;
+			  state.roles.numberOfElements=data.numberOfElements;
+			  state.roles.size=data.size;
+			  state.roles.totalElements=data.totalElements;
+			  state.roles.totalPages=data.totalPages;
+		  });
+	  },
+	  toNumberlistRole:function(state,value){
+		  state.roles.number=value-1;
+		  vm.$store.commit('listRole');
+	  },
+	  addRole:function(state){
+		  state.tempRole.adding=true;
+		  $.post("/rbac/role/add",state.tempRole,function(data,status){
+			  $("#addroleSys").hide();
+			  $("#listroleSys").show();
+			  vm.$store.commit('listRole');
+			  state.tempRole.adding=false;
+		  });
+		  state.tempRole.adding=false;
+	  },
+	  delRole:function(state,value){
+		  $.get("/rbac/role/del/"+value,function(data,status){
+			  vm.$store.commit('listRole');
+		  });
+	  },
+	
 	  rbacaccess:function(state){
 		  var value='access';
+		  $("#addaccessSys").hide();
 		  chooseone(value); state.menu='access';
+		  vm.$store.commit('listAccess');
 	  },
+	  listAccess:function(state){
+		  $.get("/rbac/access/page/"+state.accesss.number+"/"+state.accesss.size+"",function(data,status){
+			  state.accesss.content=data.content;
+			  state.accesss.first=data.first;
+			  state.accesss.last=data.last;
+			  state.accesss.number=data.number;
+			  state.accesss.numberOfElements=data.numberOfElements;
+			  state.accesss.size=data.size;
+			  state.accesss.totalElements=data.totalElements;
+			  state.accesss.totalPages=data.totalPages;
+		  });
+	  },
+	  listAccesslike:function(state){
+		  $.post("/rbac/access/page/"+state.accesss.number+"/"+state.accesss.size,JSON.stringify({likekey:state.accesss.likekey}),function(data,status){
+			  state.accesss.content=data.content;
+			  state.accesss.first=data.first;
+			  state.accesss.last=data.last;
+			  state.accesss.number=data.number;
+			  state.accesss.numberOfElements=data.numberOfElements;
+			  state.accesss.size=data.size;
+			  state.accesss.totalElements=data.totalElements;
+			  state.accesss.totalPages=data.totalPages;
+		  });
+	  },
+	  toNumberlistAccess:function(state,value){
+		  state.accesss.number=value-1;
+		  vm.$store.commit('listAccess');
+	  },
+	  addAccess:function(state){
+		  state.tempAccess.adding=true;
+		  $.post("/rbac/access/add",state.tempAccess,function(data,status){
+			  $("#addaccessSys").hide();
+			  $("#listaccessSys").show();
+			  vm.$store.commit('listAccess');
+			  state.tempAccess.adding=false;
+		  });
+		  state.tempAccess.adding=false;
+	  },
+	  delAccess:function(state,value){
+		  $.get("/rbac/access/del/"+value,function(data,status){
+			  vm.$store.commit('listAccess');
+		  });
+	  },
+
 	  rbacaccesslog:function(state){
 		  var value='accesslog';
 		  chooseone(value); state.menu='accesslog';
 	  }
+  
+  
   },
   actions: { 
   },
