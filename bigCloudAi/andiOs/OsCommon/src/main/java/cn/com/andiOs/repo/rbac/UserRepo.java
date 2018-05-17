@@ -13,6 +13,7 @@ import cn.com.andiOs.entry.rbac.User;
 public interface UserRepo extends CrudRepository<User,Integer>,JpaRepository<User,Integer>{
 	
 	public User findById(int id);
+	public User findByName(String name);
 	
 	public List<User> findAll();
 	public Page<User> findAll(Pageable pageable);
