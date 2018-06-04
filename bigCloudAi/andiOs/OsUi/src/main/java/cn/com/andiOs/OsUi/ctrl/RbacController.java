@@ -1,6 +1,7 @@
 package cn.com.andiOs.OsUi.ctrl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -11,15 +12,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import cn.com.andiOs.entry.rbac.Access;
 import cn.com.andiOs.entry.rbac.Role;
 import cn.com.andiOs.entry.rbac.User;
+import cn.com.andiOs.entry.rbac.UserRole;
+import cn.com.andiOs.entry.rbac.dto.UserRoleUser;
 import cn.com.andiOs.repo.rbac.AccessRepo;
 import cn.com.andiOs.repo.rbac.RoleRepo;
 import cn.com.andiOs.repo.rbac.UserRepo;
+import cn.com.andiOs.repo.rbac.UserRoleRepo;
 
 /**
  * 项目各个界面的请求地址
@@ -33,6 +38,8 @@ public class RbacController {
 	
 	@Autowired
 	UserRepo userRepo;
+	@Autowired
+	UserRoleRepo userRoleRepo;
 	@RequestMapping(value = "/user/add", method = RequestMethod.POST)
 	public @ResponseBody User userAdd(User user) {
 		user.setCreatedTime(new Date());
@@ -41,6 +48,38 @@ public class RbacController {
 		user.setStatus(0);
 		user = userRepo.save(user);
 		return user;
+	}
+	
+	@RequestMapping(value = "/user/{userId}/roles", method = RequestMethod.GET)
+	public List<UserRoleUser> userRoleUser(@PathVariable int userId) {
+		List<UserRoleUser> list =  userRepo.findRoleUserRole(userId);
+		 System.out.println(list.size());
+		 System.out.println(list.get(0).getRole());
+		 System.out.println(list.get(0).getUserRole());
+		return list; 
+	}
+	
+	@RequestMapping(value = "/user/{userId}/roles/add", method = RequestMethod.POST)
+	public @ResponseBody String userRoleUserAdd(@PathVariable int userId,@RequestParam("addRoles[]") List<Integer> addRoles) {
+		for(int roleId:addRoles) {
+			UserRole userRole = userRoleRepo.findByUidAndRoleId(userId, roleId);
+			if(userRole==null) {
+				userRole = new UserRole(userId,roleId,new Date());
+			}
+			userRoleRepo.save(userRole);
+		}
+		return "ok"; 
+	}
+	@RequestMapping(value = "/user/{userId}/roles/remove", method = RequestMethod.POST)
+	public @ResponseBody String userRoleUserRemove(@PathVariable int userId,@RequestParam("removeRoles[]") List<Integer> removeRoles) {
+		for(int roleId:removeRoles) {
+			UserRole userRole = userRoleRepo.findByUidAndRoleId(userId, roleId);
+			if(userRole==null) {
+				continue;
+			}
+			userRoleRepo.delete(userRole);
+		}
+		return "ok"; 
 	}
 	
 	@RequestMapping(value = "/user/page/{start}/{size}", method = RequestMethod.GET)

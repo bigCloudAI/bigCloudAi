@@ -43,6 +43,10 @@ var rbac = {
 		  desc:'',
 		  adding:false
 	  },
+	  configuserSys:false,
+	  userRoleUsers:[],
+	  addRoles:[],
+	  removeRoles:[],
 	  users:{
 		  content:[],
 		  first:true,
@@ -93,6 +97,7 @@ var rbac = {
   mutations: { 
 	  isLoginCheck:function(state){
 		  $("#userSys").show();
+//		  $("#configuserSys").hide();
 		  $("#adduserSys").hide();
 		  $("#roleSys").hide();
 		  $("#accessSys").hide();
@@ -162,7 +167,7 @@ var rbac = {
 		  });
 	  },
 	  listUserlike:function(state){
-		  $.post("/rbac/user/page/"+state.users.number+"/"+state.users.size,JSON.stringify({likekey:state.users.likekey}),function(data,status){
+		  $.post("/rbac/user/page/"+state.users.number+"/"+state.users.size,state.users.likekey,function(data,status){
 			  state.users.content=data.content;
 			  state.users.first=data.first;
 			  state.users.last=data.last;
@@ -179,10 +184,10 @@ var rbac = {
 	  },
 	  addUser:function(state){
 		  if(''==state.tempUser.name){ state.tempUser.desc="用户不可为空";	
-		  return;
+		  		return;
 		  }
 		  if(''==state.tempUser.email){state.tempUser.desc="邮箱不可为空"; 
-			  return;
+		  		return;
 		  }
 		  state.tempUser.adding=true;
 		  $.post("/rbac/user/add",state.tempUser,function(data,status){
@@ -193,12 +198,55 @@ var rbac = {
 		  });
 		  state.tempUser.adding=false;
 	  },
+	  configUser:function(state,user){
+		 // $("#configuserSys").toggle();
+		  state.configuserSys=!state.configuserSys;
+		  state.addRoles=[];
+		  state.removeRoles=[];
+		  //加载该用户的角色
+		  if(user!=null){
+			  state.tempUser=user;
+			  $.get("/rbac/user/"+user.id+"/roles",function(data,status){
+				  state.userRoleUsers=data;
+				  console.log(data);
+			  });
+		  }else{
+			  state.tempUser={};
+		  }
+	  },
+	  addOrRemoveRole:function(state,userRoleUser){
+		  console.log(!userRoleUser.hasUserRole);
+		  if(!userRoleUser.hasUserRole){
+			  state.addRoles.push(userRoleUser.role.id);
+			  state.removeRoles.remove(userRoleUser.role.id);
+		  }else{
+			  state.removeRoles.push(userRoleUser.role.id);
+			  state.addRoles.remove(userRoleUser.role.id);
+		  }
+		  console.log(state.removeRoles);
+		  console.log(state.addRoles);
+	  },
+	  configUserRole:function(state){
+		  if(state.addRoles.length==0&&state.removeRoles.length==0){
+			  alert("没有改动");
+			  return;
+		  }
+		  if(state.addRoles.length>0){
+			  $.post("/rbac/user/"+ state.tempUser.id+"/roles/add",{"addRoles":state.addRoles},function(data,status){
+				  console.log(data);
+			  });
+		  }
+		  if(state.removeRoles.length>0){
+			  $.post("/rbac/user/"+ state.tempUser.id+"/roles/remove",{"removeRoles":state.removeRoles},function(data,status){
+				  console.log(data);
+			  });
+		  }
+	  },
 	  delUser:function(state,value){
 		  $.get("/rbac/user/del/"+value,function(data,status){
 			  vm.$store.commit('listUser');
 		  });
 	  },
-	  
 	  rbacrole:function(state){
 		  var value='role';
 		  chooseone(value);
@@ -333,5 +381,18 @@ function chooseone(value){
 			$("#"+menu[i]+"Sys").hide();
 		}
 	}
-	  
 }
+
+Array.prototype.indexOf = function (val) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i] == val) return i;
+    }
+    return -1;
+};
+
+Array.prototype.remove = function (val) {
+    var index = this.indexOf(val);
+    if (index > -1) {
+        this.splice(index, 1);
+    }
+};

@@ -24,6 +24,34 @@
 </div>
 
 <div class="text-center" id="userSys">
+		<div id="configuserSys" class="text-left" style="width: 80%;  
+    height: 80%;  
+    margin-left:10%;
+    position: absolute;background:white;border:1px solid gray;
+    z-index:5001;" v-show="$store.state.rbac.configuserSys">
+		<div class="window_top ui-draggable-handle">
+		<span class="float_left"><div><i class="fa-1x fa fa-drivers-license-o"></i> 
+		设置用户和角色关系</div></span> <span class="float_right"> <span
+		 class="window_close" @click="$store.commit('configUser')"></span></span></div>
+		<div style="padding-left: 20px">
+			<div class="checkbox" v-for="userRoleUser in $store.state.rbac.userRoleUsers">
+				<label> <input type="checkbox" value="" v-model:checked="userRoleUser.hasUserRole" 
+				@click="$store.commit('addOrRemoveRole',userRoleUser)"> {{userRoleUser.role.name}}
+				</label>
+			</div>
+			<!-- <div class="checkbox">
+				<label> <input type="checkbox" value="">
+					user
+				</label>
+			</div> -->
+		</div>
+		<div class="text-center">
+			<button class="btn btn-default" type="submit" @click="$store.commit('configUserRole')">确定</button>
+			<button class="btn btn-default" type="submit" @click="$store.commit('configUser')">取消</button>
+		</div>
+		
+		<div class="abs window_bottom">Build: bigCloudAi</div>
+	</div>
 	<div id="listuserSys">
 		<div class="row" style="margin-bottom: 8px; margin-right: 8px">
 			<div class="fixed-table-toolbar">
@@ -60,7 +88,7 @@
 					<th scope="row">{{index+1}}</th>
 					<td>{{user.name}}</td>
 					<td>{{user.updatedTime|formatDate}}</td>
-					<td><a style="cursor: pointer">设置</a> 
+					<td><a style="cursor: pointer" href="#" @click="$store.commit('configUser',user)">设置</a> 
 					<a  @click="$store.commit('delUser',user.id)" href="#"
 						style="cursor: pointer; margin-left: 5px">删除</a></td>
 				</tr>
@@ -110,6 +138,9 @@
 			</div>
 		</div>
 	</div>
+	<!-- <div id="configuserSys" style="float:left;width:150px;border:1px solid #00F;height:50px;position: relative;left:10px;top:80px;">
+		设置用户和角色关系
+	</div> -->
 
 	<div id="adduserSys">
 		<div class="row" style="margin-bottom: 8px; margin-right: 8px">
@@ -123,7 +154,6 @@
 				</div>
 			</div>
 		</div>
-		
 		<form class="form-signin text-left">
 			    <h2 class="form-signin-heading">添加用户</h2>
 				<div class="form-group">
@@ -142,12 +172,9 @@
 				@click="$store.commit('addUser')"
 				>确定</button>
 		</form>
-		
-		
 	</div>
 
 </div>
-
 
 <div class="text-center" id="roleSys">
 	<div id="listroleSys">

@@ -23,6 +23,13 @@ public class UserRole implements Serializable {
 	/** serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	public UserRole(Integer uid, Integer roleId, Date createdTime) {
+		super();
+		this.uid = uid;
+		this.roleId = roleId;
+		this.createdTime = createdTime;
+	}
+
 	/** id. */
 	@Id
 	@GeneratedValue
